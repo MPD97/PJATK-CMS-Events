@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,24 +12,28 @@ using WebApplication1.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using CMS.Entities;
 
 namespace WebApplication1
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
+        //   ✔ Rejestracja/logowanie 
+        //      Strona główna z wyświetlaniem eventów
+        //      Strony eventów z geolokalizacją wydarzenia i językiem angielskim i buttonem na rezerwację wydarzenia - i wtedy button oplaty dla platnych lub brak dla nieplatnych
+        //      Jakaś sekcja a'la komentarze do komentowania i oceniania na max 5 gwiazdek
+        //	    Wyszukiwanie wydarzeń po jakichś tam featurach
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseInMemoryDatabase(databaseName: "DevelopmentDb"));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+            services.AddDefaultIdentity<AppIdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
