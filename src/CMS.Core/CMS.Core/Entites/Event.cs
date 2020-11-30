@@ -10,6 +10,8 @@ namespace CMS.Core.Entites
         public decimal Latitude { get; set; }
         public decimal Longitude { get; set; }
 
+        public string PhotoPath { get; set; }
+
         public EventType EventType { get; set; }
 
         public virtual ICollection<Ticket> Tickets { get; set; }
