@@ -1,5 +1,7 @@
-﻿using CMS.Core.Abstract;
+﻿using System;
+using CMS.Core.Abstract;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CMS.Core.Entites
 {
@@ -13,7 +15,12 @@ namespace CMS.Core.Entites
         public string PhotoPath { get; set; }
 
         public EventType EventType { get; set; }
+        
+        public DateTime Date { get; set; }
 
+        public string Description { get; set; }
         public virtual ICollection<Ticket> Tickets { get; set; }
+        
+        public decimal? TicketPrice => Tickets == null ? 0 : Tickets.First().PricePLN;
     }
 }
