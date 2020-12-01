@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using CMS.Infrastructure.MsSQL;
 using CMS.Core.Entites;
+using CMS.Web.Services;
 using Microsoft.AspNetCore.Identity;
 
 namespace CMS.Web
@@ -32,6 +33,8 @@ namespace CMS.Web
                 .AddDefaultTokenProviders();
 
             services.AddControllersWithViews();
+
+            services.AddSingleton<IEventService, EventService>();
 
             services.AddRazorPages();
         }
