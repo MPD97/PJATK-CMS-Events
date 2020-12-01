@@ -8,7 +8,9 @@ namespace CMS.Web.Controllers
 {
     public class EventController : Controller
     {
-        public IActionResult Index()
+        
+        [HttpGet("{id}")]
+        public IActionResult Event(int id)
         {
             return View();
         }
