@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CMS.Core.Entites;
 using CMS.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,9 +19,9 @@ namespace CMS.Web.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult Event(int id)
+        public async Task<IActionResult> Event(int id)
         {
-            var selectedEvent = _eventService.GetEvent(id);
+            var selectedEvent = await _eventService.GetEvent(id);
             return View(selectedEvent);
         }
     }

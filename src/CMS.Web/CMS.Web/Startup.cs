@@ -34,7 +34,7 @@ namespace CMS.Web
 
             services.AddControllersWithViews();
 
-            services.AddSingleton<IEventService, EventService>();
+            services.AddScoped<IEventService, EventService>();
 
             services.AddRazorPages();
         }

@@ -18,9 +18,9 @@ namespace CMS.Core.Entites
         
         public DateTime Date { get; set; }
 
+        public decimal TicketPrice { get; set; }
+
         public string Description { get; set; }
         public virtual ICollection<Ticket> Tickets { get; set; }
-        
-        public decimal? TicketPrice => Tickets == null ? 0 : Tickets.First().PricePLN;
     }
 }

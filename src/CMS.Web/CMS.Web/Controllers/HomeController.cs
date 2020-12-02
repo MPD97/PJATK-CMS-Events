@@ -21,9 +21,11 @@ namespace CMS.Web.Controllers
             _eventService = eventService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View(new HomeViewModel(_eventService));
+            var allEvents = await _eventService.GetEvents();
+
+            return View(new HomeViewModel() { Events = allEvents});
         }
 
         public IActionResult Privacy()
