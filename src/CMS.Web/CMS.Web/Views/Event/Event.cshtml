@@ -2,9 +2,12 @@
 
 @{
     ViewData["Title"] = "EVENT - INDEX";
+
 }
 
 <link href="~/css/event.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
 
 <div class="container bootdey">
     <div class="col-md-10 offset-1">
@@ -27,6 +30,22 @@
                     <div class="m-bot15">
                         <strong>Cena biletu : </strong><span class="pro-price">@Model.TicketPrice zł</span>
                     </div>
+                    <div id='map' style='width: 400px; height: 300px;'></div>
+
+
+                    <script>
+                        mapboxgl.accessToken = 'pk.eyJ1IjoibXBkOTciLCJhIjoiY2s2dWluMWlyMDlrODNscmo5ZGJydXd1dSJ9.1q0TuIH6z8RUDIjk0oznrQ'
+                        var map = new mapboxgl.Map({
+                            container: 'map',
+                            style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+                            center: [@Model.Longitude.ToString().Replace(",", "."), @Model.Latitude.ToString().Replace(",", ".")], // starting position [lng, lat]
+                            zoom: 5 // starting zoom
+                        });
+
+                        var marker = new mapboxgl.Marker()
+                            .setLngLat([@Model.Longitude.ToString().Replace(",", "."), @Model.Latitude.ToString().Replace(",", ".")])
+                            .addTo(map);
+                    </script>
                     <div class="form-group">
                         <label>Liczba sztuk:</label>
                         <input type="number" min="1" placeholder="1" class="form-control quantity">
