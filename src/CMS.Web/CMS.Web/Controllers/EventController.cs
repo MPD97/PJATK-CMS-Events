@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CMS.Core.Entites;
 using CMS.Web.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CMS.Web.Controllers
@@ -18,6 +19,7 @@ namespace CMS.Web.Controllers
             _eventService = eventService;
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> Event(int id)
         {

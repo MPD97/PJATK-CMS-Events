@@ -8,6 +8,7 @@ using CMS.Infrastructure.MsSQL;
 using CMS.Core.Entites;
 using CMS.Web.Services;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Http;
 
 namespace CMS.Web
 {
@@ -28,9 +29,11 @@ namespace CMS.Web
             services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
                 {
                     options.User.RequireUniqueEmail = false;
+                    
                 })
                 .AddEntityFrameworkStores<ApplicationContext>()
                 .AddDefaultTokenProviders();
+
 
             services.AddControllersWithViews();
 
