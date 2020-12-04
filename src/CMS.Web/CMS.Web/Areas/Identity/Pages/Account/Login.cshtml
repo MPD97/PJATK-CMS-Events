@@ -9,17 +9,19 @@
 <script src="~/js/site.js"></script>
 <div class="d-flex justify-content-center p-5">
 
-    <form action="" method="" class="register-form">
+    <form action="" method="post" class="register-form">
         <div class="row">
             <div class="col-md-4 col-sm-4 col-lg-4">
                 <label for="Input.Email">Email</label>
                 <input name="Input.Email" class="form-control" type="email">
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
         </div>
         <div class="row">
             <div class="col-md-4 col-sm-4 col-lg-4">
                 <label for="Input.Password">Password</label>
                 <input name="Input.Password" class="form-control" type="password">
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
         </div>
         <hr>

@@ -19,7 +19,6 @@ namespace CMS.Web.Controllers
             _eventService = eventService;
         }
 
-        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> Event(int id)
         {

@@ -57,10 +57,7 @@
                                 <p>@item.Date.ToShortDateString()</p>
                                 <p class="card-text"><strong>@item.Name</strong></p>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <a href="event\@item.ID">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Szczegóły</button>
-                                    </a>
-    
+                                    @Html.ActionLink("Szczegóły", "Event", "Event", new { id = item.ID }, new { @class = "btn btn-sm btn-outline-secondary" })
                                     <small class="text-muted">cena biletu: @item.TicketPrice zł</small>
                                 </div>
                             </div>
