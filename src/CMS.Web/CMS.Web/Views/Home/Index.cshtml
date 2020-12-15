@@ -5,7 +5,9 @@
 }
 
 <link href="~/css/home.css" rel="stylesheet">
-
+<h1>
+    @ViewData["Message"]
+</h1>
 <div>
     @{ var highlightedEventsCount = 4;}
     @{ var highlightedEvents = Model.Events.OrderBy(e => e.Date)

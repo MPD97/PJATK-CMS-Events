@@ -1,4 +1,6 @@
 ﻿@model CMS.Core.Entites.Event
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 
 @{
     ViewData["Title"] = "EVENT - INDEX";
@@ -24,11 +26,11 @@
                     <p> @Model.Description </p>
                     <div class="product_meta">
                         <span class="posted_in">
-                            <strong>Typ eventu:</strong> <a rel="tag" href="#">@Model.EventType</a>
+                            <strong>@Localizer["EventTypeLabel"]</strong> <a rel="tag" href="#">@Model.EventType</a>
                         </span>
                     </div>
                     <div class="m-bot15">
-                        <strong>Cena biletu : </strong><span class="pro-price">@Model.TicketPrice zł</span>
+                        <strong>@Localizer["EventPriceLabel"]</strong><span class="pro -price">@Model.TicketPrice zł</span>
                     </div>
                     <div id='map' style='width: 400px; height: 300px;'></div>
 

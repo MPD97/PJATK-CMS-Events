@@ -8,7 +8,7 @@ using CMS.Infrastructure.MsSQL;
 using CMS.Core.Entites;
 using CMS.Web.Services;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Razor;
 
 namespace CMS.Web
 {
@@ -34,8 +34,11 @@ namespace CMS.Web
                 .AddEntityFrameworkStores<ApplicationContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews()
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                .AddDataAnnotationsLocalization();
 
             services.AddScoped<IEventService, EventService>();
 
@@ -54,6 +57,14 @@ namespace CMS.Web
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+
+            var supportedCultures = new[] { "en-US", "pl-PL" };
+            var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[0])
+                .AddSupportedCultures(supportedCultures)
+                .AddSupportedUICultures(supportedCultures);
+
+            app.UseRequestLocalization(localizationOptions);
+
 
             context.Database.EnsureCreated();
 
