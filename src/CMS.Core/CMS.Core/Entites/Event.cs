@@ -18,6 +18,8 @@ namespace CMS.Core.Entites
         
         public DateTime Date { get; set; }
 
+        public string City { get; set; }
+
         public decimal TicketPrice { get; set; }
 
         public string Description { get; set; }
