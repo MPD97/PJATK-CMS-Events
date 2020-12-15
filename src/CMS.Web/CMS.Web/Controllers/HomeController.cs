@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CMS.Web.Models;
 using CMS.Web.Services;
+using Microsoft.Extensions.Localization;
 
 namespace CMS.Web.Controllers
 {
@@ -14,17 +15,19 @@ namespace CMS.Web.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IEventService _eventService;
+        private readonly IStringLocalizer<HomeController> _localizer;
 
-        public HomeController(ILogger<HomeController> logger, IEventService eventService)
+        public HomeController(ILogger<HomeController> logger, IEventService eventService, IStringLocalizer<HomeController> localizer)
         {
             _logger = logger;
             _eventService = eventService;
+            _localizer = localizer;
         }
 
         public async Task<IActionResult> Index()
         {
             var allEvents = await _eventService.GetEvents();
-
+            ViewData["Message"] = _localizer["hello", "\'Jakieś imię\'"];
             return View(new HomeViewModel() { Events = allEvents});
         }
 
