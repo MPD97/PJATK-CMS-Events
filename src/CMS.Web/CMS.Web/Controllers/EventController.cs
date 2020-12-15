@@ -30,6 +30,7 @@ namespace CMS.Web.Controllers
             return View(selectedEvent);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("Create")]
         public IActionResult Create(CreateEventRequest model)
         {
@@ -40,6 +41,7 @@ namespace CMS.Web.Controllers
             return View(model);
         }
 
+        [Authorize(Roles ="Admin")]
         [HttpPost]
         public async Task<IActionResult> OnPostCreate(CreateEventRequest request)
         {
