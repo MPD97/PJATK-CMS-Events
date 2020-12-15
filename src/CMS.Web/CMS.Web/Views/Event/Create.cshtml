@@ -1,0 +1,24 @@
+﻿@model CMS.Web.Requests.CreateEventRequest
+
+
+
+<form class="form-horizontal" method="post" action="/event">
+
+    @Html.LabelFor(x => x.Name, new { @class = "" })
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Name)
+
+    @Html.LabelFor(x => x.Description, new { @class = "" })
+    @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Description)
+
+
+    @Html.LabelFor(x => x.EventType, new { @class = "" })
+    @Html.DropDownList("EventType", Html.GetEnumSelectList<CMS.Core.Entites.EventType>(),
+      "Select event type", new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.EventType)
+     @*I tak dalej*@
+
+    @*JS/JQUERY na kliknięcie submit musi pobrać dane z mapy/osmnames o wybranej lokalizacji i wstawić wartości do latitude i longitude (hidden input) a potem wysłac formularz*@
+    <button type="submit">Dodaj event</button>
+</form>

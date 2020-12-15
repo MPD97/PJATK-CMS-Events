@@ -9,6 +9,11 @@ using CMS.Core.Entites;
 using CMS.Web.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Razor;
+using System.Linq;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Http;
+using System.Threading.Tasks;
+using System;
 
 namespace CMS.Web
 {
@@ -46,7 +51,7 @@ namespace CMS.Web
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ApplicationContext context)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ApplicationContext context, UserManager<ApplicationUser> userManager)
         {
             if (env.IsDevelopment())
             {
@@ -76,6 +81,7 @@ namespace CMS.Web
             app.UseAuthentication();
             app.UseAuthorization();
 
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -83,6 +89,40 @@ namespace CMS.Web
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+            seedUsers(userManager).Wait();
+        }
+        private async Task seedUsers( UserManager<ApplicationUser> userManager)
+        {
+
+            var adminEmail = "Admin@wp.pl";
+            var adminPassword = "1qaz@WSX";
+
+            var userEmail = "User@wp.pl";
+            var userPassword = "1qaz@WSX";
+
+            var admin = await userManager.FindByEmailAsync(adminEmail);
+            if (admin == null)
+            {
+                var adminToCrete = new ApplicationUser { UserName = adminEmail, Email = adminEmail, Role = "Admin" };
+                var result = await userManager.CreateAsync(adminToCrete, adminPassword);
+                if (!result.Succeeded)
+                {
+                    throw new Exception("CANNOT CREATE ADMIN ACCOUNT!");
+                }
+            }
+
+
+            var user = await userManager.FindByEmailAsync(userEmail);
+            if (user == null)
+            {
+                var userToCreate = new ApplicationUser { UserName = userEmail, Email = userEmail };
+                var result = await userManager.CreateAsync(userToCreate, userPassword);
+                if (!result.Succeeded)
+                {
+                    throw new Exception("CANNOT CREATE USER ACCOUNT!");
+                }
+            }
         }
     }
 }
