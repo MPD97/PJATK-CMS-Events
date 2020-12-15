@@ -9,6 +9,10 @@ using CMS.Core.Entites;
 using CMS.Web.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Razor;
+using System.Linq;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Http;
+using System.Threading.Tasks;
 
 namespace CMS.Web
 {
@@ -75,6 +79,7 @@ namespace CMS.Web
 
             app.UseAuthentication();
             app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {

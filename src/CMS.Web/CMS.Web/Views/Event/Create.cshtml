@@ -18,5 +18,7 @@
       "Select event type", new { @class = "form-control" })
     @Html.ValidationMessageFor(x => x.EventType)
      @*I tak dalej*@
+
+    @*JS/JQUERY na kliknięcie submit musi pobrać dane z mapy/osmnames o wybranej lokalizacji i wstawić wartości do latitude i longitude (hidden input) a potem wysłac formularz*@
     <button type="submit">Dodaj event</button>
 </form>

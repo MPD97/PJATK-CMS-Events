@@ -8,6 +8,11 @@ namespace CMS.Infrastructure.MsSQL.Configuration
     {
         public void Configure(EntityTypeBuilder<ApplicationUser> builder)
         {
+            builder.Property(x => x.Role)
+                .HasMaxLength(50)
+                .IsRequired()
+                .HasDefaultValue("User");
+
             builder.HasMany(user => user.Purchases)
                 .WithOne(purchase => purchase.User)
                 .HasForeignKey(purchase => purchase.UserId)
