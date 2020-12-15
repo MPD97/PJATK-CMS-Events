@@ -24,4 +24,8 @@
     <ProjectReference Include="..\..\CMS.Infrastructure\CMS.Infrastructure\CMS.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Responses\" />
+  </ItemGroup>
+
 </Project>

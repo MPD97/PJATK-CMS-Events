@@ -34,5 +34,20 @@ namespace CMS.Web.Services
             var @event = await _context.Set<Event>().FirstOrDefaultAsync(e => e.ID == id);
             return @event;
         }
+
+        public async Task AddAsync(Event eve)
+        {
+            await _context.Set<Event>().AddAsync(eve);
+        }
+
+        public void Update(Event eve)
+        {
+             _context.Set<Event>().Update(eve);
+        }
+
+        public async Task<int> SaveChangesAsync()
+        {
+            return await _context.SaveChangesAsync();
+        }
     }
 }
