@@ -1,13 +1,15 @@
 ﻿@model HomeViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = Localizer["HomePage"];
 }
 
 <link href="~/css/home.css" rel="stylesheet">
-<h1>
-    @ViewData["Message"]
-</h1>
+@* <h1> *@
+@*     @ViewData["Message"] *@
+@* </h1> *@
 <div>
     @{ var highlightedEventsCount = 4;}
     @{ var highlightedEvents = Model.Events.OrderBy(e => e.Date)
@@ -48,7 +50,6 @@
 
     <div class="album py-5 bg-light">
         <div class="container">
-    
             <div class="row">
                 @foreach (var item in Model.Events)
                 {
@@ -59,8 +60,8 @@
                                 <p>@item.Date.ToShortDateString()</p>
                                 <p class="card-text"><strong>@item.Name</strong></p>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    @Html.ActionLink("Szczegóły", "Event", "Event", new { id = item.ID }, new { @class = "btn btn-sm btn-outline-secondary" })
-                                    <small class="text-muted">cena biletu: @item.TicketPrice zł</small>
+                                    @Html.ActionLink(@Localizer["Details"].Value, "Event", "Event", new { id = item.ID }, new { @class = "btn btn-sm btn-outline-secondary" })
+                                    <small class="text-muted">@Localizer["TicketPrice"].Value:  @item.TicketPrice zł</small>
                                 </div>
                             </div>
                         </div>

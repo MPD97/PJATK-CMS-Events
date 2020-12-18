@@ -1,24 +1,26 @@
 ﻿@model CMS.Web.Requests.CreateEventRequest
-
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 
 
 <form class="form-horizontal" method="post" action="/event">
 
-    @Html.LabelFor(x => x.Name, new { @class = "" })
-    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.Name)
+    @Html.LabelFor(x => x.Name, @Localizer["EventName"].Value, new {@class = ""})
+    @Html.TextBoxFor(x => x.Name,
+        new {@class = "form-control"})
+    @Html.ValidationMessageFor(x => x.Name, @Localizer["ValidationRequiredField"].Value)
 
-    @Html.LabelFor(x => x.Description, new { @class = "" })
-    @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.Description)
+    @Html.LabelFor(x => x.Description, @Localizer["Description"].Value, new {@class = ""})
+    @Html.TextBoxFor(x => x.Description, new {@class = "form-control"})
+    @Html.ValidationMessageFor(x => x.Description, @Localizer["ValidationRequiredField"].Value)
 
 
-    @Html.LabelFor(x => x.EventType, new { @class = "" })
+    @Html.LabelFor(x => x.EventType, @Localizer["EventType"].Value, new {@class = ""})
     @Html.DropDownList("EventType", Html.GetEnumSelectList<CMS.Core.Entites.EventType>(),
-      "Select event type", new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.EventType)
-     @*I tak dalej*@
+        @Localizer["SelectEventType"].Value, new {@class = "form-control"})
+    @Html.ValidationMessageFor(x => x.EventType, @Localizer["ValidationRequiredField"].Value)
+    @*I tak dalej*@
 
     @*JS/JQUERY na kliknięcie submit musi pobrać dane z mapy/osmnames o wybranej lokalizacji i wstawić wartości do latitude i longitude (hidden input) a potem wysłac formularz*@
-    <button type="submit">Dodaj event</button>
+    <button type="submit">@Localizer["AddEvent"]</button>
 </form>

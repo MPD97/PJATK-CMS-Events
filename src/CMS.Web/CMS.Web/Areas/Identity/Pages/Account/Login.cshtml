@@ -1,8 +1,10 @@
 ﻿@page "/Account/LogIn"
 @model LoginModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 
 @{
-    ViewData["Title"] = "Log in";
+    ViewData["Title"] = Localizer["LogInTitle"];
 }
 <link href="~/css/site.css" rel="stylesheet" />
 <link href="~/css/login.css" rel="stylesheet" />
@@ -19,7 +21,7 @@
         </div>
         <div class="row">
             <div class="col-md-4 col-sm-4 col-lg-4">
-                <label for="Input.Password">Password</label>
+                <label for="Input.Password">@Localizer["Password"]</label>
                 <input name="Input.Password" class="form-control" type="password">
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
@@ -27,15 +29,15 @@
         <hr>
         <div class="row">
             <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6">
-                <button class="btn btn-default regbutton"><a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register</a></button>
+                <button class="btn btn-default regbutton"><a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">@Localizer["Register"]</a></button>
 
             </div>
             <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6">
-                <button class="btn btn-default logbutton">Log in</button>
+                <button class="btn btn-default logbutton">@Localizer["Login"]</button>
             </div>
         </div>
         <div class="d-flex justify-content-center">
-            <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+            <a id="forgot-password" asp-page="./ForgotPassword">@Localizer["ForgotPassword"]</a>
         </div>
     </form>
 </div>

@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -18,26 +22,26 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/home/index">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/home/index">@Localizer["HomePage"] <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/home/index">Events</a>
+                        <a class="nav-link" href="/home/index">@Localizer["Events"]</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="#">@Localizer["Contact"]</a>
                     </li>
                 </ul>
                 <div class="form-inline my-2 my-lg-0">
                     @if (User.Identity.IsAuthenticated)
                     {
                         <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
-                            <button type="submit" class="btn btn-dark mx-2">Logout</button>
+                            <button type="submit" class="btn btn-dark mx-2">@Localizer["Logout"]</button>
                         </form>
                     }
                     else
                     {
-                        <a href="/account/register" class="btn btn-dark mx-2">Sign up</a>
-                        <a href="/account/login" class="btn btn-dark mx-2">Log in</a>
+                        <a href="/account/register" class="btn btn-dark mx-2">@Localizer["SignUp"]</a>
+                        <a href="/account/login" class="btn btn-dark mx-2">@Localizer["LogIn"]</a>
                     }
 
                 </div>
