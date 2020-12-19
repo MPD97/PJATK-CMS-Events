@@ -145,4 +145,7 @@
   <data name="Cart" xml:space="preserve">
     <value>Koszyk</value>
   </data>
+  <data name="AddEvent" xml:space="preserve">
+    <value>Dodaj wydarzenie</value>
+  </data>
 </root>

@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\Areas\Search\" />
+    <Folder Include="Areas\Identity\Pages\AddEvent\" />
     <Folder Include="Responses\" />
   </ItemGroup>
 

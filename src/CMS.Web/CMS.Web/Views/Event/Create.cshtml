@@ -2,25 +2,36 @@
 @using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer Localizer
 
+<div class="container rpw p-0 m-0">
+    <h2 class="text-info"> @Localizer["AddEventHeader"] </h2>
+    <form class="form-horizontal" method="post" action="/event">
 
-<form class="form-horizontal" method="post" action="/event">
+        @Html.LabelFor(x => x.Name, @Localizer["EventName"].Value, new { @class = "" })
+        @Html.TextBoxFor(x => x.Name,
+            new { @class = "form-control" })
+        @*@Html.ValidationMessageFor(x => x.Name, @Localizer["ValidationRequiredField"].Value)*@
 
-    @Html.LabelFor(x => x.Name, @Localizer["EventName"].Value, new {@class = ""})
-    @Html.TextBoxFor(x => x.Name,
-        new {@class = "form-control"})
-    @Html.ValidationMessageFor(x => x.Name, @Localizer["ValidationRequiredField"].Value)
-
-    @Html.LabelFor(x => x.Description, @Localizer["Description"].Value, new {@class = ""})
-    @Html.TextBoxFor(x => x.Description, new {@class = "form-control"})
-    @Html.ValidationMessageFor(x => x.Description, @Localizer["ValidationRequiredField"].Value)
+        @Html.LabelFor(x => x.Description, @Localizer["Description"].Value, new { @class = "" })
+        @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+        @*   @Html.ValidationMessageFor(x => x.Description, @Localizer["ValidationRequiredField"].Value)*@
 
 
-    @Html.LabelFor(x => x.EventType, @Localizer["EventType"].Value, new {@class = ""})
-    @Html.DropDownList("EventType", Html.GetEnumSelectList<CMS.Core.Entites.EventType>(),
-        @Localizer["SelectEventType"].Value, new {@class = "form-control"})
-    @Html.ValidationMessageFor(x => x.EventType, @Localizer["ValidationRequiredField"].Value)
-    @*I tak dalej*@
+        @Html.LabelFor(x => x.EventType, @Localizer["EventType"].Value, new { @class = "" })
+        @Html.DropDownList("EventType", Html.GetEnumSelectList<CMS.Core.Entites.EventType>(),
+            @Localizer["SelectEventType"].Value, new { @class = "form-control" })
+        @*   @Html.ValidationMessageFor(x => x.EventType, @Localizer["ValidationRequiredField"].Value)*@
 
-    @*JS/JQUERY na kliknięcie submit musi pobrać dane z mapy/osmnames o wybranej lokalizacji i wstawić wartości do latitude i longitude (hidden input) a potem wysłac formularz*@
-    <button type="submit">@Localizer["AddEvent"]</button>
-</form>
+        <div class="form-group mt-2">
+            <label for="placeInput">@Localizer["Place"]</label>
+            <input type="search" class="form-control" id="placeInput" placeholder="Place">
+        </div>
+        <div class="form-group">
+            <label for="dateInput">@Localizer["Date"]</label>
+            <input type="date" class="form-control" id="dateInput" placeholder="Date">
+        </div>
+        @*I tak dalej*@
+
+        @*JS/JQUERY na kliknięcie submit musi pobrać dane z mapy/osmnames o wybranej lokalizacji i wstawić wartości do latitude i longitude (hidden input) a potem wysłac formularz*@
+        <button type="submit" class="btn btn-primary">@Localizer["AddEvent"]</button>
+    </form>
+</div>
