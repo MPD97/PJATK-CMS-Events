@@ -16,6 +16,11 @@
   position: absolute;
 }
 
+#container{
+  width: 400px;
+  background: yellow;
+}
+
 .adtocart i{
   color: #fff;
   font-size: 25px;
@@ -72,7 +77,10 @@
 }
 
 .quantity {
-  width: 120px;
+  margin-left: 10px;
+  width: 80px !important;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .pro-img-list {
@@ -90,4 +98,11 @@
 .pro-d-head {
   font-size: 18px;
   font-weight: 300;
+}
+
+.btn-blue {
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+  color: #fff;
+  /*font-family: inherit;*/
 }
