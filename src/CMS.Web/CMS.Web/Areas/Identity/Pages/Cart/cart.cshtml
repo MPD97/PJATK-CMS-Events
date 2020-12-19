@@ -1,16 +1,18 @@
-﻿
-
-@page "/Cart/cart"
+﻿@page "/Cart/cart"
 @{
-   
+
 }
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+
 <br />
 
 <!-- zrobić if żeby koszyk się wyświetlał gdy Purchase.Count > 0, a gdy pusty to wyświetla się stosowny komunikat-->
 
 <div class="container rpw p-0 m-0">
     <div class="col-12">
-        <h2 class="text-info"> Cart </h2>
+        <h2 class="text-info"> @Localizer["Cart"] </h2>
     </div>
     <div class="col-12" style="text-align:center">
         <br />
@@ -21,25 +23,27 @@
         <table id="purchases" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
-                    <th> Event picture </th>
-                    <th> Event name </th>
-                    <th> Event price </th>
+                    <th> @Localizer["EventPicture"] </th>
+                    <th> @Localizer["EventName"] </th>
+                    <th> @Localizer["EventPrice"] </th>
+                    <th> @Localizer["NumberOfTickets"] </th>
                 </tr>
             </thead>
 
             <!-- i to poniżej jakoś w pętli foreach i dla każdego z tych parametró pobierać z bazy elementy z Purchase -->
             <tr>
-                <th> jakieś zdjecie </th>
-                <th> jakaś nazwa </th>
-                <th> jakas cena </th>
+                <th> ... </th>
+                <th> ... </th>
+                <th> ... </th>
+                <th> ... </th>
             </tr>
             <!-- tyle wierszy będzie dodane ile jest itemów w Purchase -->
         </table>
-        
+
         <div class="col-12">
-            <p>Sum: obliczyc ostateczna kwote</p>
-            <a class="btn btn-outline-dark" href="/cart/checkout" role="button"> Proceed to checkout </a>
-            <a class="btn btn-outline-dark" href="/home/index" role="button"> Abort </a>
+            <p>@Localizer["TotalPrice"]</p>
+            <a class="btn btn-outline-dark" href="/cart/checkout" role="button"> @Localizer["Checkout"] </a>
+            <a class="btn btn-outline-dark" href="/home/index" role="button"> @Localizer["Abort"] </a>
         </div>
     </div>
 </div>

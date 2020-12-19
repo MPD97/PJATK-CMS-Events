@@ -117,35 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Events" xml:space="preserve">
-    <value>Events</value>
-    <comment>Details</comment>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
   </data>
-  <data name="Contact" xml:space="preserve">
-    <value>Contact</value>
-    <comment>TicketPrice</comment>
-  </data>
-  <data name="HomePage" xml:space="preserve">
-    <value>Home Page</value>
-    <comment>HomePage</comment>
-  </data>
-  <data name="SignUp" xml:space="preserve">
-    <value>Sign Up</value>
-    <comment>SignUp</comment>
-  </data>
-  <data name="LogIn" xml:space="preserve">
-    <value>LogIn</value>
-    <comment>LogIn</comment>
-  </data>
-  <data name="Logout" xml:space="preserve">
-    <value>Logout</value>
-    <comment>Logout</comment>
-  </data>
-  <data name="Search" xml:space="preserve">
-    <value>Search </value>
-    <comment>Search</comment>
-  </data>
-  <data name="Cart" xml:space="preserve">
-    <value>Cart</value>
+  <data name="Success" xml:space="preserve">
+    <value>You tickets have been booked!</value>
   </data>
 </root>

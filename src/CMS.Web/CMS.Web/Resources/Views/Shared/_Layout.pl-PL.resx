@@ -142,4 +142,7 @@
     <value>Wyszukaj</value>
     <comment>Search</comment>
   </data>
+  <data name="Cart" xml:space="preserve">
+    <value>Koszyk</value>
+  </data>
 </root>

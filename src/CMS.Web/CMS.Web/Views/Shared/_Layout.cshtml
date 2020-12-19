@@ -36,11 +36,12 @@
                     <li class="nav-item">
                         <div class="d-flex flex-row-reverse bd-highlight">
                             <div class="fixed-right">
-                                <a class="btn btn-outline-dark" href="/cart/cart" role="button">Cart <img src="/images/cart_icon.png" height="30" alt="cart"></a>
+                                <a class="btn btn-outline-dark" href="/cart/cart" role="button">@Localizer["Cart"] <img src="/images/cart_icon.png" height="30" alt="cart"></a>
                             </div>
                         </div>
                     </li>
                 </ul>
+              
                 <div class="form-inline my-2 my-lg-0">
                     @if (User.Identity.IsAuthenticated)
                     {
@@ -53,7 +54,7 @@
                         <a href="/account/register" class="btn btn-dark mx-2">@Localizer["SignUp"]</a>
                         <a href="/account/login" class="btn btn-dark mx-2">@Localizer["LogIn"]</a>
                     }
-
+                    
                 </div>
             </div>
         </nav>
