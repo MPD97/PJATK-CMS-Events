@@ -117,28 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Events" xml:space="preserve">
-    <value>Wydarzenia</value>
-  </data>
-  <data name="Contact" xml:space="preserve">
-    <value>Kontakt</value>
-  </data>
-  <data name="HomePage" xml:space="preserve">
-    <value>Strona główna</value>
-  </data>
-  <data name="SignUp" xml:space="preserve">
-    <value>Rejestracja</value>
-    <comment>SignUp</comment>
-  </data>
-  <data name="LogIn" xml:space="preserve">
-    <value>Logowanie</value>
-    <comment>LogIn</comment>
-  </data>
-  <data name="Logout" xml:space="preserve">
-    <value>Wyloguj</value>
-    <comment>Logout</comment>
+  <data name="Abort" xml:space="preserve">
+    <value>Anuluj</value>
   </data>
   <data name="Cart" xml:space="preserve">
     <value>Koszyk</value>
+  </data>
+  <data name="Checkout" xml:space="preserve">
+    <value>Podsumowanie</value>
+  </data>
+  <data name="EventName" xml:space="preserve">
+    <value>Nazwa wydarzenia</value>
+  </data>
+  <data name="EventPicture" xml:space="preserve">
+    <value>Zdjęcie wydarzenia</value>
+  </data>
+  <data name="EventPrice" xml:space="preserve">
+    <value>Cena jednostkowa</value>
+  </data>
+  <data name="NumberOfTickets" xml:space="preserve">
+    <value>Liczba biletów</value>
+  </data>
+  <data name="TotalPrice" xml:space="preserve">
+    <value>Suma: </value>
   </data>
 </root>
