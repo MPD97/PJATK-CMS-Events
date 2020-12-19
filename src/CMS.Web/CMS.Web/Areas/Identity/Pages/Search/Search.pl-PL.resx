@@ -117,29 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Events" xml:space="preserve">
-    <value>Wydarzenia</value>
+  <data name="Category" xml:space="preserve">
+    <value>Kategoria</value>
   </data>
-  <data name="Contact" xml:space="preserve">
-    <value>Kontakt</value>
+  <data name="Date" xml:space="preserve">
+    <value>Data</value>
   </data>
-  <data name="HomePage" xml:space="preserve">
-    <value>Strona główna</value>
+  <data name="FindEvent" xml:space="preserve">
+    <value>Wyszukaj wydarzenie</value>
   </data>
-  <data name="SignUp" xml:space="preserve">
-    <value>Rejestracja</value>
-    <comment>SignUp</comment>
+  <data name="Found" xml:space="preserve">
+    <value>Znaleziono</value>
   </data>
-  <data name="LogIn" xml:space="preserve">
-    <value>Logowanie</value>
-    <comment>LogIn</comment>
-  </data>
-  <data name="Logout" xml:space="preserve">
-    <value>Wyloguj</value>
-    <comment>Logout</comment>
+  <data name="Place" xml:space="preserve">
+    <value>Miejsce</value>
   </data>
   <data name="Search" xml:space="preserve">
-    <value>Wyszukaj</value>
-    <comment>Search</comment>
+    <value>Szukaj</value>
   </data>
 </root>
