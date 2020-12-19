@@ -123,4 +123,12 @@
   <data name="EventTypeLabel" xml:space="preserve">
     <value>Event type:</value>
   </data>
+  <data name="AddToBasket" xml:space="preserve">
+    <value>Add to basket</value>
+    <comment>AddToBasket</comment>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Quantity</value>
+    <comment>Quantity</comment>
+  </data>
 </root>

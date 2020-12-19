@@ -24,7 +24,7 @@
         <comment>Login</comment>
     </data>
     <data name="ConfirmPassword" xml:space="preserve">
-        <value>ConfirmPassword</value>
+        <value>Confirm Password</value>
         <comment>ConfirmPassword</comment>
     </data>
     <data name="AlreadyAMember" xml:space="preserve">
