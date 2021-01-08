@@ -61,9 +61,11 @@ namespace CMS.Web.Controllers
             {
                 await request.Photo.CopyToAsync(stream);
             }
+            filepath = $"/{filepath.Replace("//","/").Replace("\\","/")}";
 
             var eve = new Event();
             eve.Name = request.Name;
+            eve.City = request.City;
             eve.Description = request.Description;
             eve.EventType = request.EventType;
             eve.Date = request.Date;

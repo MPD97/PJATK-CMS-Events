@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using CMS.Core.Entites;
 
@@ -7,6 +8,7 @@ namespace CMS.Web.Services
     public interface IEventService
     {
         public Task<IEnumerable<Event>> GetEvents();
+        public Task<IEnumerable<Event>> GetEventsByFilter(string place, DateTime? date, EventType? eventType);
 
         public Task<Event> GetEvent(int id);
 

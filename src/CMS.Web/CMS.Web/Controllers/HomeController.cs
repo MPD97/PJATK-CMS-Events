@@ -10,6 +10,8 @@ using CMS.Web.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Localization;
+using CMS.Core.Entites;
+using CMS.Web.Requests;
 
 namespace CMS.Web.Controllers
 {
@@ -29,8 +31,8 @@ namespace CMS.Web.Controllers
         public async Task<IActionResult> Index()
         {
             var allEvents = await _eventService.GetEvents();
-            ViewData["Message"] = _localizer["hello", "\'Jakieś imię\'"];
-            return View(new HomeViewModel() { Events = allEvents});
+            //ViewData["Message"] = _localizer["hello", "\'Jakieś imię\'"];
+            return View(new HomeViewModel() { Events = allEvents });
         }
 
         public IActionResult Privacy()
@@ -38,12 +40,25 @@ namespace CMS.Web.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Search()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Search(FilterEventRequest filter)
+        {
+            var filteredEvents = await _eventService.GetEventsByFilter(filter.Place, filter.Date, filter.EventType);
+
+            return View(new HomeViewModel() { Events = filteredEvents });
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        
+
         [HttpPost]
         public IActionResult SetLanguage(string culture, string returnUrl)
         {

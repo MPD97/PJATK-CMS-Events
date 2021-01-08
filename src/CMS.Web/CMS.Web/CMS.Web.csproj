@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Identity\Pages\AddEvent\**" />
+    <Content Remove="Areas\Identity\Pages\AddEvent\**" />
+    <EmbeddedResource Remove="Areas\Identity\Pages\AddEvent\**" />
+    <None Remove="Areas\Identity\Pages\AddEvent\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.0" />
@@ -25,7 +32,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Identity\Pages\AddEvent\" />
     <Folder Include="Responses\" />
   </ItemGroup>
 

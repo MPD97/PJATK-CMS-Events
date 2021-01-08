@@ -1,0 +1,61 @@
+﻿@model HomeViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<div class="container rpw p-0 m-0">
+    <h2 class="text-info">@Localizer["FindEvent"]</h2>
+    <form method="post">
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="placeInput">@Localizer["Place"]</label>
+                <input type="search" class="form-control" id="placeInput" placeholder="Place" name="Place">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="dateInput">@Localizer["Date"]</label>
+                <input type="date" class="form-control" id="dateInput" placeholder="Date" name="Date">
+            </div>
+            <div class="form-group col-md-3">
+
+                <label for="EventType">@Localizer["EventType"]</label>
+                @Html.DropDownList("EventType", Html.GetEnumSelectList<CMS.Core.Entites.EventType>(),
+                    @Localizer["SelectEventType"].Value, new { @class = "form-control" })
+            </div>
+        </div>
+        <button type="submit" id="searchButton" class="btn btn-primary">@Localizer["Search"]</button>
+    </form>
+</div>
+
+@if (Model != null)
+{
+
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model.Events)
+                {
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <a href="\event\@item.ID">
+                                <img class="card-img-top" src="@item.PhotoPath" alt="Card image cap">
+                            </a>
+                            <div class="card-body">
+                                <p>@item.Date.ToShortDateString()</p>
+                                <p class="card-text"><strong>@item.Name</strong></p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    @Html.ActionLink(@Localizer["Details"].Value, "Event", "Event", new { id = item.ID }, new { @class = "btn btn-sm btn-outline-secondary" })
+                                    <small class="text-muted">@Localizer["TicketPrice"].Value @item.TicketPrice zł</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+}
