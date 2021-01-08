@@ -156,4 +156,10 @@
     <value>Date</value>
     <comment>Date</comment>
   </data>
+  <data name="Ticket" xml:space="preserve">
+    <value>Ticket Price</value>
+  </data>
+  <data name="Photo" xml:space="preserve">
+    <value>Photo</value>
+  </data>
 </root>

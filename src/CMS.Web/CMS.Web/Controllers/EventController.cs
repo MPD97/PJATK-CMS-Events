@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using CMS.Core.Entites;
 using CMS.Web.Requests;
 using CMS.Web.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -16,11 +18,16 @@ namespace CMS.Web.Controllers
     {
         private readonly IEventService _eventService;
         private readonly ILogger<EventController> _logger;
+        private IHostingEnvironment _environment;
+        private readonly string _wwwroot;
 
-        public EventController(IEventService eventService, ILogger<EventController> logger)
+
+        public EventController(IEventService eventService, ILogger<EventController> logger, IHostingEnvironment environment)
         {
             _eventService = eventService;
             _logger = logger;
+            _environment = environment;
+            _wwwroot = _environment.WebRootPath;
         }
 
         [HttpGet("{id}")]
@@ -32,22 +39,27 @@ namespace CMS.Web.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpGet("Create")]
-        public IActionResult Create(CreateEventRequest model)
+        public IActionResult Create()
         {
-            if (model == null)
-            {
-                return View(new CreateEventRequest());
-            }
-            return View(model);
+            return View(new CreateEventRequest());
         }
 
-        [Authorize(Roles ="Admin")]
-        [HttpPost]
-        public async Task<IActionResult> OnPostCreate(CreateEventRequest request)
+        [Authorize(Roles = "Admin")]
+        [HttpPost("Create")]
+        public async Task<IActionResult> Create(CreateEventRequest request)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || request.Photo?.Length < 0)
             {
-                return RedirectToAction("Create", "Event", request);
+                return View(request);
+            }
+
+            var guid = Guid.NewGuid().ToString() + ".jpg";
+            var filepath = Path.Combine("images", guid);
+            var filename = Path.Combine(_wwwroot, filepath);
+
+            using (var stream = System.IO.File.Create(filename))
+            {
+                await request.Photo.CopyToAsync(stream);
             }
 
             var eve = new Event();
@@ -55,8 +67,12 @@ namespace CMS.Web.Controllers
             eve.Description = request.Description;
             eve.EventType = request.EventType;
             eve.Date = request.Date;
-            eve.Latitude = request.Latitude;
-            eve.Longitude = request.Longitude;
+            eve.Latitude = request.Latitude.Value;
+            eve.Longitude = request.Longitude.Value;
+            eve.PhotoPath = filepath;
+            eve.TicketPrice = request.TicketPrice;
+
+
 
             await _eventService.AddAsync(eve);
 
@@ -66,12 +82,12 @@ namespace CMS.Web.Controllers
                 //TODO: LOCALISATION
                 ViewData["Error"] = "Failed to save new Event.";
 
-                return RedirectToAction("Create", "Event", request);
+                return View(request);
             }
             //TODO: LOCALISATION
             ViewData["Message"] = "Created successfully";
 
-            return CreatedAtAction(nameof(Event), new { id = eve.ID }, eve);
+            return RedirectToAction("Index","Home");
         }
     }
 }

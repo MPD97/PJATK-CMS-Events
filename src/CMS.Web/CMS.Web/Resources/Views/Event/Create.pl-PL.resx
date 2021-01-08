@@ -155,4 +155,7 @@
     <value>Date</value>
     <comment>Date</comment>
   </data>
+  <data name="Photo" xml:space="preserve">
+    <value>Zdjęcie</value>
+  </data>
 </root>

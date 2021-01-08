@@ -1,4 +1,5 @@
 ﻿using CMS.Core.Entites;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -12,14 +13,17 @@ namespace CMS.Web.Requests
         public string Name { get; set; }
 
         [Required]
-        public decimal Latitude { get; set; }
+        public decimal? Latitude { get; set; }
 
         [Required]
-        public decimal Longitude { get; set; }
+        public decimal? Longitude { get; set; }
+
+        [Required]
+        public string City { get; set; }
 
 
         [Required]
-        public string PhotoPath { get; set; }
+        public IFormFile Photo { get; set; }
 
 
         [Required]
