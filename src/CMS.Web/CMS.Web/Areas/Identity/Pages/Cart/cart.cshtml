@@ -9,10 +9,10 @@
 <br />
 
 <!-- zrobić if żeby koszyk się wyświetlał gdy Purchase.Count > 0, a gdy pusty to wyświetla się stosowny komunikat-->
-
+<br />
 <div class="container rpw p-0 m-0">
     <div class="col-12">
-        <h2 class="text-info"> @Localizer["Cart"] </h2>
+        <h2 class="text-primary"> @Localizer["Cart"] </h2>
     </div>
     <div class="col-12" style="text-align:center">
         <br />
@@ -42,8 +42,8 @@
 
         <div class="col-12">
             <p>@Localizer["TotalPrice"]</p>
-            <a class="btn btn-outline-dark" href="/cart/checkout" role="button"> @Localizer["Checkout"] </a>
-            <a class="btn btn-outline-dark" href="/home/index" role="button"> @Localizer["Abort"] </a>
+            <a class="btn btn-primary" href="/cart/checkout" role="button"> @Localizer["Checkout"] </a>
+            <a class="btn btn-primary" href="/home/index" role="button"> @Localizer["Abort"] </a>
         </div>
     </div>
 </div>
