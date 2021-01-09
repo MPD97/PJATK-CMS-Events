@@ -9,10 +9,73 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - CMS.Web</title>
+
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <link href="~/icofont/icofont.min.css" rel="stylesheet">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/style.css" />
 </head>
+
+
 <body>
+
+
+    <!-- ======= Top Bar ======= -->
+    <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
+        <div class="container d-flex">
+            <div class="contact-info mr-auto">
+                <i class="icofont-envelope"></i> <a href="mailto:contact@eventstore.com">contact@eventstore.com</a>
+                <i class="icofont-phone"></i> +48 123 456 789
+            </div>
+            <div class="social-links">
+                <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
+                <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
+                <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
+                <a href="#" class="skype"><i class="icofont-skype"></i></a>
+                <a href="#" class="linkedin"><i class="icofont-linkedin"></i></i></a>
+            </div>
+        </div>
+        <div class="form-inline my-2 my-lg-0">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                    <button type="submit" class="btn btn-dark mx-2">@Localizer["Logout"]</button>
+                </form>
+            }
+            else
+            {
+                <a href="/account/register" class="btn btn-dark mx-2">@Localizer["SignUp"]</a>
+                <a href="/account/login" class="btn btn-dark mx-2">@Localizer["LogIn"]</a>
+            }
+
+        </div>
+    </div>
+    <br /><br /><br /><br /><br /><br />
+
+
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center">
+
+            <h1 class="logo mr-auto"><a href="/home/index"> The Event Store<span>.</span></a></h1>
+
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt=""></a>-->
+
+            <nav class="nav-menu d-none d-lg-block">
+                <ul>
+                    <li><a class="active" href="/home/index">@Localizer["HomePage"]</a></li>
+                    <li><a class="nav-link" href="/home/search">@Localizer["Search"]</a></li>
+                    <li><a class="nav-link" href="/cart/cart">@Localizer["Cart"]<img src="/images/cart_icon.png" height="30" alt="cart"></a></li>
+                </ul>
+            </nav><!-- .nav-menu -->
+            <br><br>
+
+        </div>
+    </header><!-- End Header -->
+    <!--
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-info mb-5">
             <a class="navbar-brand text-dark" href="/home/index">The Event Shop</a>
@@ -63,12 +126,14 @@
         </nav>
 
     </header>
+    -->
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
+    <!--
     <footer class="border-top footer text-muted">
         <div class="row">
             <div class="col-6 text-right">
@@ -79,6 +144,92 @@
             </div>
         </div>
     </footer>
+        -->
+
+    <br /><br />
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+    <!--
+        <div class="footer-newsletter">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <h4>Join Our Newsletter</h4>
+                        <p>If you want to get notifications about new events, join our weekly newsletter.</p>
+                        <form action="" method="post">
+                            <input type="email" name="email"><input type="submit" value="Subscribe">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        -->
+
+        <div class="footer-top">
+            <div class="container py-4">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6 footer-contact">
+                        <h3>The Event Shop<span>.</span></h3>
+                        <p>
+                            Number Street Name <br>
+                            Warsaw, 00-000<br>
+                            Poland <br><br>
+                            <strong>Phone:</strong> +48 123 456 789<br>
+                            <strong>Email:</strong> info@eventshop.com<br>
+                        </p>
+                    </div>
+
+                    <!--
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Useful Links</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="/home/index">Home</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                        </ul>
+                    </div>
+                        -->
+
+
+                    <!--
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Our Social Networks</h4>
+                        <p>If you want to know more, please visit one of our Social Media Pages</p>
+                        <div class="social-links mt-3">
+                            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                            <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                        </div>
+                    </div>
+                        -->
+
+                    <div class="col text-center">
+                        @await Html.PartialAsync("_SelectLanguagePartial")
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="container py-4">
+            <div class="copyright">
+                &copy; Copyright <strong><span>The Event Shop 2021</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bizland-bootstrap-business-template/ -->
+                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

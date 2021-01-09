@@ -4,7 +4,6 @@
 @inject UserManager<ApplicationUser> UserManager
 @using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer Localizer
-
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
@@ -27,3 +26,4 @@ else
     </li>
 }
 </ul>
+
