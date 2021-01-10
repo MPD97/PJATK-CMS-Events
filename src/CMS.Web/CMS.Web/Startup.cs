@@ -113,7 +113,6 @@ namespace CMS.Web
         }
         private async Task seedUsers( UserManager<ApplicationUser> userManager)
         {
-
             var adminEmail = "Admin@wp.pl";
             var adminPassword = "1qaz@WSX";
 
