@@ -131,4 +131,8 @@
     <value>Liczba sztuk</value>
     <comment>Quantity</comment>
   </data>
+  <data name="Date" xml:space="preserve">
+    <value>Data</value>
+    <comment>Date</comment>
+  </data>
 </root>

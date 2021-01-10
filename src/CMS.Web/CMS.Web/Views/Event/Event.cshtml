@@ -9,57 +9,78 @@
 
 <link href="~/css/event.css" rel="stylesheet">
 <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
-<link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+<link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet"/>
+<link href="~/lib/aos/css/aos.css" rel="stylesheet">
+
 <br /><br />
-<div class="container bootdey">
-    <div class="col-md-10 offset-1">
-        <section class="panel">
-            <div class="panel-body">
-                <div class="col-md-10 offset-1">
-                    <div class="pro-img-details">
-                        <img src="@Model.PhotoPath" alt="">
-                    </div>
-                </div>
-                <div class="col-md-10 offset-1">
-                    <h6>@Model.Date</h6>
-                    <h4>@Model.Name</h4>
-                    <p> @Model.Description </p>
-                    
-                    <div id='map' style='width: 400px; height: 300px;'>
-                        <script>
-                            mapboxgl.accessToken = 'pk.eyJ1IjoibXBkOTciLCJhIjoiY2s2dWluMWlyMDlrODNscmo5ZGJydXd1dSJ9.1q0TuIH6z8RUDIjk0oznrQ'
-                            var map = new mapboxgl.Map({
-                                container: 'map',
-                                style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
-                                center: [@Model.Longitude.ToString().Replace(",", "."), @Model.Latitude.ToString().Replace(",", ".")], // starting position [lng, lat]
-                                zoom: 5 // starting zoom
-                            });
-    
-                            var marker = new mapboxgl.Marker()
-                                .setLngLat([@Model.Longitude.ToString().Replace(",", "."), @Model.Latitude.ToString().Replace(",", ".")])
-                                .addTo(map);
-                        </script>
-                    </div>
-                    
-                    <div class="product_meta">
-                        <span class="posted_in">
-                            <strong>@Localizer["EventTypeLabel"]</strong> <a rel="tag" href="#">@Model.EventType</a>
-                        </span>
-                    </div>
-                    <div class="m-bot15">
-                        <strong>@Localizer["EventPriceLabel"]</strong><span class="pro -price">  @Model.TicketPrice zł</span>
-                    </div>
+
+<section class="portfolio-details">
+    <div class="container">
+
+        <div class="portfolio-details-container">
+
+            <div class="owl-carousel box portfolio-details-carousel">
+                <img src="@Model.PhotoPath" class="img-fluid" alt="">
+            </div>
+
+            <div class="portfolio-info">
+
+                <h6>
+                    <strong>@Localizer["Date"]:</strong> @Model.Date.ToShortDateString()
+                </h6>
+                <strong>@Localizer["EventTypeLabel"]</strong> <a rel="tag" href="#">@Model.EventType</a>
+                <p></p>
+
+                <ul>
+                    <strong>@Localizer["EventPriceLabel"]</strong><span class="pro -price"> @Model.TicketPrice zł</span>
+                    <h6></h6>
                     <form class="form-inline">
                         <div class="form-group">
                             <label for="quantity">@Localizer["Quantity"]: </label>
-                            <input type="number" id="quantity" min="1" placeholder="1" class="form-control quantity" >
+                            <input type="number" id="quantity" min="1" placeholder="1" class="form-control quantity">
                         </div>
                     </form>
                     <p>
-                        <button class="btn btn-round btn-primary" type="button"><i class="fa fa-shopping-cart"></i>@Localizer["AddToBasket"]</button>
+                        <button class="btn btn-round btn-primary" type="button">
+                            <i class="fa fa-shopping-cart"></i>@Localizer["AddToBasket"]
+                        </button>
                     </p>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="portfolio-description">
+            <div class="container aos-init aos-animate" data-aos="fade-up">
+
+                <div class="row aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+                    <div class="col-lg-5">
+                        <div class="box mb-4" id='map' style='width: 400px; height: 300px;'>
+
+                            <script>
+                   
+                                            mapboxgl.accessToken = 'pk.eyJ1IjoibXBkOTciLCJhIjoiY2s2dWluMWlyMDlrODNscmo5ZGJydXd1dSJ9.1q0TuIH6z8RUDIjk0oznrQ'
+                                            var map = new mapboxgl.Map({
+                                                container: 'map',
+                                                style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+                                                center: [@Model.Longitude.ToString().Replace(",", "."), @Model.Latitude.ToString().Replace(",", ".")], // starting position [lng, lat]
+                                                zoom: 5 // starting zoom
+                                            });
+                    
+                                            var marker = new mapboxgl.Marker()
+                                                .setLngLat([@Model.Longitude.ToString().Replace(",", "."), @Model.Latitude.ToString().Replace(",", ".")])
+                                                .addTo(map);
+                                        </script>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="box mb-4">
+                            <h2> @Model.Name </h2>
+                            <p> @Model.Description </p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
     </div>
-</div>
+</section>
