@@ -135,4 +135,8 @@
     <value>Date</value>
     <comment>Date</comment>
   </data>
+  <data name="Place" xml:space="preserve">
+    <value>Place</value>
+    <comment>Place</comment>
+  </data>
 </root>

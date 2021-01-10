@@ -62,7 +62,7 @@
                                 <img class="card-img-top" src="@item.PhotoPath" alt="Card image cap">
                             </a>
                             <div class="card-body">
-                                <p>@item.Date.ToShortDateString()</p>
+                                <p>@item.Date.ToShortDateString(), @item.City </p>
                                 <p class="card-text"><strong>@item.Name</strong></p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     @Html.ActionLink(@Localizer["Details"].Value, "Event", "Event", new {id = item.ID}, new {@class = "btn btn-sm btn-outline-secondary"})

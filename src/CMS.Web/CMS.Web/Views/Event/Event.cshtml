@@ -24,28 +24,30 @@
             </div>
 
             <div class="portfolio-info">
-
                 <h6>
                     <strong>@Localizer["Date"]:</strong> @Model.Date.ToShortDateString()
                 </h6>
-                <strong>@Localizer["EventTypeLabel"]</strong> <a rel="tag" href="#">@Model.EventType</a>
-                <p></p>
+                <h6>
+                    <strong>@Localizer["Place"]:</strong> @Model.City
+                </h6>
+                <h6>
+                    <strong>@Localizer["EventTypeLabel"]</strong> <a rel="tag" href="#">@Model.EventType</a>
+                </h6>
+                <h3></h3>
 
-                <ul>
-                    <strong>@Localizer["EventPriceLabel"]</strong><span class="pro -price"> @Model.TicketPrice zł</span>
-                    <h6></h6>
-                    <form class="form-inline">
-                        <div class="form-group">
-                            <label for="quantity">@Localizer["Quantity"]: </label>
-                            <input type="number" id="quantity" min="1" placeholder="1" class="form-control quantity">
-                        </div>
-                    </form>
-                    <p>
-                        <button class="btn btn-round btn-primary" type="button">
-                            <i class="fa fa-shopping-cart"></i>@Localizer["AddToBasket"]
-                        </button>
-                    </p>
-                </ul>
+                <strong>@Localizer["EventPriceLabel"]</strong><span class="pro -price"> @Model.TicketPrice zł</span>
+
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label for="quantity">@Localizer["Quantity"]: </label>
+                        <input type="number" id="quantity" min="1" placeholder="1" class="form-control quantity">
+                    </div>
+                </form>
+                <p>
+                    <button class="btn btn-round btn-primary" type="button">
+                        <i class="fa fa-shopping-cart"></i>@Localizer["AddToBasket"]
+                    </button>
+                </p>
             </div>
 
         </div>
