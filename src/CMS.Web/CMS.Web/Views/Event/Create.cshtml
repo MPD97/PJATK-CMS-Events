@@ -4,34 +4,43 @@
 
 <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
 <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
-<br /><br />
+
 <div class="container rpw p-0 m-0">
-    <h2 class="text-primary"> @Localizer["AddEventHeader"] </h2>
+    <h2 class="text-info"> @Localizer["AddEventHeader"] </h2>
     <form class="form-horizontal" method="post" , new
           { enctype="multipart/form-data" }>
 
-        @Html.ValidationSummary()
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="mb-4">
+                <strong class="text-danger">@Localizer["FormErrors"]</strong>
+            </div>
+        }
 
-
-        @Html.LabelFor(x => x.Name, @Localizer["EventName"].Value, new { @class = "" })
-        @Html.TextBoxFor(x => x.Name,
+        <div class="form-group mt-2">
+            @Html.LabelFor(x => x.Name, @Localizer["EventName"].Value, new { @class = "font-weight-bolder" })
+            @Html.TextBoxFor(x => x.Name,
             new { @class = "form-control" })
-        @Html.ValidationMessageFor(x => x.Name, @Localizer["ValidationRequiredField"].Value)
-
-        @Html.LabelFor(x => x.Description, @Localizer["Description"].Value, new { @class = "" })
-        @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
-        @Html.ValidationMessageFor(x => x.Description, @Localizer["ValidationRequiredField"].Value)
-
-        @Html.LabelFor(x => x.Photo, @Localizer["Photo"].Value, new { @class = "" })
-        <input type="file" class="form-control"
-               id="Photo" name="Photo"
-               accept="image/png, image/jpeg">
-        @Html.ValidationMessageFor(x => x.Photo, @Localizer["ValidationRequiredField"].Value)
-
-        @Html.LabelFor(x => x.EventType, @Localizer["EventType"].Value, new { @class = "" })
-        @Html.DropDownList("EventType", Html.GetEnumSelectList<CMS.Core.Entites.EventType>(),
-            @Localizer["SelectEventType"].Value, new { @class = "form-control" })
-        @Html.ValidationMessageFor(x => x.EventType, @Localizer["ValidationRequiredField"].Value)
+            @Html.ValidationMessageFor(x => x.Name, @Localizer["ValidationRequiredField"].Value, new { @class = "text-warning" })
+        </div>
+        <div class="form-group mt-2">
+            @Html.LabelFor(x => x.Description, @Localizer["Description"].Value, new { @class = "font-weight-bolder" })
+            @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Description, @Localizer["ValidationRequiredField"].Value, new { @class = "text-warning" })
+        </div>
+        <div class="form-group mt-2">
+            @Html.LabelFor(x => x.Photo, @Localizer["Photo"].Value, new { @class = "font-weight-bolder" })
+            <input type="file" class="form-control mb-2"
+                   id="Photo" name="Photo"
+                   accept="image/png, image/jpeg">
+            @Html.ValidationMessageFor(x => x.Photo, @Localizer["ValidationRequiredField"].Value, new { @class = "text-warning" })
+        </div>
+        <div class="form-group mt-2">
+            @Html.LabelFor(x => x.EventType, @Localizer["EventType"].Value, new { @class = "font-weight-bolder" })
+            @Html.DropDownList("EventType", Html.GetEnumSelectList<CMS.Core.Entites.EventType>(),
+                @Localizer["SelectEventType"].Value, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.EventType, @Localizer["ValidationRequiredField"].Value, new { @class = "text-warning" })
+        </div>
 
 
         <div id='map' style='width: 400px; height: 300px;'>
@@ -85,18 +94,19 @@
         @Html.HiddenFor(x => x.Latitude)
 
         <div class="form-group mt-2">
-            <label for="placeInput">@Localizer["Place"]</label>
+            <label class="font-weight-bolder" for="placeInput">@Localizer["Place"]</label>
             <input type="text" class="form-control" id="City" name="City">
         </div>
+
         <div class="form-group">
-            <label for="dateInput">@Localizer["Date"]</label>
+            <label class="font-weight-bolder" for="dateInput">@Localizer["Date"]</label>
             <input type="date" class="form-control" id="Date" name="Date">
         </div>
-
-        @Html.LabelFor(x => x.TicketPrice, @Localizer["EventPriceLabel"].Value, new { @class = "" })
-        @Html.EditorFor(model => model.TicketPrice, new { htmlAttributes = new { @type = "number", @min = "0", @step = "0.01", @value = "1.99", @class = "form-control" } })
-        @Html.ValidationMessageFor(x => x.TicketPrice, @Localizer["ValidationRequiredField"].Value)
-
+        <div class="form-group mt-2">
+            @Html.LabelFor(x => x.TicketPrice, @Localizer["EventPriceLabel"].Value, new { @class = "font-weight-bolder" })
+            @Html.EditorFor(model => model.TicketPrice, new { htmlAttributes = new { @type = "number", @min = "0", @step = "0.01", @value = "1.99", @class = "form-control" } })
+            @Html.ValidationMessageFor(x => x.TicketPrice, @Localizer["ValidationRequiredField"].Value, new { @class = "text-warning" })
+        </div>
 
         @*JS/JQUERY na kliknięcie submit musi pobrać dane z mapy/osmnames o wybranej lokalizacji i wstawić wartości do latitude i longitude (hidden input) a potem wysłac formularz*@
         <button type="submit" class="btn btn-primary">@Localizer["AddEvent"]</button>

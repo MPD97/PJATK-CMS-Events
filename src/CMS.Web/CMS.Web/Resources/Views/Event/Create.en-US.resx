@@ -162,4 +162,7 @@
   <data name="Photo" xml:space="preserve">
     <value>Photo</value>
   </data>
+  <data name="FormErrors" xml:space="preserve">
+    <value>Form has errors</value>
+  </data>
 </root>

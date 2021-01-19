@@ -152,10 +152,13 @@
     <comment>Place</comment>
   </data>
   <data name="Date" xml:space="preserve">
-    <value>Date</value>
+    <value>Data</value>
     <comment>Date</comment>
   </data>
   <data name="Photo" xml:space="preserve">
     <value>Zdjęcie</value>
+  </data>
+  <data name="FormErrors" xml:space="preserve">
+    <value>Formularz zawiera błędy</value>
   </data>
 </root>
