@@ -134,7 +134,7 @@
     <comment>SignUp</comment>
   </data>
   <data name="LogIn" xml:space="preserve">
-    <value>LogIn</value>
+    <value>Log In</value>
     <comment>LogIn</comment>
   </data>
   <data name="Logout" xml:space="preserve">
@@ -150,5 +150,20 @@
   </data>
   <data name="AddEvent" xml:space="preserve">
     <value>Add event</value>
+  </data>
+  <data name="City_Zipcode" xml:space="preserve">
+    <value>Warsaw, 00-001</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>The Event Shop 2021. All Rights Reserved</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Poland</value>
+  </data>
+  <data name="Design" xml:space="preserve">
+    <value>Designed by BootstrapMade</value>
+  </data>
+  <data name="Street" xml:space="preserve">
+    <value>1 Marszałkowska Street</value>
   </data>
 </root>

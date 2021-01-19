@@ -148,4 +148,19 @@
   <data name="AddEvent" xml:space="preserve">
     <value>Dodaj wydarzenie</value>
   </data>
+  <data name="City_Zipcode" xml:space="preserve">
+    <value>00-001 Warszawa</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>The Event Shop 2021. Wszystkie prawa zastrzeżone</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Polska</value>
+  </data>
+  <data name="Design" xml:space="preserve">
+    <value>Zaprojektowane przez BootstrapMade</value>
+  </data>
+  <data name="Street" xml:space="preserve">
+    <value>ul. Marszałkowska 1</value>
+  </data>
 </root>
