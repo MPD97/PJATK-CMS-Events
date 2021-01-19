@@ -123,8 +123,8 @@
   <data name="EventTypeLabel" xml:space="preserve">
     <value>Event type:</value>
   </data>
-  <data name="AddToBasket" xml:space="preserve">
-    <value>Add to basket</value>
+  <data name="AddToCart" xml:space="preserve">
+    <value>Add to cart</value>
     <comment>AddToBasket</comment>
   </data>
   <data name="Quantity" xml:space="preserve">

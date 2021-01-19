@@ -9,10 +9,13 @@
 
 <link href="~/css/event.css" rel="stylesheet">
 <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
-<link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
 <link href="~/lib/aos/css/aos.css" rel="stylesheet">
 
-<br /><br />
+<br />
+<br />
 
 <section class="portfolio-details">
     <div class="container">
@@ -44,9 +47,11 @@
                     </div>
                 </form>
                 <p>
-                    <button class="btn btn-round btn-primary" type="button">
-                        <i class="fa fa-shopping-cart"></i>@Localizer["AddToBasket"]
+                    <button id="AddToCart" class="btn btn-round btn-primary" type="button" data-id="@Model.ID" onclick="addProductToCookies()">
+                        @Localizer["AddToCart"]
                     </button>
+
+
                 </p>
             </div>
 
@@ -60,7 +65,7 @@
                         <div class="box mb-4" id='map' style='width: 400px; height: 300px;'>
 
                             <script>
-                   
+
                                             mapboxgl.accessToken = 'pk.eyJ1IjoibXBkOTciLCJhIjoiY2s2dWluMWlyMDlrODNscmo5ZGJydXd1dSJ9.1q0TuIH6z8RUDIjk0oznrQ'
                                             var map = new mapboxgl.Map({
                                                 container: 'map',
@@ -68,11 +73,11 @@
                                                 center: [@Model.Longitude.ToString().Replace(",", "."), @Model.Latitude.ToString().Replace(",", ".")], // starting position [lng, lat]
                                                 zoom: 5 // starting zoom
                                             });
-                    
+
                                             var marker = new mapboxgl.Marker()
                                                 .setLngLat([@Model.Longitude.ToString().Replace(",", "."), @Model.Latitude.ToString().Replace(",", ".")])
                                                 .addTo(map);
-                                        </script>
+                            </script>
                         </div>
                     </div>
                     <div class="col-lg-7">
@@ -85,4 +90,55 @@
             </div>
         </div>
     </div>
+
 </section>
+
+<script>
+
+
+/*	Ten buton bezie raczej w widoku Cart zeby wyrzucić coś ewentualnie z koszyka
+ *	$(".deleteBtn").click(function () {
+
+		swal({
+			title: "Confirm?",
+			text: "Are you sure you want to delete this product?",
+			icon: "warning",
+			buttons: true,
+			dangerMode: true,
+		})
+		.then((willDelete) => {
+			if (willDelete) {
+				$.ajax({
+					type: 'POST',
+					url: '*/  /*',
+					data: {
+						ID: $(this).attr('data-id')
+					}
+				})
+				.done(function (response) {
+					$("#tableContiner").html(response);
+
+					swal("Record deleted Successfully.", {
+						icon: "success",
+					});
+				})
+				.fail(function (XMLHttpRequest, textStatus, errorThrown) {
+					alert("FAIL");
+				});
+
+			}
+		});*/
+
+   // jak sie wyjdzie z danej podstronki to kasują się cookiesy (na stronce kolejnego eventu zapisują się od nowa). Trzeba tez pomyśleć
+    // jak wprowadzać dane do cookiesów jeżeli quantity jest większe niż 1
+
+    var events = [];
+    function addProductToCookies() {
+        alert("Event @Model.Name having id: @Model.ID added to cart");
+        events.push(@Model.ID)
+        document.cookie = events.join('-');
+        setCookie(document.cookie);
+    }
+
+</script>
+

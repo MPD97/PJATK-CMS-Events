@@ -9,9 +9,6 @@ using CMS.Core.Entites;
 using CMS.Web.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Razor;
-using System.Linq;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
@@ -67,6 +64,9 @@ namespace CMS.Web
             services.AddScoped<IEventService, EventService>();
 
             services.AddRazorPages();
+
+            services.AddSession();
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -82,6 +82,12 @@ namespace CMS.Web
                 app.UseHsts();
             }
 
+            app.UseStaticFiles();
+
+            app.UseSession();
+
+            //app.UseMvc();
+
             var supportedCultures = new[] { "en-US", "pl-PL" };
             var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[0])
                 .AddSupportedCultures(supportedCultures)
@@ -93,7 +99,7 @@ namespace CMS.Web
             context.Database.EnsureCreated();
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+        
 
             app.UseRouting();
 
