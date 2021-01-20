@@ -97,7 +97,7 @@
     function addProductToCookies() {
         quantity = document.getElementById("quantity").value
         document.cookie = '@Model.ID=' + quantity + '; path=/';  // expires at the end of Session
-        swal("Good job!", + quantity + " tickets for @Model.Name added to cart!", "success") // added sweet alert pop-up window to confirm loading the event to the cart
+        swal("@Localizer["GoodJob"]", + quantity + " @Localizer["Part1"] @Model.Name @Localizer["Part2"]", "success") // added sweet alert pop-up window to confirm loading the event to the cart
     }
 </script>
 

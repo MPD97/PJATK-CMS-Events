@@ -139,4 +139,13 @@
     <value>Miejsce</value>
     <comment>Place</comment>
   </data>
+  <data name="GoodJob" xml:space="preserve">
+    <value>Dobra robota!</value>
+  </data>
+  <data name="Part1" xml:space="preserve">
+    <value> bilety na</value>
+  </data>
+  <data name="Part2" xml:space="preserve">
+    <value> zostały dodane do koszyka!</value>
+  </data>
 </root>
