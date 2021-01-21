@@ -36,7 +36,16 @@ namespace CMS.Web.Controllers
             var selectedEvent = await _eventService.GetEvent(id);
             return View(selectedEvent);
         }
-
+        [HttpGet("api/{id}")]
+        public async Task<IActionResult> EventApi(int id)
+        {
+            var selectedEvent = await _eventService.GetEvent(id);
+            if (selectedEvent == null)
+            {
+                return NotFound("Event not found!");
+            }
+            return Ok(selectedEvent);
+        }
         [Authorize(Roles = "Admin")]
         [HttpGet("Create")]
         public IActionResult Create()

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace CMS.Web.Areas.Identity.Pages.Cart
+namespace CMS.Web.Areas.Identity.Pages.MyCart
 {
     public class CartModel : PageModel
     {
