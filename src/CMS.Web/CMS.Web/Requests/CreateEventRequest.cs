@@ -41,6 +41,7 @@ namespace CMS.Web.Requests
         [Required]
         public decimal TicketPrice { get; set; }
 
-        public string Description { get; set; }
+        public string DescriptionPl { get; set; }
+        public string DescriptionEn { get; set; }
     }
 }

@@ -24,9 +24,14 @@
 			@Html.ValidationMessageFor(x => x.Name, @Localizer["ValidationRequiredField"].Value, new { @class = "text-warning" })
 		</div>
 		<div class="form-group mt-2">
-			@Html.LabelFor(x => x.Description, @Localizer["Description"].Value, new { @class = "font-weight-bolder" })
-			@Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
-			@Html.ValidationMessageFor(x => x.Description, @Localizer["ValidationRequiredField"].Value, new { @class = "text-warning" })
+			@Html.LabelFor(x => x.DescriptionPl, @Localizer["DescriptionPl"].Value, new { @class = "font-weight-bolder" })
+			@Html.TextBoxFor(x => x.DescriptionPl, new { @class = "form-control" })
+			@Html.ValidationMessageFor(x => x.DescriptionPl, @Localizer["ValidationRequiredField"].Value, new { @class = "text-warning" })
+		</div>
+		<div class="form-group mt-2">
+			@Html.LabelFor(x => x.DescriptionEn, @Localizer["DescriptionEn"].Value, new { @class = "font-weight-bolder" })
+			@Html.TextBoxFor(x => x.DescriptionEn, new { @class = "form-control" })
+			@Html.ValidationMessageFor(x => x.DescriptionEn, @Localizer["ValidationRequiredField"].Value, new { @class = "text-warning" })
 		</div>
 		<div class="form-group mt-2">
 			@Html.LabelFor(x => x.Organisator, @Localizer["EventOrganisator"].Value, new { @class = "font-weight-bolder" })

@@ -3,7 +3,7 @@
 @inject IViewLocalizer Localizer
 
 @{
-    ViewData["Title"] = "EVENT - INDEX";
+	ViewData["Title"] = "EVENT - INDEX";
 
 }
 
@@ -18,53 +18,53 @@
 <br />
 
 <section class="portfolio-details">
-    <div class="container">
+	<div class="container">
 
-        <div class="portfolio-details-container">
+		<div class="portfolio-details-container">
 
-            <div class="owl-carousel box portfolio-details-carousel">
-                <img src="@Model.PhotoPath" class="img-fluid" alt="">
-            </div>
+			<div class="owl-carousel box portfolio-details-carousel">
+				<img src="@Model.PhotoPath" class="img-fluid" alt="">
+			</div>
 
-            <div class="portfolio-info">
-                <h6>
-                    <strong>@Localizer["Date"]:</strong> @Model.Date.ToShortDateString()
-                </h6>
-                <h6>
-                    <strong>@Localizer["Place"]:</strong> @Model.City
-                </h6>
-                <h6>
-                    <strong>@Localizer["EventTypeLabel"]</strong> <a rel="tag" href="#">@Model.EventType</a>
-                </h6>
-                <h3></h3>
+			<div class="portfolio-info">
+				<h6>
+					<strong>@Localizer["Date"]:</strong> @Model.Date.ToShortDateString()
+				</h6>
+				<h6>
+					<strong>@Localizer["Place"]:</strong> @Model.City
+				</h6>
+				<h6>
+					<strong>@Localizer["EventTypeLabel"]</strong> <a rel="tag" href="#">@Model.EventType</a>
+				</h6>
+				<h3></h3>
 
-                <strong>@Localizer["EventPriceLabel"]</strong><span class="pro -price"> @Model.TicketPrice zł</span>
+				<strong>@Localizer["EventPriceLabel"]</strong><span class="pro -price"> @Model.TicketPrice zł</span>
 
-                <form class="form-inline">
-                    <div class="form-group">
-                        <label for="quantity">@Localizer["Quantity"]: </label>
-                        <input type="number" id="quantity" min="1" placeholder="0" class="form-control quantity">
-                    </div>
-                </form>
-                <p>
-                    <button id="AddToCart" class="btn btn-round btn-primary" type="button" data-id="@Model.ID" onclick="addProductToCookies()">
-                        @Localizer["AddToCart"]
-                    </button>
+				<form class="form-inline">
+					<div class="form-group">
+						<label for="quantity">@Localizer["Quantity"]: </label>
+						<input type="number" id="quantity" min="1" placeholder="0" class="form-control quantity">
+					</div>
+				</form>
+				<p>
+					<button id="AddToCart" class="btn btn-round btn-primary" type="button" data-id="@Model.ID" onclick="addProductToCookies()">
+						@Localizer["AddToCart"]
+					</button>
 
 
-                </p>
-            </div>
+				</p>
+			</div>
 
-        </div>
+		</div>
 
-        <div class="portfolio-description">
-            <div class="container aos-init aos-animate" data-aos="fade-up">
+		<div class="portfolio-description">
+			<div class="container aos-init aos-animate" data-aos="fade-up">
 
-                <div class="row aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
-                    <div class="col-lg-5">
-                        <div class="box mb-4" id='map' style='width: 400px; height: 300px;'>
+				<div class="row aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+					<div class="col-lg-5">
+						<div class="box mb-4" id='map' style='width: 400px; height: 300px;'>
 
-                            <script>
+							<script>
 
                                             mapboxgl.accessToken = 'pk.eyJ1IjoibXBkOTciLCJhIjoiY2s2dWluMWlyMDlrODNscmo5ZGJydXd1dSJ9.1q0TuIH6z8RUDIjk0oznrQ'
                                             var map = new mapboxgl.Map({
@@ -77,20 +77,29 @@
                                             var marker = new mapboxgl.Marker()
                                                 .setLngLat([@Model.Longitude.ToString().Replace(",", "."), @Model.Latitude.ToString().Replace(",", ".")])
                                                 .addTo(map);
-                            </script>
-                        </div>
-                    </div>
-                    <div class="col-lg-7">
+							</script>
+						</div>
+					</div>
+					<div class="col-lg-7">
 						<div class="box mb-4">
 							<h2> @Model.Name </h2>
 							<p><small>@Localizer["EventOrganisator"]:</small> @Model.Organisator </p>
-							<p> @Model.Description </p>
+							<p>
+								@if (Localizer["Lang"].Value == "PL")
+								{
+									@Model.DescriptionPl
+								}
+								else if (Localizer["Lang"].Value == "EN")
+								{
+									@Model.DescriptionEn
+								}
+							</p>
 						</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 </section>
 

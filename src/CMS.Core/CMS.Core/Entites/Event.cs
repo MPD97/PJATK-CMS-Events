@@ -24,7 +24,9 @@ namespace CMS.Core.Entites
 
         public decimal TicketPrice { get; set; }
 
-        public string Description { get; set; }
+        public string DescriptionPl { get; set; }
+        public string DescriptionEn { get; set; }
+
         public virtual ICollection<Ticket> Tickets { get; set; }
     }
 }

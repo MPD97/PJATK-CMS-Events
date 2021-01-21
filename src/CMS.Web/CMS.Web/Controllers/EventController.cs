@@ -66,7 +66,8 @@ namespace CMS.Web.Controllers
             var eve = new Event();
             eve.Name = request.Name;
             eve.City = request.City;
-            eve.Description = request.Description;
+            eve.DescriptionEn = request.DescriptionPl;
+            eve.DescriptionPl = request.DescriptionEn;
             eve.EventType = request.EventType;
             eve.Date = request.Date;
             eve.Latitude = request.Latitude.Value;

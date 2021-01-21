@@ -151,4 +151,7 @@
   <data name="EventOrganisator" xml:space="preserve">
     <value>Organizator</value>
   </data>
+  <data name="Lang" xml:space="preserve">
+    <value>EN</value>
+  </data>
 </root>
