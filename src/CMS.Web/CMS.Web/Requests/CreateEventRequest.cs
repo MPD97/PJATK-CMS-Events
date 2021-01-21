@@ -19,8 +19,13 @@ namespace CMS.Web.Requests
         public decimal? Longitude { get; set; }
 
         [Required]
+        [MinLength(2), MaxLength(50)]
         public string City { get; set; }
 
+
+        [Required]
+        [MinLength(2), MaxLength(150)]
+        public string Organisator { get; set; }
 
         [Required]
         public IFormFile Photo { get; set; }
@@ -33,6 +38,7 @@ namespace CMS.Web.Requests
         [Required]
         public DateTime Date { get; set; }
 
+        [Required]
         public decimal TicketPrice { get; set; }
 
         public string Description { get; set; }

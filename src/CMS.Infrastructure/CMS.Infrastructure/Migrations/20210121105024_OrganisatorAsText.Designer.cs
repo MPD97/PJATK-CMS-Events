@@ -4,14 +4,16 @@ using CMS.Infrastructure.MsSQL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CMS.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20210121105024_OrganisatorAsText")]
+    partial class OrganisatorAsText
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -178,7 +180,6 @@ namespace CMS.Infrastructure.Migrations
                             Latitude = 51.223543m,
                             Longitude = 22.543212m,
                             Name = "Koncert XXX",
-                            Organisator = "Stodoła",
                             PhotoPath = "/images/concert.jpg",
                             TicketPrice = 235.49m
                         },
@@ -192,7 +193,6 @@ namespace CMS.Infrastructure.Migrations
                             Latitude = 51.123543m,
                             Longitude = 22.143212m,
                             Name = "Kurs medytacji",
-                            Organisator = "Polskie Stowarzyszenie Medytacji",
                             PhotoPath = "/images/meditation.jpg",
                             TicketPrice = 99.99m
                         },
@@ -206,7 +206,6 @@ namespace CMS.Infrastructure.Migrations
                             Latitude = 51.323543m,
                             Longitude = 22.443212m,
                             Name = "Koncert YYY",
-                            Organisator = "Radio RMF MAXXX",
                             PhotoPath = "/images/concert2.jpeg",
                             TicketPrice = 50m
                         },
@@ -220,7 +219,6 @@ namespace CMS.Infrastructure.Migrations
                             Latitude = 51.723543m,
                             Longitude = 22.843212m,
                             Name = "Koncert ZZZ",
-                            Organisator = "Radio Złote Przepoje Katowice",
                             PhotoPath = "/images/concert3.jpeg",
                             TicketPrice = 75m
                         },
@@ -234,7 +232,6 @@ namespace CMS.Infrastructure.Migrations
                             Latitude = 51.733543m,
                             Longitude = 22.893212m,
                             Name = "code_talks - Mikro-konferencja",
-                            Organisator = "Maciej Aniserowicz",
                             PhotoPath = "/images/tech_meetup_1.jpg",
                             TicketPrice = 0m
                         },
@@ -248,7 +245,6 @@ namespace CMS.Infrastructure.Migrations
                             Latitude = 52.23151940814265m,
                             Longitude = 21.024833080469875m,
                             Name = "Wykład 'Sekretne życie obrazów'",
-                            Organisator = "Muzeum Wojska Polskiego",
                             PhotoPath = "/images/meeting_art_1.PNG",
                             TicketPrice = 10m
                         },
@@ -262,7 +258,6 @@ namespace CMS.Infrastructure.Migrations
                             Latitude = 52.29151940814265m,
                             Longitude = 21.924833080469875m,
                             Name = "Wystawa 'Afrykańskie wyprawy, azjatyckie drogi",
-                            Organisator = "Muzeum Geologiczne Warszawa",
                             PhotoPath = "/images/exhibition_1.jpg",
                             TicketPrice = 15m
                         });

@@ -14,6 +14,8 @@ namespace CMS.Core.Entites
 
         public string PhotoPath { get; set; }
 
+        public string Organisator { get; set; }
+
         public EventType EventType { get; set; }
         
         public DateTime Date { get; set; }

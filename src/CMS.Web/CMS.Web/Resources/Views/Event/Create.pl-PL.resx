@@ -161,4 +161,7 @@
   <data name="FormErrors" xml:space="preserve">
     <value>Formularz zawiera błędy</value>
   </data>
+  <data name="EventOrganisator" xml:space="preserve">
+    <value>Organizator</value>
+  </data>
 </root>

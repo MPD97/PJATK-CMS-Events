@@ -33,6 +33,7 @@ namespace CMS.Infrastructure.MsSQL.Configuration
                 {
                     ID = 1,
                     Name = "Koncert XXX",
+                    Organisator = "Stodoła",
                     TicketPrice = 235.49M,
                     Latitude = 51.223543M,
                     Longitude = 22.543212M,
@@ -45,6 +46,7 @@ namespace CMS.Infrastructure.MsSQL.Configuration
                 {
                     ID = 2,
                     Name = "Kurs medytacji",
+                    Organisator = "Polskie Stowarzyszenie Medytacji",
                     TicketPrice = 99.99M,
                     Latitude = 51.123543M,
                     Longitude = 22.143212M,
@@ -57,6 +59,7 @@ namespace CMS.Infrastructure.MsSQL.Configuration
                 {
                     ID = 3,
                     Name = "Koncert YYY",
+                    Organisator = "Radio RMF MAXXX",
                     TicketPrice = 50M,
                     Latitude = 51.323543M,
                     Longitude = 22.443212M,
@@ -69,6 +72,7 @@ namespace CMS.Infrastructure.MsSQL.Configuration
                 {
                     ID = 4,
                     Name = "Koncert ZZZ",
+                    Organisator = "Radio Złote Przepoje Katowice",
                     TicketPrice = 75M,
                     Latitude = 51.723543M,
                     Longitude = 22.843212M,
@@ -81,6 +85,7 @@ namespace CMS.Infrastructure.MsSQL.Configuration
                 {
                     ID = 5,
                     Name = "code_talks - Mikro-konferencja",
+                    Organisator = "Maciej Aniserowicz",
                     TicketPrice = 0M,
                     Latitude = 51.733543M,
                     Longitude = 22.893212M,
@@ -94,6 +99,7 @@ namespace CMS.Infrastructure.MsSQL.Configuration
                 {
                     ID = 6,
                     Name = "Wykład 'Sekretne życie obrazów'",
+                    Organisator = "Muzeum Wojska Polskiego",
                     TicketPrice = 10M,
                     Latitude = 52.23151940814265M,
                     Longitude = 21.024833080469875M,
@@ -107,6 +113,7 @@ namespace CMS.Infrastructure.MsSQL.Configuration
                 {
                     ID = 7,
                     Name = "Wystawa 'Afrykańskie wyprawy, azjatyckie drogi",
+                    Organisator = "Muzeum Geologiczne Warszawa",
                     TicketPrice = 15M,
                     Latitude = 52.29151940814265M,
                     Longitude = 21.924833080469875M,

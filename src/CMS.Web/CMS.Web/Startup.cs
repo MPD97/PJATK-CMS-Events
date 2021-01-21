@@ -81,6 +81,7 @@ namespace CMS.Web
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+            context.Database.Migrate();
 
             app.UseStaticFiles();
 
@@ -94,10 +95,7 @@ namespace CMS.Web
                 .AddSupportedUICultures(supportedCultures);
 
             app.UseRequestLocalization(localizationOptions);
-
-
-            context.Database.EnsureCreated();
-
+           
             app.UseHttpsRedirection();
         
 

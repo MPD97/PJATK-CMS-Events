@@ -148,4 +148,7 @@
   <data name="Part2" xml:space="preserve">
     <value> zostały dodane do koszyka!</value>
   </data>
+  <data name="EventOrganisator" xml:space="preserve">
+    <value>Organizator</value>
+  </data>
 </root>

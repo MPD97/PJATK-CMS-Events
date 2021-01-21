@@ -7,108 +7,113 @@
 
 <div class="container rpw p-0 m-0">
     <h2 class="text-info"> @Localizer["AddEventHeader"] </h2>
-    <form class="form-horizontal" method="post" , new
-          { enctype="multipart/form-data" }>
+	<form class="form-horizontal" method="post" , new
+		  { enctype="multipart/form-data" }>
 
-        @if (!ViewData.ModelState.IsValid)
-        {
-            <div class="mb-4">
-                <strong class="text-danger">@Localizer["FormErrors"]</strong>
-            </div>
-        }
+		@if (!ViewData.ModelState.IsValid)
+		{
+			<div class="mb-4">
+				<strong class="text-danger">@Localizer["FormErrors"]</strong>
+			</div>
+		}
 
-        <div class="form-group mt-2">
-            @Html.LabelFor(x => x.Name, @Localizer["EventName"].Value, new { @class = "font-weight-bolder" })
-            @Html.TextBoxFor(x => x.Name,
-            new { @class = "form-control" })
-            @Html.ValidationMessageFor(x => x.Name, @Localizer["ValidationRequiredField"].Value, new { @class = "text-warning" })
-        </div>
-        <div class="form-group mt-2">
-            @Html.LabelFor(x => x.Description, @Localizer["Description"].Value, new { @class = "font-weight-bolder" })
-            @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
-            @Html.ValidationMessageFor(x => x.Description, @Localizer["ValidationRequiredField"].Value, new { @class = "text-warning" })
-        </div>
-        <div class="form-group mt-2">
-            @Html.LabelFor(x => x.Photo, @Localizer["Photo"].Value, new { @class = "font-weight-bolder" })
-            <input type="file" class="form-control mb-2"
-                   id="Photo" name="Photo"
-                   accept="image/png, image/jpeg">
-            @Html.ValidationMessageFor(x => x.Photo, @Localizer["ValidationRequiredField"].Value, new { @class = "text-warning" })
-        </div>
-        <div class="form-group mt-2">
-            @Html.LabelFor(x => x.EventType, @Localizer["EventType"].Value, new { @class = "font-weight-bolder" })
-            @Html.DropDownList("EventType", Html.GetEnumSelectList<CMS.Core.Entites.EventType>(),
-                @Localizer["SelectEventType"].Value, new { @class = "form-control" })
-            @Html.ValidationMessageFor(x => x.EventType, @Localizer["ValidationRequiredField"].Value, new { @class = "text-warning" })
-        </div>
+		<div class="form-group mt-2">
+			@Html.LabelFor(x => x.Name, @Localizer["EventName"].Value, new { @class = "font-weight-bolder" })
+			@Html.TextBoxFor(x => x.Name,
+			new { @class = "form-control" })
+			@Html.ValidationMessageFor(x => x.Name, @Localizer["ValidationRequiredField"].Value, new { @class = "text-warning" })
+		</div>
+		<div class="form-group mt-2">
+			@Html.LabelFor(x => x.Description, @Localizer["Description"].Value, new { @class = "font-weight-bolder" })
+			@Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+			@Html.ValidationMessageFor(x => x.Description, @Localizer["ValidationRequiredField"].Value, new { @class = "text-warning" })
+		</div>
+		<div class="form-group mt-2">
+			@Html.LabelFor(x => x.Organisator, @Localizer["EventOrganisator"].Value, new { @class = "font-weight-bolder" })
+			@Html.TextBoxFor(x => x.Organisator, new { @class = "form-control" })
+			@Html.ValidationMessageFor(x => x.Organisator, @Localizer["ValidationRequiredField"].Value, new { @class = "text-warning" })
+		</div>
+		<div class="form-group mt-2">
+			@Html.LabelFor(x => x.Photo, @Localizer["Photo"].Value, new { @class = "font-weight-bolder" })
+			<input type="file" class="form-control mb-2"
+				   id="Photo" name="Photo"
+				   accept="image/png, image/jpeg">
+			@Html.ValidationMessageFor(x => x.Photo, @Localizer["ValidationRequiredField"].Value, new { @class = "text-warning" })
+		</div>
+		<div class="form-group mt-2">
+			@Html.LabelFor(x => x.EventType, @Localizer["EventType"].Value, new { @class = "font-weight-bolder" })
+			@Html.DropDownList("EventType", Html.GetEnumSelectList<CMS.Core.Entites.EventType>(),
+				@Localizer["SelectEventType"].Value, new { @class = "form-control" })
+			@Html.ValidationMessageFor(x => x.EventType, @Localizer["ValidationRequiredField"].Value, new { @class = "text-warning" })
+		</div>
 
 
-        <div id='map' style='width: 400px; height: 300px;'>
-            <script>
+		<div id='map' style='width: 400px; height: 300px;'>
+			<script>
 
-                mapboxgl.accessToken = 'pk.eyJ1IjoibXBkOTciLCJhIjoiY2s2dWluMWlyMDlrODNscmo5ZGJydXd1dSJ9.1q0TuIH6z8RUDIjk0oznrQ'
-                var map = new mapboxgl.Map({
-                    container: 'map',
-                    style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
-                    center: [50.0, 20.0], // starting position [lng, lat]
-                    zoom: 5 // starting zoom
-                });
+				mapboxgl.accessToken = 'pk.eyJ1IjoibXBkOTciLCJhIjoiY2s2dWluMWlyMDlrODNscmo5ZGJydXd1dSJ9.1q0TuIH6z8RUDIjk0oznrQ'
+				var map = new mapboxgl.Map({
+					container: 'map',
+					style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+					center: [50.0, 20.0], // starting position [lng, lat]
+					zoom: 5 // starting zoom
+				});
 
-                var marker = undefined;
-                map.on('mousedown', function (e) {
-                    if (marker !== undefined) {
-                        marker.remove();
-                    }
-                    marker = new mapboxgl.Marker()
-                        .setLngLat(e.lngLat)
-                        .addTo(map);
-                    console.log(e);
-                    console.log(e.lngLat);
-                    var jqxhr = $.get("https://nominatim.openstreetmap.org/reverse?format=geojson&lat=" + e.lngLat.lat + "&lon=" + e.lngLat.lng,
-                        function () {
-                        })
-                        .done(function (data) {
-                            var city = data.features[0].properties.address.city;
-                            var country = data.features[0].properties.address.country;
+				var marker = undefined;
+				map.on('mousedown', function (e) {
+					if (marker !== undefined) {
+						marker.remove();
+					}
+					marker = new mapboxgl.Marker()
+						.setLngLat(e.lngLat)
+						.addTo(map);
+					console.log(e);
+					console.log(e.lngLat);
+					var jqxhr = $.get("https://nominatim.openstreetmap.org/reverse?format=geojson&lat=" + e.lngLat.lat + "&lon=" + e.lngLat.lng,
+						function () {
+						})
+						.done(function (data) {
+							var city = data.features[0].properties.address.city;
+							var country = data.features[0].properties.address.country;
 
-                            console.log(city + " " + country);
+							console.log(city + " " + country);
 
-                            $("#Latitude").val(e.lngLat.lat);
-                            $("#Longitude").val(e.lngLat.lng);
-                            if (city == undefined) {
-                                $("#City").val(country);
-                            } else {
-                                $("#City").val(city);
-                            }
+							$("#Latitude").val(e.lngLat.lat);
+							$("#Longitude").val(e.lngLat.lng);
+							if (city == undefined) {
+								$("#City").val(country);
+							} else {
+								$("#City").val(city);
+							}
 
-                        })
-                        .fail(function () {
-                            alert("error");
-                        });
-                });
+						})
+						.fail(function () {
+							alert("error");
+						});
+				});
 
-            </script>
-        </div>
+			</script>
+		</div>
 
-        @Html.HiddenFor(x => x.Longitude)
-        @Html.HiddenFor(x => x.Latitude)
+		@Html.HiddenFor(x => x.Longitude)
+		@Html.HiddenFor(x => x.Latitude)
 
-        <div class="form-group mt-2">
-            <label class="font-weight-bolder" for="placeInput">@Localizer["Place"]</label>
-            <input type="text" class="form-control" id="City" name="City">
-        </div>
+		<div class="form-group mt-2">
+			<label class="font-weight-bolder" for="placeInput">@Localizer["Place"]</label>
+			<input type="text" class="form-control" id="City" name="City">
+		</div>
 
-        <div class="form-group">
-            <label class="font-weight-bolder" for="dateInput">@Localizer["Date"]</label>
-            <input type="date" class="form-control" id="Date" name="Date">
-        </div>
-        <div class="form-group mt-2">
-            @Html.LabelFor(x => x.TicketPrice, @Localizer["EventPriceLabel"].Value, new { @class = "font-weight-bolder" })
-            @Html.EditorFor(model => model.TicketPrice, new { htmlAttributes = new { @type = "number", @min = "0", @step = "0.01", @value = "1.99", @class = "form-control" } })
-            @Html.ValidationMessageFor(x => x.TicketPrice, @Localizer["ValidationRequiredField"].Value, new { @class = "text-warning" })
-        </div>
+		<div class="form-group">
+			<label class="font-weight-bolder" for="dateInput">@Localizer["Date"]</label>
+			<input type="date" class="form-control" id="Date" name="Date">
+		</div>
+		<div class="form-group mt-2">
+			@Html.LabelFor(x => x.TicketPrice, @Localizer["EventPriceLabel"].Value, new { @class = "font-weight-bolder" })
+			@Html.EditorFor(model => model.TicketPrice, new { htmlAttributes = new { @type = "number", @min = "0", @step = "0.01", @value = "1.99", @class = "form-control" } })
+			@Html.ValidationMessageFor(x => x.TicketPrice, @Localizer["ValidationRequiredField"].Value, new { @class = "text-warning" })
+		</div>
 
-        @*JS/JQUERY na kliknięcie submit musi pobrać dane z mapy/osmnames o wybranej lokalizacji i wstawić wartości do latitude i longitude (hidden input) a potem wysłac formularz*@
-        <button type="submit" class="btn btn-primary">@Localizer["AddEvent"]</button>
-    </form>
+		@*JS/JQUERY na kliknięcie submit musi pobrać dane z mapy/osmnames o wybranej lokalizacji i wstawić wartości do latitude i longitude (hidden input) a potem wysłac formularz*@
+		<button type="submit" class="btn btn-primary">@Localizer["AddEvent"]</button>
+	</form>
 </div>

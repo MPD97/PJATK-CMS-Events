@@ -165,4 +165,7 @@
   <data name="FormErrors" xml:space="preserve">
     <value>Form has errors</value>
   </data>
+  <data name="EventOrganisator" xml:space="preserve">
+    <value>Organizator</value>
+  </data>
 </root>
