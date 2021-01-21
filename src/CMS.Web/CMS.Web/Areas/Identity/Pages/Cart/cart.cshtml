@@ -24,7 +24,7 @@
         function getCookiesOnLoad() {
             var allCookies = document.cookie.split(";");
             for (var i = 0; i < allCookies.length; i++) {
-                let re = /^[1-9]{1}\d*=[1-9]{1}\d*/;
+                let re = /\d+=\d+/;
                 if (allCookies[i].match(re)) {
                     cooks.push(allCookies[i]);
                 }
