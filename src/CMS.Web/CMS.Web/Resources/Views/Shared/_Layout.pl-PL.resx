@@ -148,6 +148,7 @@
   <data name="AddEvent" xml:space="preserve">
     <value>Dodaj wydarzenie</value>
   </data>
+<<<<<<< Updated upstream
   <data name="City_Zipcode" xml:space="preserve">
     <value>00-001 Warszawa</value>
   </data>
@@ -165,5 +166,9 @@
   </data>
   <data name="Calendar" xml:space="preserve">
     <value>Kalendarz</value>
+=======
+  <data name="MyEvents" xml:space="preserve">
+    <value>Moje wydarzenia</value>
+>>>>>>> Stashed changes
   </data>
 </root>

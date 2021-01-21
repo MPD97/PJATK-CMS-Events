@@ -64,6 +64,7 @@
                     <li><a class="active" href="/home/index">@Localizer["HomePage"]</a></li>
                     @if (User.Identity.IsAuthenticated)
                     {
+                        <li><a class="nav-link" href="/MyEvents">@Localizer["MyEvents"]</a></li>
                         <li><a class="nav-link" href="/Event/Create">@Localizer["AddEvent"]</a></li>
                         <li><a class="nav-link" href="/Calendar/Calendar">@Localizer["Calendar"]</a></li>
                     }

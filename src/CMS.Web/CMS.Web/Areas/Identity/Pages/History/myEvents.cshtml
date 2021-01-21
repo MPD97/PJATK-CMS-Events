@@ -1,0 +1,49 @@
+﻿@page "/MyEvents"
+@{
+
+}
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+
+<br />
+<br />
+<div class="container rpw p-0 m-0">
+    <div class="col-12">
+        <h2 class="text-primary"> @Localizer["MyEvents"] </h2>
+    </div>
+    <div class="col-12" style="text-align:center">
+        <br />
+
+    </div>
+    <div class="col-12 border p-3" style="text-align:center">
+
+        <table id="users_events" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th> @Localizer["EventName"] </th>
+                    <th> @Localizer["EventDate"] </th>
+                    <th> @Localizer["EventPlace"]</th>
+                    <th> @Localizer["EventType"] </th>
+                    <th> @Localizer["TicketCount"]</th>
+                    <th> @Localizer["Opinion"] </th>
+                </tr>
+            </thead>
+
+            <!-- Pętla For Each + dane z bazy -->
+            <tr>
+                <th> ... </th>
+                <th> ... </th>
+                <th> ... </th>
+                <th> ... </th>
+                <th> ... </th>
+                <th>
+                    <a class="text-decoration-none float-end" href="/Opinions/add"><button type="button" class="btn btn-sm btn-outline-secondary">@Localizer["AddOpinion"]</button></a>
+                    <a class="text-decoration-none float-end" href="/Opinions"><button type="button" class="btn btn-sm btn-outline-secondary">@Localizer["Opinions"]</button></a>
+                </th>
+            </tr>
+        </table>
+    </div>
+</div>
+
+

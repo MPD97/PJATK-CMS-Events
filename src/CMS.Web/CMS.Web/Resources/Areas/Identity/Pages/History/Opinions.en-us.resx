@@ -117,61 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Events" xml:space="preserve">
-    <value>Events</value>
-    <comment>Details</comment>
+  <data name="AddOpinion" xml:space="preserve">
+    <value>Add Review</value>
   </data>
-  <data name="Contact" xml:space="preserve">
-    <value>Contact</value>
-    <comment>TicketPrice</comment>
+  <data name="AllReviews" xml:space="preserve">
+    <value>All Reviews</value>
   </data>
-  <data name="HomePage" xml:space="preserve">
-    <value>Home Page</value>
-    <comment>HomePage</comment>
+  <data name="EventDate" xml:space="preserve">
+    <value>Date</value>
   </data>
-  <data name="SignUp" xml:space="preserve">
-    <value>Sign Up</value>
-    <comment>SignUp</comment>
+  <data name="EventName" xml:space="preserve">
+    <value>Name</value>
   </data>
-  <data name="LogIn" xml:space="preserve">
-    <value>Log In</value>
-    <comment>LogIn</comment>
+  <data name="EventPlace" xml:space="preserve">
+    <value>Location</value>
   </data>
-  <data name="Logout" xml:space="preserve">
-    <value>Logout</value>
-    <comment>Logout</comment>
+  <data name="EventType" xml:space="preserve">
+    <value>Type</value>
   </data>
-  <data name="Search" xml:space="preserve">
-    <value>Search </value>
-    <comment>Search</comment>
-  </data>
-  <data name="Cart" xml:space="preserve">
-    <value>Cart</value>
-  </data>
-  <data name="AddEvent" xml:space="preserve">
-    <value>Add event</value>
-  </data>
-<<<<<<< Updated upstream
-  <data name="City_Zipcode" xml:space="preserve">
-    <value>Warsaw, 00-001</value>
-  </data>
-  <data name="Copyright" xml:space="preserve">
-    <value>The Event Shop 2021. All Rights Reserved</value>
-  </data>
-  <data name="Country" xml:space="preserve">
-    <value>Poland</value>
-  </data>
-  <data name="Design" xml:space="preserve">
-    <value>Designed by BootstrapMade</value>
-  </data>
-  <data name="Street" xml:space="preserve">
-    <value>1 Marszałkowska Street</value>
-  </data>
-  <data name="Calendar" xml:space="preserve">
-    <value>Calendar</value>
-=======
   <data name="MyEvents" xml:space="preserve">
     <value>My Events</value>
->>>>>>> Stashed changes
+  </data>
+  <data name="Opinion" xml:space="preserve">
+    <value>Review</value>
+  </data>
+  <data name="Opinions" xml:space="preserve">
+    <value>Reviews</value>
+  </data>
+  <data name="Rate" xml:space="preserve">
+    <value>Rate this event</value>
+  </data>
+  <data name="TicketCount" xml:space="preserve">
+    <value>Tickets quantity</value>
+  </data>
+  <data name="YourOpinion" xml:space="preserve">
+    <value>Your Review</value>
   </data>
 </root>
