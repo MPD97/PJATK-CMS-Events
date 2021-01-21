@@ -4,14 +4,16 @@ using CMS.Infrastructure.MsSQL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CMS.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20210121105024_OrganisatorAsText")]
+    partial class OrganisatorAsText
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -135,10 +137,7 @@ namespace CMS.Infrastructure.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("DescriptionEn")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DescriptionPl")
+                    b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("EventType")
@@ -176,13 +175,11 @@ namespace CMS.Infrastructure.Migrations
                             ID = 1,
                             City = "Warszawa",
                             Date = new DateTime(2021, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DescriptionEn = "ENGLISH Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-                            DescriptionPl = " POLISH Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                            Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
                             EventType = 0,
                             Latitude = 51.223543m,
                             Longitude = 22.543212m,
                             Name = "Koncert XXX",
-                            Organisator = "Stodoła",
                             PhotoPath = "/images/concert.jpg",
                             TicketPrice = 235.49m
                         },
@@ -191,13 +188,11 @@ namespace CMS.Infrastructure.Migrations
                             ID = 2,
                             City = "Warszawa",
                             Date = new DateTime(2021, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DescriptionEn = "ENGLISH Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-                            DescriptionPl = " POLISH Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                            Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
                             EventType = 0,
                             Latitude = 51.123543m,
                             Longitude = 22.143212m,
                             Name = "Kurs medytacji",
-                            Organisator = "Polskie Stowarzyszenie Medytacji",
                             PhotoPath = "/images/meditation.jpg",
                             TicketPrice = 99.99m
                         },
@@ -206,13 +201,11 @@ namespace CMS.Infrastructure.Migrations
                             ID = 3,
                             City = "Warszawa",
                             Date = new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DescriptionEn = "ENGLISH Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-                            DescriptionPl = " POLISH Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                            Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
                             EventType = 0,
                             Latitude = 51.323543m,
                             Longitude = 22.443212m,
                             Name = "Koncert YYY",
-                            Organisator = "Radio RMF MAXXX",
                             PhotoPath = "/images/concert2.jpeg",
                             TicketPrice = 50m
                         },
@@ -221,13 +214,11 @@ namespace CMS.Infrastructure.Migrations
                             ID = 4,
                             City = "Warszawa",
                             Date = new DateTime(2021, 8, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DescriptionEn = "ENGLISH Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-                            DescriptionPl = " POLISH Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                            Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
                             EventType = 0,
                             Latitude = 51.723543m,
                             Longitude = 22.843212m,
                             Name = "Koncert ZZZ",
-                            Organisator = "Radio Złote Przepoje Katowice",
                             PhotoPath = "/images/concert3.jpeg",
                             TicketPrice = 75m
                         },
@@ -236,13 +227,11 @@ namespace CMS.Infrastructure.Migrations
                             ID = 5,
                             City = "Kraków",
                             Date = new DateTime(2021, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DescriptionEn = "The next edition of code_talks in December! This is a micro-conference for programmers and programming enthusiasts, organized by PSI Polska. I'll see you on December 5. \n Applying generative machine learning techniques to industrial time series \n Live coding, which shows how to use JMC, JMH, flight recorder, asyncprofiler and flamegraphs tools to optimize Java code.",
-                            DescriptionPl = "Już w grudniu kolejna edycja code_talks! To mikro-konferencja dla programistów i fascynatów programowania, organizowana przez PSI Polska. Widzimy się 5 grudnia. \n  Zastosowanie generatywnych technik uczenia maszynowego do przemysłowych szeregów czasowych \n Live coding, który pokazuje, jak przy pomocy narzędzi JMC, JMH, flight recorder, asyncprofiler i flamegraphs, optymalizować kod w Javie. ",
+                            Description = "Już w grudniu kolejna edycja code_talks! To mikro-konferencja dla programistów i fascynatów programowania, organizowana przez PSI Polska. Widzimy się 5 grudnia. \n  Zastosowanie generatywnych technik uczenia maszynowego do przemysłowych szeregów czasowych \n Live coding, który pokazuje, jak przy pomocy narzędzi JMC, JMH, flight recorder, asyncprofiler i flamegraphs, optymalizować kod w Javie. ",
                             EventType = 1,
                             Latitude = 51.733543m,
                             Longitude = 22.893212m,
                             Name = "code_talks - Mikro-konferencja",
-                            Organisator = "Maciej Aniserowicz",
                             PhotoPath = "/images/tech_meetup_1.jpg",
                             TicketPrice = 0m
                         },
@@ -251,13 +240,11 @@ namespace CMS.Infrastructure.Migrations
                             ID = 6,
                             City = "Warszawa",
                             Date = new DateTime(2021, 4, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DescriptionEn = "„The Secret Life of Images” is a musical collage composed of excerpts from Baroque operas by Monteverdi, Handel and Vivaldi. Arias from the operas „Orlando”, „Ariodante” or „Alcina”, or „musical images” taken from a larger whole, become the basis of stories wrapped around scenes captured in the works of baroque painting masters.",
-                            DescriptionPl = "„Sekretne życie obrazów” to muzyczny collage złożony z fragmentów oper barokowych Monteverdiego, Haendla i Vivaldiego. Arie z oper „Orlando”, „Ariodante” czy „Alcina”, czyli „muzyczne obrazy” wyjęte z większej całości, stają się kanwą opowieści osnutych wokół scen uchwyconych w dziełach mistrzów barokowego malarstwa.",
+                            Description = "„Sekretne życie obrazów” to muzyczny collage złożony z fragmentów oper barokowych Monteverdiego, Haendla i Vivaldiego. Arie z oper „Orlando”, „Ariodante” czy „Alcina”, czyli „muzyczne obrazy” wyjęte z większej całości, stają się kanwą opowieści osnutych wokół scen uchwyconych w dziełach mistrzów barokowego malarstwa.",
                             EventType = 1,
                             Latitude = 52.23151940814265m,
                             Longitude = 21.024833080469875m,
                             Name = "Wykład 'Sekretne życie obrazów'",
-                            Organisator = "Muzeum Wojska Polskiego",
                             PhotoPath = "/images/meeting_art_1.PNG",
                             TicketPrice = 10m
                         },
@@ -266,13 +253,11 @@ namespace CMS.Infrastructure.Migrations
                             ID = 7,
                             City = "Warszawa",
                             Date = new DateTime(2021, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DescriptionEn = "Two vast continents, the wealth of various traditions and material and spiritual culture. One of the newly opened galleries is dedicated to Asia, the other - to them. Leopold Janikowski, Africa. In both, we can find unique exhibits, but also learn about the stories thanks to the multimedia stands.",
-                            DescriptionPl = "Dwa rozległe kontynenty, bogactwo różnorodnych tradycji oraz kultury materialnej i duchowej. Jedna z nowo otwartych galerii poświęcona jest Azji, druga, im. Leopolda Janikowskiego, Afryce. W obu możemy odnaleźć unikatowe eksponaty, ale także poznać historie dzięki multimedialnym stanowiskom.",
+                            Description = "Dwa rozległe kontynenty, bogactwo różnorodnych tradycji oraz kultury materialnej i duchowej. Jedna z nowo otwartych galerii poświęcona jest Azji, druga, im. Leopolda Janikowskiego, Afryce. W obu możemy odnaleźć unikatowe eksponaty, ale także poznać historie dzięki multimedialnym stanowiskom.",
                             EventType = 1,
                             Latitude = 52.29151940814265m,
                             Longitude = 21.924833080469875m,
                             Name = "Wystawa 'Afrykańskie wyprawy, azjatyckie drogi",
-                            Organisator = "Muzeum Geologiczne Warszawa",
                             PhotoPath = "/images/exhibition_1.jpg",
                             TicketPrice = 15m
                         });

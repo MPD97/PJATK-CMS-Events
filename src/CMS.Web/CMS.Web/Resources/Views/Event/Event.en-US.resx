@@ -148,4 +148,10 @@
   <data name="Part2" xml:space="preserve">
     <value> added to cart!</value>
   </data>
+  <data name="EventOrganisator" xml:space="preserve">
+    <value>Organizator</value>
+  </data>
+  <data name="Lang" xml:space="preserve">
+    <value>EN</value>
+  </data>
 </root>

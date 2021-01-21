@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using CMS.Core.Entites;
 using CMS.Infrastructure.MsSQL;
@@ -13,6 +15,7 @@ namespace CMS.Web.Services
 
         private readonly ApplicationContext _context;
 
+
         public EventService(ApplicationContext context)
         {
             _context = context;
@@ -24,9 +27,6 @@ namespace CMS.Web.Services
             var allEvents = await _context.Set<Event>().ToListAsync();
 
             return allEvents;
-
-
-
         }
 
         public async Task<Event> GetEvent(int id)

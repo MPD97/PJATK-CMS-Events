@@ -123,8 +123,8 @@
   <data name="EventTypeLabel" xml:space="preserve">
     <value>Event type:</value>
   </data>
-  <data name="Description" xml:space="preserve">
-    <value>Description</value>
+  <data name="DescriptionEn" xml:space="preserve">
+    <value>English description</value>
   </data>
   <data name="SelectEventType" xml:space="preserve">
     <value>Select Event Type</value>
@@ -164,5 +164,11 @@
   </data>
   <data name="FormErrors" xml:space="preserve">
     <value>Form has errors</value>
+  </data>
+  <data name="EventOrganisator" xml:space="preserve">
+    <value>Organizator</value>
+  </data>
+  <data name="DescriptionPl" xml:space="preserve">
+    <value>Polish description</value>
   </data>
 </root>
