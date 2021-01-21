@@ -138,7 +138,10 @@
   <data name="NumberOfTickets" xml:space="preserve">
     <value>Liczba biletów</value>
   </data>
+  <data name="SumPrice" xml:space="preserve">
+    <value>Suma</value>
+  </data>
   <data name="TotalPrice" xml:space="preserve">
-    <value>Suma: </value>
+    <value>Całkowita kwota rezerwacji:</value>
   </data>
 </root>

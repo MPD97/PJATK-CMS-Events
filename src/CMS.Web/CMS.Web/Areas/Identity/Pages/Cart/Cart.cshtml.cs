@@ -19,7 +19,7 @@ namespace CMS.Web.Areas.Identity.Pages.Cart
             _context = context;
         }
 
-        public IEnumerable<Purchase> Purchases { get; set; }
+       /* public IEnumerable<Purchase> Purchases { get; set; }
 
         public async Task OnGet()
         {
@@ -30,6 +30,10 @@ namespace CMS.Web.Areas.Identity.Pages.Cart
                 .ThenInclude(ticket => ticket.Person)
                 .Include(purchase => purchase.User)
                 .ToListAsync();
-        }
+        }*/
+
+
+
+
     }
 }

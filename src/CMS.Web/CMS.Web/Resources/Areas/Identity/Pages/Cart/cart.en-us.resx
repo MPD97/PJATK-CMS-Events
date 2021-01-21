@@ -138,6 +138,9 @@
   <data name="NumberOfTickets" xml:space="preserve">
     <value>No. of tickets</value>
   </data>
+  <data name="SumPrice" xml:space="preserve">
+    <value>Sum</value>
+  </data>
   <data name="TotalPrice" xml:space="preserve">
     <value>Total price:</value>
   </data>

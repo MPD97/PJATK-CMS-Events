@@ -4,16 +4,17 @@
 }
 @using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer Localizer
-
+ 
 
 <br />
 
-<!-- zrobić if żeby koszyk się wyświetlał gdy Purchase.Count > 0, a gdy pusty to wyświetla się stosowny komunikat-->
+
 <br />
 <div class="container rpw p-0 m-0">
     <div class="col-12">
         <h2 class="text-primary"> @Localizer["Cart"] </h2>
     </div>
+
     <div class="col-12" style="text-align:center">
         <br />
 
@@ -27,11 +28,13 @@
                     <th> @Localizer["EventName"] </th>
                     <th> @Localizer["EventPrice"] </th>
                     <th> @Localizer["NumberOfTickets"] </th>
+                    <th> @Localizer["SumPrice"]</th>
                 </tr>
             </thead>
 
             <!-- i to poniżej jakoś w pętli foreach i dla każdego z tych parametró pobierać z bazy elementy z Purchase -->
             <tr>
+                <th> ... </th>
                 <th> ... </th>
                 <th> ... </th>
                 <th> ... </th>
@@ -42,7 +45,7 @@
 
         <div class="col-12">
             <p>@Localizer["TotalPrice"]</p>
-            <a class="btn btn-primary" href="/cart/checkout" role="button"> @Localizer["Checkout"] </a>
+            <a class="btn btn-primary" href="/cart/checkout" role="button"> @Localizer["Checkout"]</a>
             <a class="btn btn-primary" href="/home/index" role="button"> @Localizer["Abort"] </a>
         </div>
     </div>
