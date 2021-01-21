@@ -33,9 +33,5 @@ namespace CMS.Web.Areas.Identity.Pages.Cart
          }*/
         public IEnumerable<Event> Events { get; set; }
 
-
-
-
-
     }
 }
