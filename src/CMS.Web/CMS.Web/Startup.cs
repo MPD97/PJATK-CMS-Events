@@ -29,7 +29,8 @@ namespace CMS.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //options.UseInMemoryDatabase(databaseName: "Default"));
 
             services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
                 {
@@ -81,6 +82,7 @@ namespace CMS.Web
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+            context.Database.EnsureDeleted();
             context.Database.Migrate();
 
             app.UseStaticFiles();
