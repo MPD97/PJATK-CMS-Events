@@ -43,7 +43,7 @@
                 <form class="form-inline">
                     <div class="form-group">
                         <label for="quantity">@Localizer["Quantity"]: </label>
-                        <input type="number" id="quantity" min="1" placeholder="1" class="form-control quantity">
+                        <input type="number" id="quantity" min="1" placeholder="0" class="form-control quantity">
                     </div>
                 </form>
                 <p>
@@ -94,51 +94,10 @@
 </section>
 
 <script>
-
-
-/*	Ten buton bezie raczej w widoku Cart zeby wyrzucić coś ewentualnie z koszyka
- *	$(".deleteBtn").click(function () {
-
-		swal({
-			title: "Confirm?",
-			text: "Are you sure you want to delete this product?",
-			icon: "warning",
-			buttons: true,
-			dangerMode: true,
-		})
-		.then((willDelete) => {
-			if (willDelete) {
-				$.ajax({
-					type: 'POST',
-					url: '*/  /*',
-					data: {
-						ID: $(this).attr('data-id')
-					}
-				})
-				.done(function (response) {
-					$("#tableContiner").html(response);
-
-					swal("Record deleted Successfully.", {
-						icon: "success",
-					});
-				})
-				.fail(function (XMLHttpRequest, textStatus, errorThrown) {
-					alert("FAIL");
-				});
-
-			}
-		});*/
-
-   // jak sie wyjdzie z danej podstronki to kasują się cookiesy (na stronce kolejnego eventu zapisują się od nowa). Trzeba tez pomyśleć
-    // jak wprowadzać dane do cookiesów jeżeli quantity jest większe niż 1
-
-    var events = [];
     function addProductToCookies() {
-        alert("Event @Model.Name having id: @Model.ID added to cart");
-        events.push(@Model.ID)
-        document.cookie = events.join('-');
-        setCookie(document.cookie);
+        quantity = document.getElementById("quantity").value
+        document.cookie = '@Model.ID=' + quantity + '; path=/';  // expires at the end of Session
+        swal("@Localizer["GoodJob"]", + quantity + " @Localizer["Part1"] @Model.Name @Localizer["Part2"]", "success") // added sweet alert pop-up window to confirm loading the event to the cart
     }
-
 </script>
 
