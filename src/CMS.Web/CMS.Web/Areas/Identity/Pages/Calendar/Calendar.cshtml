@@ -1,0 +1,69 @@
+﻿@page "/calendar/calendar"
+
+@using Microsoft.AspNetCore.Mvc.Localization
+@using System.Web.Optimization
+@using CMS.Web.Models
+@using CMS.Web.Areas.Identity.Pages.Calendar
+@model HomeViewModel
+@inject IViewLocalizer Localizer
+<!DOCTYPE html>
+
+<html lang='en'>
+
+<head>
+
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width" />
+    <link href='~/lib/fullcalendar/lib/main.css' rel='stylesheet' />
+    <script src='~/lib/fullcalendar/lib/main.js'></script>
+    <script src='fullcalendar/core/locales/en.js'></script>
+    <script src='fullcalendar/core/locales/pl.js'></script>
+    <script>
+    //TODO button styles
+        @if (Model != null)
+        {
+             List<CalendarEvent> calendarEvents = new List<CalendarEvent>();
+             Model.Events.ToList().ForEach(ev => calendarEvents.Add(new CalendarEvent(ev.Name.ToString(), ev.Date.ToShortDateString())));
+            var stringList = calendarEvents.ToString();
+            Console.WriteLine(stringList);
+        }
+        //TODO fix language version
+            document.addEventListener('DOMContentLoaded', function () {
+                var calendarEl = document.getElementById('calendar');
+                var calendar = new FullCalendar.Calendar(calendarEl, {
+                    locale: '@Localizer["language"]',
+                    initialVeiw: 'dayGridMonth',
+                    headerToolbar: {
+                        left: 'prev, next today',
+                        center: 'title',
+                        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                    },
+                    buttonText: {
+                        today: '@Localizer["today"]',
+                        month:  '@Localizer["month"]',
+                        week: '@Localizer["week"]',
+                        day: '@Localizer["day"]'
+                    },
+                    //TODO map properly our events
+                    events: [
+                            {
+                                title: 'Event1',
+                                start: '2021-01-04'
+                            },
+                            {
+                                title: 'Event2',
+                                start: '2021-01-05'
+                            }
+                    ]
+                });
+                calendar.render();
+            });
+
+    </script>
+
+</head>
+<body>
+
+    <div class="mt-5" id='calendar'></div>
+</body>
+</html>

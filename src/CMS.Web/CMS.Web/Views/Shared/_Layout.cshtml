@@ -65,6 +65,7 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li><a class="nav-link" href="/Event/Create">@Localizer["AddEvent"]</a></li>
+                        <li><a class="nav-link" href="/Calendar/Calendar">@Localizer["Calendar"]</a></li>
                     }
                     <li><a class="nav-link" href="/home/search">@Localizer["Search"]</a></li>
                     <li><a class="nav-link" href="/cart/cart">@Localizer["Cart"]  <img src="/images/cart_icon.png" height="25" alt="cart"></a></li>
