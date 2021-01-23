@@ -121,6 +121,6 @@
     <value>Home</value>
   </data>
   <data name="Success" xml:space="preserve">
-    <value>You tickets have been booked!</value>
+    <value>Your tickets have been booked!</value>
   </data>
 </root>
