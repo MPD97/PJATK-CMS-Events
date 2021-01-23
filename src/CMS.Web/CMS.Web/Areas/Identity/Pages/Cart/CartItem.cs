@@ -4,19 +4,22 @@ using System.Linq;
 using System.Threading.Tasks;
 using CMS.Core.Entites;
 using CMS.Infrastructure.MsSQL;
+using CMS.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace CMS.Web.Areas.Identity.Pages.MyCart
+namespace CMS.Web.Areas.Identity.Pages.Cart
 {
     public class CartModel : PageModel
     {
-        private readonly ApplicationContext _context;
+        private readonly IEventService _service;
+        public IEnumerable<Event> Events { get;}
 
-        public CartModel(ApplicationContext context)
+        public CartModel(IEventService service)
         {
-            _context = context;
+            _service = service;
+            Events = service.GetEvents().Result;
         }
 
         /* public IEnumerable<Purchase> Purchases { get; set; }
@@ -31,7 +34,7 @@ namespace CMS.Web.Areas.Identity.Pages.MyCart
                  .Include(purchase => purchase.User)
                  .ToListAsync();
          }*/
-        public IEnumerable<Event> Events { get; set; }
-
+        
     }
 }
+    
