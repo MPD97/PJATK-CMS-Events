@@ -151,7 +151,6 @@
   <data name="AddEvent" xml:space="preserve">
     <value>Add event</value>
   </data>
-<<<<<<< Updated upstream
   <data name="City_Zipcode" xml:space="preserve">
     <value>Warsaw, 00-001</value>
   </data>
@@ -169,9 +168,8 @@
   </data>
   <data name="Calendar" xml:space="preserve">
     <value>Calendar</value>
-=======
+  </data>
   <data name="MyEvents" xml:space="preserve">
     <value>My Events</value>
->>>>>>> Stashed changes
   </data>
 </root>
