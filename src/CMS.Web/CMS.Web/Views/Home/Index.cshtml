@@ -9,9 +9,6 @@
 <link href="~/css/home.css" rel="stylesheet">
 <br /><br /><br />
 
-@* <h1> *@
-@*     @ViewData["Message"] *@
-@* </h1> *@
 <div>
     @{ var highlightedEventsCount = 4;}
     @{ var highlightedEvents = Model.Events.OrderBy(e => e.Date)
@@ -34,7 +31,7 @@
                     <h4>
                         <a href="\event\@item.ID" style="color: inherit"> @item.Name </a>
                     </h4>
-                    <p>@item.Date.ToShortDateString()</p>
+                    <p>@item.Date.ToShortDateString(), @item.City</p>
                 </div>
                 @:</div>
             }
