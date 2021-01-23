@@ -72,7 +72,7 @@
                             <th> @e.Name </th>
                             <th> @e.TicketPrice</th>
                             <th> @quant</th>
-                            <th> @totalPrice </th>
+                            <th> @totalPrice PLN</th>
                         </tr>
                         totalSum = totalSum + totalPrice;
 
@@ -84,11 +84,13 @@
 
             </table>
            
-    <div class="col-12">
-        <h4 style="color:#007bff"> @Localizer["TotalPrice"] @totalSum PLN</h4>
-        <a class="btn btn-primary" href="/cart/checkout" role="button"> @Localizer["Checkout"]</a>
-        <a class="btn btn-primary" href="/home/index" role="button"> @Localizer["Abort"] </a>
-    </div>
+            <div class="col-12">
+                
+                <!-- Na guzik Checkout robić push-->
+                <h4 style="color:#007bff"> @Localizer["TotalPrice"] @totalSum PLN</h4>
+                <a class="btn btn-primary" href="/cart/checkout" role="button"> @Localizer["Checkout"]</a>
+                <a class="btn btn-primary" href="/home/index" role="button"> @Localizer["Abort"] </a>
+            </div>
         
         </div>
         
