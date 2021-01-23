@@ -167,4 +167,8 @@
   <data name="DescriptionPl" xml:space="preserve">
     <value>Opis w języku Polskim</value>
   </data>
+  <data name="CreateEvent" xml:space="preserve">
+    <value>Dodawanie wydarzeń</value>
+    <comment>CreateEvent</comment>
+  </data>
 </root>

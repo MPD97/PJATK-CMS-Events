@@ -141,4 +141,8 @@
   <data name="SelectEventType" xml:space="preserve">
     <value>Choose type</value>
   </data>
+  <data name="SearchTitle" xml:space="preserve">
+    <value>Search</value>
+    <comment>SearchTitle</comment>
+  </data>
 </root>

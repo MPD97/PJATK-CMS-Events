@@ -171,4 +171,8 @@
   <data name="DescriptionPl" xml:space="preserve">
     <value>Polish description</value>
   </data>
+  <data name="CreateEvent" xml:space="preserve">
+    <value>Create Event</value>
+    <comment>CreateEvent</comment>
+  </data>
 </root>
