@@ -2,7 +2,9 @@
 @using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer Localizer
 
-
+@{
+    ViewData["Title"] = Localizer["SearchTitle"];
+}
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <br /><br />
