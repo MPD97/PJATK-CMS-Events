@@ -14,7 +14,7 @@
     @{ var highlightedEvents = Model.Events.OrderBy(e => e.Date)
            .Take(highlightedEventsCount).ToList();}
 
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
         <ol class="carousel-indicators">
             @for (int i = 0; i < highlightedEventsCount; i++)
             {
