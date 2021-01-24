@@ -62,4 +62,45 @@ footer p {
 .card-image {
   width: 100%;
   height: 250px;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.card:hover .card-img-top {
+  opacity: 0.3;
+}
+
+.card:hover .card-body {
+  opacity: 0.3;
+}
+
+.card:hover .middle {
+  opacity: 1;
+}
+
+.card-text-small {
+  font-size: 15px;
+  margin-bottom: 10px;
+
+}
+
+.text {
+  background-color: #aaa;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  padding: 15px 25px;
+  opacity: 0.8;
+  font-weight: bold;
 }
