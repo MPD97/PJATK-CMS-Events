@@ -17,24 +17,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
     <link href="~/lib/aos/css/aos.css" rel="stylesheet">
-
-    <style>
-        .container {
-            position: relative;
-            font-family: Arial;
-        }
-
-        .text-block {
-            position: absolute;
-            top: 100px;
-            left: 100px;
-            background-color: grey;
-            opacity: 0.3;
-            color: white;
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-    </style>
 </head>
 <body>
 
@@ -44,14 +26,14 @@
     <br />
 
     <section class="portfolio-details">
-        <div class="container">
+        <div class="container" id="eventpicture">
 
             <div class="portfolio-details-container">
                 <div class="container">
                     <div class="owl-carousel box portfolio-details-carousel">
                         <img src="@Model.PhotoPath" class="img-fluid" alt="">
-                        <div class="text-block">
-                            <h3>@Model.Name</h3>
+                        <div class="text-block" id="pictext">
+                            <h2>@Model.Name</h2>
                         </div>
                     </div>
                 </div>

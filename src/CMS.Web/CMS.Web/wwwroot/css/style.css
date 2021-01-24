@@ -1812,3 +1812,23 @@ section {
   }
 }
 
+#eventpicture.container {
+    position: relative;
+    font-family: Palatino Linotype;
+}
+
+#pictext.text-block {
+    position: absolute;
+    width: 95%;
+    top: 20px;
+    left: 2.5%;
+    right: 2.5%;
+    background-color: white;
+    opacity: 0.7;
+    color: black;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 3px;
+}
+
