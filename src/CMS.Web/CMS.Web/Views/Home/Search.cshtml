@@ -19,7 +19,9 @@
         <div class="form-row">
             <div class="form-group col-md-3">
                 <label for="placeInput">@Localizer["Place"]</label>
-                <input type="search" class="form-control" id="placeInput" placeholder=@Localizer["Place"] name="Place">
+                
+                @Html.DropDownList("Place", Model.Cities,
+                                    @Localizer["SelectPlace"].Value, new { @class = "form-control" })
             </div>
             <div class="form-group col-md-3">
                 <label for="dateInput">@Localizer["Date"]</label>
@@ -36,7 +38,7 @@
     </form>
 </div>
 
-@if (Model != null)
+@if (Model?.Events != null)
 {
     <div class="album py-5 bg-light">
         <div class="container">

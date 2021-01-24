@@ -145,4 +145,8 @@
     <value>Search</value>
     <comment>SearchTitle</comment>
   </data>
+  <data name="SelectPlace" xml:space="preserve">
+    <value>Select City</value>
+    <comment>SelectPlace</comment>
+  </data>
 </root>
