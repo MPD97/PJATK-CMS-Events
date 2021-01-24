@@ -6,6 +6,11 @@
     ViewData["Title"] = Localizer["SearchTitle"];
 }
 
+<script>
+   AOS.init();
+</script>
+
+<link href="~/css/home.css" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <br /><br />
 <div class="container rpw p-0 m-0">
@@ -33,24 +38,26 @@
 
 @if (Model != null)
 {
-
-
     <div class="album py-5 bg-light">
         <div class="container">
             <div class="row">
                 @foreach (var item in Model.Events)
                 {
                     <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <a href="\event\@item.ID">
-                                <img class="card-img-top" src="@item.PhotoPath" alt="Card image cap">
-                            </a>
+                        <div class="card mb-4 box-shadow" data-aos="zoom-in-up">
+                            <img class="card-img-top" src="@item.PhotoPath" alt="Card image cap">
+                            <div class="middle">
+                                <a href="\event\@item.ID">
+                                    @Html.ActionLink(@Localizer["Details"].Value, "Event", "Event", new {id = item.ID}, new {@class = "text"})
+                                </a>
+                            </div>
                             <div class="card-body">
-                                <p>@item.Date.ToShortDateString()</p>
-                                <p class="card-text"><strong>@item.Name</strong></p>
+                                <p class="card-text-small">@item.Date.ToShortDateString(), @item.City </p>
+                                <p class="card-text">
+                                    <strong>@item.Name</strong>
+                                </p>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    @Html.ActionLink(@Localizer["Details"].Value, "Event", "Event", new { id = item.ID }, new { @class = "btn btn-sm btn-outline-secondary" })
-                                    <small class="text-muted">@Localizer["TicketPrice"].Value @item.TicketPrice zł</small>
+                                    <small class="text-muted">@Localizer["TicketPrice"].Value @item.TicketPrice PLN</small>
                                 </div>
                             </div>
                         </div>

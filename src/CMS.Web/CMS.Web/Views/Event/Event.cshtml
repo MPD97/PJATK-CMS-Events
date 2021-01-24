@@ -16,7 +16,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
-    <link href="~/lib/aos/css/aos.css" rel="stylesheet">
+    
+    <script>
+      AOS.init();
+    </script>
 </head>
 <body>
 
@@ -25,7 +28,7 @@
     <br />
     <br />
 
-    <section class="portfolio-details">
+    <section class="portfolio-details" data-aos="fade-up">
         <div class="container" id="eventpicture">
             <div class="portfolio-details-container">
                 <div class="container">
@@ -37,7 +40,7 @@
                     </div>
                 </div>
 
-                <div class="portfolio-info">
+                <div class="portfolio-info" data-aos="fade-up">
                     <h6>
                         <strong>@Localizer["Date"]:</strong> @Model.Date.ToShortDateString()
                     </h6>
@@ -68,12 +71,12 @@
 
             </div>
 
-            <div class="portfolio-description">
+            <div class="portfolio-description" data-aos="fade-up">
                 <div class="container aos-init aos-animate" data-aos="fade-up">
 
                     <div class="row aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
                         <div class="col-lg-5">
-                            <div class="box mb-4" id='map' style='width: 400px; height: 300px;'>
+                            <div class="box mb-4" id='map' data-aos="zoom-in-up" style='width: 400px; height: 300px;'>
 
                                 <script>
 

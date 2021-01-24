@@ -7,6 +7,11 @@
 }
 
 <link href="~/css/home.css" rel="stylesheet">
+
+<script>
+  AOS.init();
+</script>
+
 <br /><br /><br />
 
 <div>
@@ -22,7 +27,7 @@
             }
         </ol>
 
-        <div class="carousel-inner" role="listbox">
+        <div class="carousel-inner" data-aos="fade-up" role="listbox">
             @for (int i = 0; i < highlightedEvents.Count(); i++)
             {
                 var item = highlightedEvents[i];
@@ -54,7 +59,7 @@
                 @foreach (var item in Model.Events)
                 {
                     <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
+                        <div class="card mb-4 box-shadow" data-aos="zoom-in-up">
                             <img class="card-img-top" src="@item.PhotoPath" alt="Card image cap">
                             <div class="middle">
                                 <a href="\event\@item.ID">
