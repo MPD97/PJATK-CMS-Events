@@ -99,7 +99,7 @@
                                                 container: 'map',
                                                 style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
                                                 center: [@Model.Longitude.ToString().Replace(",", "."), @Model.Latitude.ToString().Replace(",", ".")], // starting position [lng, lat]
-                                                zoom: 5 // starting zoom
+                                                zoom: 12 // starting zoom
                                             });
 
                                             var marker = new mapboxgl.Marker()
