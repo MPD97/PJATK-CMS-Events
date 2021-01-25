@@ -19,7 +19,7 @@ namespace CMS.Core.Entites
         public string Organisator { get; set; }
 
         public EventType EventType { get; set; }
-        
+
         public DateTime Date { get; set; }
 
         public string City { get; set; }
@@ -30,5 +30,7 @@ namespace CMS.Core.Entites
         public string DescriptionEn { get; set; }
 
         public virtual ICollection<Ticket> Tickets { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
+
     }
 }

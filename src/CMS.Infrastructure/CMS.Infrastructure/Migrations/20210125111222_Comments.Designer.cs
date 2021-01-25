@@ -4,14 +4,16 @@ using CMS.Infrastructure.MsSQL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CMS.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20210125111222_Comments")]
+    partial class Comments
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -150,64 +152,6 @@ namespace CMS.Infrastructure.Migrations
                     b.HasIndex("EventId");
 
                     b.ToTable("Comment");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            Date = new DateTime(2021, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EventId = 1,
-                            Message = "We adored your festival. What a feast of music and in such a wonderful setting.",
-                            Pseudonym = "Alan B."
-                        },
-                        new
-                        {
-                            ID = 2,
-                            Date = new DateTime(2021, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EventId = 1,
-                            Message = "The music was absolutely world class :))",
-                            Pseudonym = "Mark Alabama"
-                        },
-                        new
-                        {
-                            ID = 3,
-                            Date = new DateTime(2021, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EventId = 2,
-                            Message = "We adored your festival. What a feast of music and in such a wonderful setting.",
-                            Pseudonym = "XY from Toronto"
-                        },
-                        new
-                        {
-                            ID = 4,
-                            Date = new DateTime(2021, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EventId = 2,
-                            Message = "I think it’s the best weekend of the year! Yesterday’s concert was a triumph and the playing quite exceptional.",
-                            Pseudonym = "Paweł"
-                        },
-                        new
-                        {
-                            ID = 5,
-                            Date = new DateTime(2021, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EventId = 3,
-                            Message = "Last night was a superb example of music making at its very best. The entire evening would grace any concert hall in the country.",
-                            Pseudonym = "Adam Nowak"
-                        },
-                        new
-                        {
-                            ID = 6,
-                            Date = new DateTime(2021, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EventId = 3,
-                            Message = "A simply wonderful evening– the music was breath taking – I can’t believe how lucky we are to have such extraordinarily talented young musicians – it was a superb way to start the week!",
-                            Pseudonym = "Monika"
-                        },
-                        new
-                        {
-                            ID = 7,
-                            Date = new DateTime(2021, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EventId = 3,
-                            Message = "As we entered your glorious garden we knew we were in for a treat and what a treat! Absolute bliss - I think we were in paradise!",
-                            Pseudonym = "Luna"
-                        });
                 });
 
             modelBuilder.Entity("CMS.Core.Entites.Event", b =>

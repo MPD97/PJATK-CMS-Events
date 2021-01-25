@@ -32,6 +32,12 @@ namespace CMS.Infrastructure.MsSQL.Configuration
                 .HasForeignKey(ticket => ticket.EventId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+
+            builder.HasMany(eve => eve.Comments)
+                .WithOne(comment => comment.Event)
+                .HasForeignKey(comment => comment.EventId)
+                .OnDelete(DeleteBehavior.Cascade);
+
             builder.HasData(new List<Event>()
             {
                 new Event()
