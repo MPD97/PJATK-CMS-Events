@@ -55,7 +55,14 @@
                                 <div class="card-body">
                                     <p class="card-text-small">@item.Date.ToShortDateString(), @item.City </p>
                                     <p class="card-text">
-                                        <strong>@item.Name</strong>
+                                        @if (Localizer["Lang"].Value == "PL")
+                                        {
+                                            <strong>@item.NamePl</strong>
+                                        }
+                                        else if (Localizer["Lang"].Value == "EN")
+                                        {
+                                            <strong>@item.NameEn</strong>
+                                        }
                                     </p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <small class="text-muted">@Localizer["TicketPrice"].Value @item.TicketPrice PLN</small>

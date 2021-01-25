@@ -3,8 +3,14 @@
 @inject IViewLocalizer Localizer
 
 @{
-    ViewData["Title"] = @Model.Name;
-
+    @if (Localizer["Lang"].Value == "PL")
+    {
+        ViewData["Title"] = @Model.NamePl;
+    }
+    else if (Localizer["Lang"].Value == "EN")
+    {
+        ViewData["Title"] = @Model.NameEn;
+    }
 }
 <!DOCTYPE html>
 <html>
@@ -16,9 +22,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
-    
+
     <script>
-      AOS.init();
+        AOS.init();
     </script>
 </head>
 <body>
@@ -35,7 +41,15 @@
                     <div class="owl-carousel box portfolio-details-carousel">
                         <img src="@Model.PhotoPath" class="img-fluid" alt="">
                         <div class="text-block" id="pictext">
-                            <h2>@Model.Name</h2>
+
+                            @if (Localizer["Lang"].Value == "PL")
+                            {
+                                <h2>@Model.NamePl</h2>
+                            }
+                            else if (Localizer["Lang"].Value == "EN")
+                            {
+                                <h2>@Model.NameEn</h2>
+                            }
                         </div>
                     </div>
                 </div>
@@ -96,7 +110,14 @@
                         </div>
                         <div class="col-lg-7">
                             <div class="box mb-4">
-                                <h2> @Model.Name </h2>
+                                @if (Localizer["Lang"].Value == "PL")
+                                {
+                                    <h2> @Model.NamePl </h2>
+                                }
+                                else if (Localizer["Lang"].Value == "EN")
+                                {
+                                    <h2> @Model.NameEn </h2>
+                                }
                                 <p><small>@Localizer["EventOrganisator"]:</small> @Model.Organisator </p>
                                 <p>
                                     @if (Localizer["Lang"].Value == "PL")
@@ -118,10 +139,25 @@
     </section>
 
     <script>
-    function addProductToCookies() {
-        quantity = document.getElementById("quantity").value
-        document.cookie = '@Model.ID=' + quantity + '; path=/';  // expires at the end of Session
-        swal("@Localizer["GoodJob"]", + quantity + " @Localizer["Part1"] @Model.Name @Localizer["Part2"]", "success") // added sweet alert pop-up window to confirm loading the event to the cart
+        @{
+            var nameR = "";
+            if (Localizer["Lang"].Value == "PL")
+            {
+                nameR = @Model.NamePl;
+            }
+            else if (Localizer["Lang"].Value == "EN")
+            {
+                nameR = @Model.NameEn;
+            }
+        }
+
+            var name = "@nameR";
+
+
+            function addProductToCookies() {
+                quantity = document.getElementById("quantity").value
+                document.cookie = '@Model.ID=' + quantity + '; path=/';  // expires at the end of Session
+                swal("@Localizer["GoodJob"]", + quantity + " @Localizer["Part1"] " +name+ " @Localizer["Part2"]", "success") // added sweet alert pop-up window to confirm loading the event to the cart
     }
     </script>
 

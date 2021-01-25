@@ -149,4 +149,7 @@
     <value>Wybierz miasto</value>
     <comment>SelectPlace</comment>
   </data>
+  <data name="Lang" xml:space="preserve">
+    <value>PL</value>
+  </data>
 </root>

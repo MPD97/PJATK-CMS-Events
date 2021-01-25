@@ -73,7 +73,8 @@ namespace CMS.Web.Controllers
             filepath = $"/{filepath.Replace("//","/").Replace("\\","/")}";
 
             var eve = new Event();
-            eve.Name = request.Name;
+            eve.NamePl = request.NamePl;
+            eve.NameEn = request.NameEn;
             eve.City = request.City;
             eve.DescriptionEn = request.DescriptionPl;
             eve.DescriptionPl = request.DescriptionEn;

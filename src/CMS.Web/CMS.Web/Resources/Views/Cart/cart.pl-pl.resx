@@ -135,6 +135,9 @@
   <data name="EventPrice" xml:space="preserve">
     <value>Cena jednostkowa</value>
   </data>
+  <data name="Lang" xml:space="preserve">
+    <value>PL</value>
+  </data>
   <data name="NumberOfTickets" xml:space="preserve">
     <value>Liczba biletów</value>
   </data>

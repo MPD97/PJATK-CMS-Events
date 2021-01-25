@@ -7,7 +7,9 @@ namespace CMS.Core.Entites
 {
     public class Event : BaseEntity
     {
-        public string Name { get; set; }
+        public string NamePl { get; set; }
+        public string NameEn { get; set; }
+
 
         public decimal Latitude { get; set; }
         public decimal Longitude { get; set; }

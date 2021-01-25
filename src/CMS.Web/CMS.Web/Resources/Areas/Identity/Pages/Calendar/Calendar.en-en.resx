@@ -136,4 +136,7 @@
     <value>Calendar</value>
     <comment>Calendar</comment>
   </data>
+  <data name="Lang" xml:space="preserve">
+    <value>EN</value>
+  </data>
 </root>
