@@ -136,6 +136,33 @@
             </div>
         </div>
 
+        @*Dodawanie Komentarza TODO*@
+        <form class="form-inline" method="post">
+            <div class="form-group">
+                <label for="quantity">Pseudonim </label>
+                <input name="Pseudonym" type="text" class="form-control quantity" placeholder="Podaj swój pseudonim" />
+
+                <label for="quantity">Widaomośc </label>
+                <input name="Message" type="text" class="form-control quantity" placeholder="Widaomośc" />
+
+                <input name="EventId" type="hidden" class="form-control quantity" value="@Model.ID" />
+
+                <button type="submit">Dodaj komentarz</button>
+            </div>
+        </form>
+        @*Wyswietlanie komentarzy TODO*@
+
+        @foreach (var comment in Model.Comments.OrderByDescending(x => x.Date))
+        {
+            <div>
+
+                <p>@comment.Pseudonym</p>
+                <p>@comment.Date</p>
+                <p>@comment.Message</p>
+
+            </div>
+        }
+
     </section>
 
     <script>

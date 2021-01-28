@@ -69,12 +69,8 @@ namespace CMS.Web.Controllers
                     _context.Add(ticket);
                 }
                 _context.SaveChanges();
-
-
-                return Redirect("/MyEvents");
             }
-
-            return View();
+            return Redirect("/MyEvents");
         }
 
         [HttpGet("/Cart/cart")]
