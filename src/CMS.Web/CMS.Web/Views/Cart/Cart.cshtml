@@ -101,22 +101,24 @@
             </form>
         </div>
 
-        <!--   <script>
-           $('#myForm').submit(function () {
-
-               // TODO: wyczysc kosyzk z cookied przed wyslaniem żadania o zakup biletu!
-
-               console.log("czyszczenie cookies!");
-
-               return true; // return false to cancel form action
-           });
-       </script>
-        -->
         <script>
             function deleteAllCartCokies() {
                 document.cookie.split(";").forEach(function (c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
             }
         </script>
+
+        <script>
+            $('#myForm').submit(function () {
+
+                deleteAllCartCokies();
+
+                console.log("czyszczenie cookies!");
+
+                return true; // return false to cancel form action
+            });
+        </script>
+
+
     </div>
 </body>
 </html>
