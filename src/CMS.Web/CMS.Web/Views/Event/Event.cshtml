@@ -16,7 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
-    
+
     <script>
       AOS.init();
     </script>
@@ -41,32 +41,34 @@
                 </div>
 
                 <div class="portfolio-info" data-aos="fade-up">
-                    <h6>
-                        <strong>@Localizer["Date"]:</strong> @Model.Date.ToShortDateString()
-                    </h6>
-                    <h6>
-                        <strong>@Localizer["Place"]:</strong> @Model.City
-                    </h6>
-                    <h6>
-                        <strong>@Localizer["EventTypeLabel"]</strong> <a rel="tag" href="#">@Model.EventType</a>
-                    </h6>
-                    <h3></h3>
+                  
+                        <h6>
+                            <strong>@Localizer["Date"]:</strong> @Model.Date.ToShortDateString()
+                        </h6>
+                        <h6>
+                            <strong>@Localizer["Place"]:</strong> @Model.City
+                        </h6>
+                        <h6>
+                            <strong>@Localizer["EventTypeLabel"]</strong> <a rel="tag" href="#">@Model.EventType</a>
+                        </h6>
+                        <h3></h3>
 
-                    <strong>@Localizer["EventPriceLabel"]</strong><span class="pro -price"> @Model.TicketPrice PLN</span>
+                        <strong>@Localizer["EventPriceLabel"]</strong><span class="pro -price"> @Model.TicketPrice PLN</span>
 
-                    <form class="form-inline">
-                        <div class="form-group">
-                            <label for="quantity">@Localizer["Quantity"]: </label>
-                            <input type="number" id="quantity" min="1" placeholder="1" class="form-control quantity" value="1">
-                        </div>
-                    </form>
-                    <p>
-                        <button id="AddToCart" class="btn btn-round btn-primary" type="button" data-id="@Model.ID" onclick="addProductToCookies()">
-                            @Localizer["AddToCart"]
-                        </button>
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <label for="quantity">@Localizer["Quantity"]: </label>
+                                <input type="number" id="quantity" min="1" placeholder="1" class="form-control quantity" value="1">
+                            </div>
+                        </form>
+                        <p>
+                            <button id="AddToCart" class="btn btn-round btn-primary" type="button" data-id="@Model.ID" onclick="addProductToCookies()">
+                                @Localizer["AddToCart"]
+                            </button>
 
 
-                    </p>
+                        </p>
+                   
                 </div>
 
             </div>
