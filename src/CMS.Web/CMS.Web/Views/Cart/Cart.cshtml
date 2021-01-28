@@ -4,93 +4,111 @@
 @model CMS.Web.Models.CartModel
 
 @inject IViewLocalizer Localizer
-
+    <script src="~/lib/jquery/dist/jquery.js"></script>
 <!DOCTYPE html>
 
 <html lang='en'>
 
 @{
-	ViewData["Title"] = Localizer["Cart"];
+    ViewData["Title"] = Localizer["Cart"];
 }
 
 <head>
-	<meta charset='utf-8' />
-	<meta name="viewport" content="width=device-width" />
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width" />
 
 </head>
 
 <body>
-	<br />
-	<br />
-	<div class="container rpw p-0 m-0">
-		<div class="col-12">
-			<h2 class="text-primary"> @Localizer["Cart"] </h2>
-		</div>
+    <br />
+    <br />
+    <div class="container rpw p-0 m-0">
+        <div class="col-12">
+            <h2 class="text-primary"> @Localizer["Cart"] </h2>
+        </div>
 
-		<div class="col-12" style="text-align:center">
-			<br />
+        <div class="col-12" style="text-align:center">
+            <br />
 
-		</div>
-		<div class="col-12 border p-3" style="text-align:center">
+        </div>
+        <div class="col-12 border p-3" style="text-align:center">
 
-			<table id="purchases" class="table table-striped table-bordered" style="width:100%">
-				<thead>
-					<tr>
-						<th> @Localizer["EventPicture"] </th>
-						<th> @Localizer["EventName"] </th>
-						<th> @Localizer["EventPrice"] </th>
-						<th> @Localizer["NumberOfTickets"] </th>
-						<th> @Localizer["SumPrice"]</th>
-					</tr>
-				</thead>
-
-
-				@{
-
-					var dict = new SortedDictionary<int, int>();
-					int key, val;
-					foreach (var cookie in Context.Request.Cookies)
-					{
-						if (int.TryParse(@cookie.Key, out key) && int.TryParse(@cookie.Value, out val))
-						{
-							dict.Add(key, val);
-						}
-					}
-
-					var selectedEvents = Model.Events.Where(e => dict.ContainsKey(e.ID));
-					decimal totalSum = 0;
-					foreach (var e in selectedEvents)
-					{
-						var quant = dict[e.ID];
-						var totalPrice = e.TicketPrice * quant;
-						<tr>
-							<th> <img src="@e.PhotoPath" width="100" , height="60"> </th>
-							<th> <a href="\event\@e.ID" style="color: inherit"> @e.Name </a> </th>
-							<th> @e.TicketPrice</th>
-							<th> @quant</th>
-							<th> @totalPrice PLN</th>
-						</tr>
-						totalSum = totalSum + totalPrice;
-
-					}
-
-				}
+            <form id="myForm" method="post" action="/cart/checkout">
+                <table id="purchases" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th> @Localizer["EventPicture"] </th>
+                            <th> @Localizer["EventName"] </th>
+                            <th> @Localizer["EventPrice"] </th>
+                            <th> @Localizer["NumberOfTickets"] </th>
+                            <th> @Localizer["SumPrice"]</th>
+                        </tr>
+                    </thead>
 
 
+                    @{
 
-			</table>
+                        var dict = new SortedDictionary<int, int>();
+                        int key, val;
+                        int counter = 0;
+                        foreach (var cookie in Context.Request.Cookies)
+                        {
+                            if (int.TryParse(@cookie.Key, out key) && int.TryParse(@cookie.Value, out val))
+                            {
+                                dict.Add(key, val);
+                                <input type="hidden" name="Cart[@key]" value="@val" />
+                            }
+                        }
 
-			<div class="col-12">
 
-				<!-- Na guzik Checkout robić logowanie uzytkownika, a potem push tych biletow do bazy danych zeby zalogowany user mógł obejrzeć historię zamówionych wydarzeń-->
-				<h4 style="color:#007bff"> @Localizer["TotalPrice"] @totalSum PLN</h4>
-				<a class="btn btn-primary" href="/cart/checkout" role="button"> @Localizer["Checkout"]</a>
-				<a class="btn btn-primary" href="/home/index" role="button"> @Localizer["Abort"] </a>
-			</div>
+                        var selectedEvents = Model.Events.Where(e => dict.ContainsKey(e.ID));
+                        decimal totalSum = 0;
+                        foreach (var e in selectedEvents)
+                        {
+                            var quant = dict[e.ID];
+                            var totalPrice = e.TicketPrice * quant;
+                            <tr>
+                                <th> <img src="@e.PhotoPath" width="100" , height="60"> </th>
+                                @if (Localizer["Lang"].Value == "PL")
+                                {
+                                    <th> <a href="\event\@e.ID" style="color: inherit"> @e.NamePl </a> </th>
+                                }
+                                else if (Localizer["Lang"].Value == "EN")
+                                {
+                                    <th> <a href="\event\@e.ID" style="color: inherit"> @e.NameEn </a> </th>
+                                }
+                                <th> @e.TicketPrice</th>
+                                <th> @quant</th>
+                                <th> @totalPrice PLN</th>
+                            </tr>
+                            totalSum = totalSum + totalPrice;
 
-		</div>
+                        }
 
+                    }
 
-	</div>
+                </table>
+
+                <div class="col-12">
+
+                    <!-- Na guzik Checkout robić logowanie uzytkownika, a potem push tych biletow do bazy danych zeby zalogowany user mógł obejrzeć historię zamówionych wydarzeń-->
+                    <h4 style="color:#007bff"> @Localizer["TotalPrice"] @totalSum PLN</h4>
+                    <button class="btn btn-primary" type="submit"> @Localizer["Checkout"]</button>
+                    <a class="btn btn-primary" href="/home/index" role="button"> @Localizer["Abort"] </a>
+                </div>
+            </form>
+        </div>
+
+        <script>
+            $('#myForm').submit(function () {
+
+                // TODO: wyczysc kosyzk z cookied przed wyslaniem żadania o zakup biletu!
+
+                console.log("czyszczenie cookies!");
+
+                return true; // return false to cancel form action
+            });
+        </script>
+    </div>
 </body>
 </html>

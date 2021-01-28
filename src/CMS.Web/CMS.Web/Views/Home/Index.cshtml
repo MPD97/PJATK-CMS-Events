@@ -34,7 +34,14 @@
                 @:<div class="carousel-item @(i == 0 ? "active" : "")" style="background-image: url('@item.PhotoPath')">
                 <div class="carousel-caption d-none d-md-block">
                     <h4>
-                        <a href="\event\@item.ID" style="color: inherit"> @item.Name </a>
+                        @if (Localizer["Lang"].Value == "PL")
+                        {
+                            <a href="\event\@item.ID" style="color: inherit"> @item.NamePl </a>
+                        }
+                        else if (Localizer["Lang"].Value == "EN")
+                        {
+                            <a href="\event\@item.ID" style="color: inherit"> @item.NameEn </a>
+                        }
                     </h4>
                     <p>@item.Date.ToShortDateString(), @item.City</p>
                 </div>
@@ -68,7 +75,14 @@
                                 <div class="card-body">
                                     <p class="card-text-small">@item.Date.ToShortDateString(), @item.City </p>
                                     <p class="card-text">
-                                        <strong>@item.Name</strong>
+                                        @if (Localizer["Lang"].Value == "PL")
+                                        {
+                                            <strong>@item.NamePl</strong>
+                                        }
+                                        else if (Localizer["Lang"].Value == "EN")
+                                        {
+                                            <strong>@item.NameEn</strong>
+                                        }
                                     </p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <small class="text-muted">@Localizer["TicketPrice"].Value @item.TicketPrice PLN</small>

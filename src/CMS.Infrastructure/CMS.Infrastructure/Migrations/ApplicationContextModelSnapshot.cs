@@ -122,6 +122,94 @@ namespace CMS.Infrastructure.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("CMS.Core.Entites.Comment", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("EventId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasMaxLength(512)
+                        .HasColumnType("nvarchar(512)");
+
+                    b.Property<string>("Pseudonym")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("EventId");
+
+                    b.ToTable("Comment");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Date = new DateTime(2021, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EventId = 1,
+                            Message = "We adored your festival. What a feast of music and in such a wonderful setting.",
+                            Pseudonym = "Alan B."
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Date = new DateTime(2021, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EventId = 1,
+                            Message = "The music was absolutely world class :))",
+                            Pseudonym = "Mark Alabama"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Date = new DateTime(2021, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EventId = 2,
+                            Message = "We adored your festival. What a feast of music and in such a wonderful setting.",
+                            Pseudonym = "XY from Toronto"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Date = new DateTime(2021, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EventId = 2,
+                            Message = "I think it’s the best weekend of the year! Yesterday’s concert was a triumph and the playing quite exceptional.",
+                            Pseudonym = "Paweł"
+                        },
+                        new
+                        {
+                            ID = 5,
+                            Date = new DateTime(2021, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EventId = 3,
+                            Message = "Last night was a superb example of music making at its very best. The entire evening would grace any concert hall in the country.",
+                            Pseudonym = "Adam Nowak"
+                        },
+                        new
+                        {
+                            ID = 6,
+                            Date = new DateTime(2021, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EventId = 3,
+                            Message = "A simply wonderful evening– the music was breath taking – I can’t believe how lucky we are to have such extraordinarily talented young musicians – it was a superb way to start the week!",
+                            Pseudonym = "Monika"
+                        },
+                        new
+                        {
+                            ID = 7,
+                            Date = new DateTime(2021, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EventId = 3,
+                            Message = "As we entered your glorious garden we knew we were in for a treat and what a treat! Absolute bliss - I think we were in paradise!",
+                            Pseudonym = "Luna"
+                        });
+                });
+
             modelBuilder.Entity("CMS.Core.Entites.Event", b =>
                 {
                     b.Property<int>("ID")
@@ -152,7 +240,12 @@ namespace CMS.Infrastructure.Migrations
                         .HasPrecision(9, 6)
                         .HasColumnType("decimal(9,6)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("NameEn")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("NamePl")
                         .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
@@ -174,29 +267,31 @@ namespace CMS.Infrastructure.Migrations
                         new
                         {
                             ID = 1,
-                            City = "Warszawa",
-                            Date = new DateTime(2021, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DescriptionEn = "ENGLISH Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-                            DescriptionPl = " POLISH Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                            City = "London, United Kingdom",
+                            Date = new DateTime(2021, 2, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DescriptionEn = "Festival lineup (2021): deadmau5, Carl Cox, Martin Garrix, Adam Beyer, Tiësto, Timmy Trumpet, Erix Prydz, Dimitri Vegas & Like Mike \nOne of the two or three most prestigious dance festivals on the planet, Creamfields is always full to bursting with worldwide stars. Whatever flavour of electronic music you're into, you'll find more than you could ask for at Creamfields.",
+                            DescriptionPl = "Festiwal muzyki elektronicznej wywodzący się z Anglii. Obecnie festiwal rozprzestrzeniony jest na wiele krajów europejskich (Polska, Czechy, Irlandia, Hiszpania) oraz Ameryki (Chile, Argentyna, Stany Zjednoczone). Gwiazdami tego festiwalu byli m.in. The Prodigy, The Chemical Brothers, Tiesto, Pendulum, Jeff Mills, Richie Hawtin, Kosheen, Carl Cox, Felix Kröcher, Deadmau5 i wielu innych.",
                             EventType = 0,
-                            Latitude = 51.223543m,
-                            Longitude = 22.543212m,
-                            Name = "Koncert XXX",
-                            Organisator = "Stodoła",
+                            Latitude = 51.5074m,
+                            Longitude = 0.1278m,
+                            NameEn = "Creamfields",
+                            NamePl = "Creamfields",
+                            Organisator = "London Music",
                             PhotoPath = "/images/concert.jpg",
                             TicketPrice = 235.49m
                         },
                         new
                         {
                             ID = 2,
-                            City = "Warszawa",
-                            Date = new DateTime(2021, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DescriptionEn = "ENGLISH Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-                            DescriptionPl = " POLISH Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                            City = "Łódź, Poland",
+                            Date = new DateTime(2021, 2, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DescriptionEn = "Meditation has been around for a long, long time. The first literary records of meditation date back to 1500BCE. Going back to the future, a few decades ago during the seventies and sixties, mediation was in a weird spot. Due to numerous practitioners in western pop culture, meditation retreats were gaining more and more popularity. Yet, this was a two-edged sword. Meditation was mainly embraced as just another hippie-practice with little proven benefits. In the last decade, though, this notion has changed completely. Mindfulness and meditation have penetrated the mainstream more than ever. These are now seen for what they are – as legitimate practices with numerous scientifically - proven health benefits for both the mind and body.These days, due to us being connected to our work and social lives 24 / 7, we are more stressed than ever.Meditation is a simple yet effective way of becoming more centered in yourself and releasing accumulated stress.",
+                            DescriptionPl = "Prosty i praktyczny kurs medytacji Odczuwaj więcej spokoju, oraz zadbaj o swoje zdrowie i równowagę emocjonalną dzięki kursowi medytacji dla początkujących. Medytacja to badanie umysłu oraz jego trening. Każda sesja medytacyjna była okazją, by zdjąć z siebie ciężar, który nosiłem w swoim ciele i umyśle. Teraz aż trudno mi uwierzyć, jak inaczej się czułem i zachowywałem kilka lat temu. Teraz jestem po prostu lepszym, szczęśliwszym człowiekiem.",
                             EventType = 0,
-                            Latitude = 51.123543m,
-                            Longitude = 22.143212m,
-                            Name = "Kurs medytacji",
+                            Latitude = 51.75m,
+                            Longitude = 19.46667m,
+                            NameEn = "Modern Meditation Course",
+                            NamePl = "Kurs Medytacji Nowoczesnej",
                             Organisator = "Polskie Stowarzyszenie Medytacji",
                             PhotoPath = "/images/meditation.jpg",
                             TicketPrice = 99.99m
@@ -204,44 +299,47 @@ namespace CMS.Infrastructure.Migrations
                         new
                         {
                             ID = 3,
-                            City = "Warszawa",
-                            Date = new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DescriptionEn = "ENGLISH Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-                            DescriptionPl = " POLISH Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                            City = "Mendig, Germany",
+                            Date = new DateTime(2021, 3, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DescriptionEn = "Festival lineup (2020): System of a Down, Green Day, Volbeat, Deftones, Billy Talent, Korn, Weezer, Broilers If rock and metal are your game, then Germany's Rock am Ring needs no introduction. Along with sister festival Rock im Park, it pulls unparalleled lineups year after year and can lay claim to being one of the best-attended weekends in the world.",
+                            DescriptionPl = "festiwal muzyki rockowej organizowany w okresie letnim od 1985. Do 2014 odbywał się on na torze Nürburgring w miejscowości Nürburg w Niemczech. Natomiast w 2015. festiwal został przeniesiony na lotnisko w Mendig, aby po dwóch latach wrócić z powrotem na Nürburgring. Jest to największy festiwal muzyczny w tym kraju i jeden z największych w Europie.Na dwudziestej edycji organizowanej od 2 do 4 czerwca 2006 wystąpili: Metallica, Guns N' Roses, Angels & Airwaves, Trivium, Alter Bridge, Avenged Sevenfold, Cradle of Filth, Depeche Mode, Placebo, Morrissey, Franz Ferdinand, Korn, Deftones, Editors, Die Ärzte, Nelly Furtado, Sportfreunde Stiller, Kaiser Chiefs, Tool, Jamiroquai, Dir en grey, Atreyu, In Flames, Opeth, The Bloodhound Gang, Kagerou, Danko Jones, Bullet for My Valentine, Marilyn Manson, Alice in Chains.",
                             EventType = 0,
-                            Latitude = 51.323543m,
-                            Longitude = 22.443212m,
-                            Name = "Koncert YYY",
-                            Organisator = "Radio RMF MAXXX",
+                            Latitude = 50.3744m,
+                            Longitude = 7.2808m,
+                            NameEn = "Rock am Ring & Rock im Park",
+                            NamePl = "Rock am Ring",
+                            Organisator = "German Electric Music",
                             PhotoPath = "/images/concert2.jpeg",
                             TicketPrice = 50m
                         },
                         new
                         {
                             ID = 4,
-                            City = "Warszawa",
-                            Date = new DateTime(2021, 8, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DescriptionEn = "ENGLISH Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-                            DescriptionPl = " POLISH Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                            City = "Isle of Wight, United Kingdom",
+                            Date = new DateTime(2021, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DescriptionEn = "The Isle of Wight Festival is a British music festival which takes place annually in Newport on the Isle of Wight, England. It was originally a counterculture event held from 1968 to 1970. The 1970 event was by far the largest of these early festivals and the unexpectedly high attendance levels led, in 1971, to Parliament adding a section to the Isle of Wight County Council Act 1971 preventing overnight open-air gatherings of more than 5,000 people on the island without a special licence from the council.The event was revived in 2002.",
+                            DescriptionPl = "Isle of Wight Festival (ang. Festiwal na Wyspie Wight) odbywał się w latach 1968–1970 pod koniec sierpnia na wyspie Wight w Anglii. Ewoluował z początkowo imprezy jednodniowej (31.08.1968) z ok. 10 tys. widzów, przez dwudniową (30–31.08.1969) z ok. 150 tys. widzów, do pięciodniowej (26–30.08.1970). Każdy ze wspomnianych koncertów był organizowany w innym miejscu. Najbardziej znaną edycją festiwalu jest ta z 1970 roku, która zgromadziła 600 tys. widzów, podziwiających takie gwiazdy jak: Jimi Hendrix (to jeden z jego ostatnich koncertów, umarł 18 września), Miles Davis, The Who, The Doors, Procol Harum, The Moody Blues, Joan Baez. Po raz kolejny odbył się po 32-letniej przerwie w 2002 roku i od tego czasu odbywa się corocznie na terenach w pobliżu Newport, największego miasta na wyspie – jest to kolejna nowa lokalizacja. Inną zmianą było przesunięcie terminu imprezy na połowę czerwca. Nowej odsłonie imprezy wiele brakuje do poprzedniej(1968–1970), zwłaszcza artystów z najwyższej światowej półki, których dotąd było niewielu: The Who w 2004, The Rolling Stones w 2006.Z roku na rok impreza gromadzi jednak coraz większą widownię(70 tys.w 2008).",
                             EventType = 0,
-                            Latitude = 51.723543m,
-                            Longitude = 22.843212m,
-                            Name = "Koncert ZZZ",
-                            Organisator = "Radio Złote Przepoje Katowice",
+                            Latitude = 50.6938m,
+                            Longitude = -1.3047m,
+                            NameEn = "Isle of Wight Festival",
+                            NamePl = "Festiwal na Wyspie Wight",
+                            Organisator = "German Electric Music",
                             PhotoPath = "/images/concert3.jpeg",
                             TicketPrice = 75m
                         },
                         new
                         {
                             ID = 5,
-                            City = "Kraków",
-                            Date = new DateTime(2021, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DescriptionEn = "The next edition of code_talks in December! This is a micro-conference for programmers and programming enthusiasts, organized by PSI Polska. I'll see you on December 5. \n Applying generative machine learning techniques to industrial time series \n Live coding, which shows how to use JMC, JMH, flight recorder, asyncprofiler and flamegraphs tools to optimize Java code.",
+                            City = "Kraków, Poland",
+                            Date = new DateTime(2021, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DescriptionEn = "Meditation has been around for a long, long time. The first literary records of meditation date back to 1500BCE. Going back to the future, a few decades ago during the seventies and sixties, mediation was in a weird spot. Due to numerous practitioners in western pop culture, meditation retreats were gaining more and more popularity. Yet, this was a two-edged sword. Meditation was mainly embraced as just another hippie-practice with little proven benefits. In the last decade, though, this notion has changed completely. Mindfulness and meditation have penetrated the mainstream more than ever. These are now seen for what they are – as legitimate practices with numerous scientifically - proven health benefits for both the mind and body.These days, due to us being connected to our work and social lives 24 / 7, we are more stressed than ever.Meditation is a simple yet effective way of becoming more centered in yourself and releasing accumulated stress.",
                             DescriptionPl = "Już w grudniu kolejna edycja code_talks! To mikro-konferencja dla programistów i fascynatów programowania, organizowana przez PSI Polska. Widzimy się 5 grudnia. \n  Zastosowanie generatywnych technik uczenia maszynowego do przemysłowych szeregów czasowych \n Live coding, który pokazuje, jak przy pomocy narzędzi JMC, JMH, flight recorder, asyncprofiler i flamegraphs, optymalizować kod w Javie. ",
                             EventType = 1,
-                            Latitude = 51.733543m,
-                            Longitude = 22.893212m,
-                            Name = "code_talks - Mikro-konferencja",
+                            Latitude = 50.0647m,
+                            Longitude = 19.9450m,
+                            NameEn = "code_talks - micro-conference",
+                            NamePl = "code_talks - Mikro-konferencja",
                             Organisator = "Maciej Aniserowicz",
                             PhotoPath = "/images/tech_meetup_1.jpg",
                             TicketPrice = 0m
@@ -249,14 +347,15 @@ namespace CMS.Infrastructure.Migrations
                         new
                         {
                             ID = 6,
-                            City = "Warszawa",
+                            City = "Warszawa, Poland",
                             Date = new DateTime(2021, 4, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionEn = "„The Secret Life of Images” is a musical collage composed of excerpts from Baroque operas by Monteverdi, Handel and Vivaldi. Arias from the operas „Orlando”, „Ariodante” or „Alcina”, or „musical images” taken from a larger whole, become the basis of stories wrapped around scenes captured in the works of baroque painting masters.",
                             DescriptionPl = "„Sekretne życie obrazów” to muzyczny collage złożony z fragmentów oper barokowych Monteverdiego, Haendla i Vivaldiego. Arie z oper „Orlando”, „Ariodante” czy „Alcina”, czyli „muzyczne obrazy” wyjęte z większej całości, stają się kanwą opowieści osnutych wokół scen uchwyconych w dziełach mistrzów barokowego malarstwa.",
                             EventType = 1,
-                            Latitude = 52.23151940814265m,
-                            Longitude = 21.024833080469875m,
-                            Name = "Wykład 'Sekretne życie obrazów'",
+                            Latitude = 52.2297m,
+                            Longitude = 21.0122m,
+                            NameEn = "Lecture 'The Secret Life of Images'",
+                            NamePl = "Wykład 'Sekretne życie obrazów'",
                             Organisator = "Muzeum Wojska Polskiego",
                             PhotoPath = "/images/meeting_art_1.PNG",
                             TicketPrice = 10m
@@ -264,16 +363,129 @@ namespace CMS.Infrastructure.Migrations
                         new
                         {
                             ID = 7,
-                            City = "Warszawa",
+                            City = "Warszawa, Poland",
                             Date = new DateTime(2021, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DescriptionEn = "Two vast continents, the wealth of various traditions and material and spiritual culture. One of the newly opened galleries is dedicated to Asia, the other - to them. Leopold Janikowski, Africa. In both, we can find unique exhibits, but also learn about the stories thanks to the multimedia stands.",
                             DescriptionPl = "Dwa rozległe kontynenty, bogactwo różnorodnych tradycji oraz kultury materialnej i duchowej. Jedna z nowo otwartych galerii poświęcona jest Azji, druga, im. Leopolda Janikowskiego, Afryce. W obu możemy odnaleźć unikatowe eksponaty, ale także poznać historie dzięki multimedialnym stanowiskom.",
                             EventType = 1,
-                            Latitude = 52.29151940814265m,
-                            Longitude = 21.924833080469875m,
-                            Name = "Wystawa 'Afrykańskie wyprawy, azjatyckie drogi",
+                            Latitude = 52.2297m,
+                            Longitude = 21.0122m,
+                            NameEn = "Exhibition\" African expeditions, Asian roads\"",
+                            NamePl = "Wystawa 'Afrykańskie wyprawy, azjatyckie drogi'",
                             Organisator = "Muzeum Geologiczne Warszawa",
                             PhotoPath = "/images/exhibition_1.jpg",
+                            TicketPrice = 15m
+                        },
+                        new
+                        {
+                            ID = 8,
+                            City = "Warszawa, Poland",
+                            Date = new DateTime(2021, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DescriptionEn = "Produced entirely by Sevdaliza together with long-time collaborator Mucky, the 15 track album is the long awaited follow-up to her critically acclaimed 2017 debut album, ‘ISON.’ ‘Shabrang’ sees Sevdaliza take back her power from years of physical and emotional turbulence, which is embodied in the black eye on the album cover. It chronicles her journey of self-discovery, self-love and finding peace amongst all of the chaos in the world serving as a catalyst for empowerment and healing through the collective consciousness. The album further cements Sevdaliza as one of today’s most essential artists as she continues to push the boundaries of sound creating a style completely unique to her lined with elements of alternative electronic, indie, trip-hop, alternative R&B and the avant-garde.                             In celebration, Sevdaliza will be doing a special performance on August 31 at the Royal Theatre in The Hague in the Netherlands that will live stream globally and serve as the only time she’ll take the stage in 2020. The show will feature an array of striking visual effects integrated into Sevdaliza’s gripping live set.",
+                            DescriptionPl = "Wyprodukowany w całości przez Sevdalizę wraz z wieloletnim współpracownikiem Mucky'm, 15-utworowy album jest długo oczekiwaną kontynuacją jej docenionego przez krytyków debiutu z 2017 roku, „ISON”. „Shabrang” pokazuje, jak Sevdaliza odzyskuje moc po latach fizycznych i emocjonalnych turbulencji, których wyrazem jest podbite oko na okładce albumu. Jest to historia jej podróży do odkrywania siebie, miłości do siebie i znajdowania pokoju pośród całego chaosu na świecie. Album dodatkowo wzmacnia pozycję Sevdalizy jako jednej z najważniejszych współczesnych artystek, która nieustannie przesuwa granice brzmienia, tworząc całkowicie unikalny dla niej styl z elementami alternatywnej elektroniki, indie, trip-hopu, alternatywnego R&B i awangardy. Aby uczcić premierę albumu, Sevdaliza zagra 31 sierpnia w Royal Theatre w Hadze w Holandii specjalny spektakl, który będzie transmitowany na żywo na całym świecie i będzie jedynym jej scenicznym występem w 2020 roku. Uderzające efekty wizualne zintegrowane będą z porywającym muzycznym występem Sevdalizy. ",
+                            EventType = 0,
+                            Latitude = 52.211588m,
+                            Longitude = 21.0080273m,
+                            NameEn = "Sevdaliza",
+                            NamePl = "Sevdaliza",
+                            Organisator = "Klub Stodoła",
+                            PhotoPath = "/images/sevdaliza.jpg",
+                            TicketPrice = 105m
+                        },
+                        new
+                        {
+                            ID = 9,
+                            City = "Warszawa, Poland",
+                            Date = new DateTime(2021, 6, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DescriptionEn = "Neck Deep is a Welsh pop-punk band from Wrexham, formed in 2012. Neck Deep's career began with the publication of the song 'What Did You Expect?', which quickly gained recognition from listeners and critics. Following this, the band released two EPs: Rain in July (2012) and A History of Bad Decisions (2013), and then signed a contract with the Hopeless label. urrently, the band has released four studio albums, and the last of them, 'All Distortions Are Intentional', was released in July this year and entered the Official UK Album Chart at number four.",
+                            DescriptionPl = "Neck Deep to walijski zespół pop-punkowy z Wrexham, utworzony w 2012 roku. Kariera Neck Deep rozpoczęła się od publikacji utworu  „What Did You Expect?”, który bardzo szybko zyskał uznanie słuchaczy oraz krytyków. W ślad za tym, zespół opublikował w sieci dwie EP-ki: Rain in July (2012) and A History of Bad Decisions (2013), a następnie podpisał kontrakt z wytwórnią Hopeless. Obecnie zespół ma na koncie cztery studyjne albumy, a ostatni z nich, ,, All Distortions Are Intentional’’ został wydany w lipcu tego roku i trafił na 4 miejsce na liście sprzedaży w Wielkiej Brytanii.",
+                            EventType = 0,
+                            Latitude = 52.2213831m,
+                            Longitude = 20.9755266m,
+                            NameEn = "Neck Deep",
+                            NamePl = "Neck Deep",
+                            Organisator = "Klub Proxima",
+                            PhotoPath = "/images/neck.jpg",
+                            TicketPrice = 115m
+                        },
+                        new
+                        {
+                            ID = 10,
+                            City = "Warszawa, Poland",
+                            Date = new DateTime(2021, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DescriptionEn = "WATERPARKS ogłaszają trasę 'SEE YOU IN THE FUTURE' i film koncertowy 'FANDOM: LIVE IN THE UK'!",
+                            DescriptionPl = "WATERPARKS announce the 'SEE YOU IN THE FUTURE' headline tour and the release of the 'FANDOM: LIVE IN THE UK' concert film!",
+                            EventType = 0,
+                            Latitude = 52.2213831m,
+                            Longitude = 20.9755266m,
+                            NameEn = "Waterparks",
+                            NamePl = "Waterparks",
+                            Organisator = "Klub Proxima",
+                            PhotoPath = "/images/waterparks.jpg",
+                            TicketPrice = 79m
+                        },
+                        new
+                        {
+                            ID = 11,
+                            City = "Lublin, Poland",
+                            Date = new DateTime(2021, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DescriptionEn = "Buy tickets for World Exhibition of Orchids, Bonsai and Succulents in Targi Lublin, Hale Targowe Expo, NETTO Arena Szczecin.",
+                            DescriptionPl = "Światowa Wystawa Orchidei, Bonsai i Sukulentów wiosną zawita do Lublina, Łodzi i Szczecina! Weź udział w kolorowej, niezwykle pachnącej przygodzie wśród tysięcy najwspanialszych kwiatów. Na zwiedzających czekają prawdziwe cuda natury oraz fenomenalne aranżacje z okazami pochodzącymi z blisko 40 państw. Światowa Wystawa Orchidei, Bonsai i Sukulentów bilety już dostępne. ",
+                            EventType = 1,
+                            Latitude = 51.2349941m,
+                            Longitude = 22.5628468m,
+                            NameEn = "World Exhibition of Orchids, Bonsai and Succulents",
+                            NamePl = "Światowa Wystawa Orchidei, Bonsai i Sukulentów",
+                            Organisator = "http://swiatowawystawa.pl/",
+                            PhotoPath = "/images/orchid.jpg",
+                            TicketPrice = 25m
+                        },
+                        new
+                        {
+                            ID = 12,
+                            City = "Białystok, Poland",
+                            Date = new DateTime(2021, 4, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DescriptionEn = "Buy tickets for Festival of Whisky in Białystok in Restauracja Kawelin.",
+                            DescriptionPl = "Zapraszamy na Festiwal Whisky do Białegostoku! Święto whisky odbędzie się w Restauracji Kawelin .",
+                            EventType = 1,
+                            Latitude = 53.1308333m,
+                            Longitude = 23.1572557m,
+                            NameEn = "Festival of Whisky in Białystok",
+                            NamePl = "Festiwal Whisky Białystok ",
+                            Organisator = "Restauracja Kawelin",
+                            PhotoPath = "/images/whisky.jpg",
+                            TicketPrice = 85m
+                        },
+                        new
+                        {
+                            ID = 13,
+                            City = "Warszawa, Poland",
+                            Date = new DateTime(2021, 6, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DescriptionEn = "Wage War - an American metalcore band from Florida. The band includes vocalist Briton Bond, rhythm guitarist and vocalist Cody Quistad, lead guitarist Seth Blake, bassist Chris Gaylord and drummer Stephen Kluesener. Wage War released three studio albums, and the last of them titled 'Pressure' was released in 2019.Wage War previously supported such bands as August Burns Red, Chelsea Grin, I Prevail, The Amity Affliction, Northlane, Every Time I Die, For Today or Of Mice & Men",
+                            DescriptionPl = "Wage War - amerykański zespół metalcore pochodzący z Florydy. W skład zespołu wchodzą wokalista Briton Bond, gitarzysta rytmiczny i wokalista Cody Quistad, główny gitarzysta Seth Blake, basista Chris Gaylord oraz perkusista Stephen Kluesener. Wage War mają na koncie trzy albumy studyjne, a ostatni z nich zatytułowany ,,Pressure’’ został wydany w 2019 roku.",
+                            EventType = 0,
+                            Latitude = 52.2592708m,
+                            Longitude = 21.0346782m,
+                            NameEn = "Wage War",
+                            NamePl = "Wage War",
+                            Organisator = "Hydrozagadka",
+                            PhotoPath = "/images/wagewar.jpg",
+                            TicketPrice = 89m
+                        },
+                        new
+                        {
+                            ID = 14,
+                            City = "Łódź, Poland",
+                            Date = new DateTime(2021, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DescriptionEn = "Buy tickets for Festival of Insectivorous Plants 'Attack of the Giants' - the most exciting flower expo in the world. ",
+                            DescriptionPl = "Nadchodzi prawdziwy Atak Gigantów - Festiwal Roślin Owadożernych wiosną zawita do Polski! W programie największej na świecie żywej wystawy wyjątkowe pokazy, prelekcje, a przede wszystkim szaleństwo różnych atrakcji zarówno dla dorosłych, jak i dzieci. Wejdź do niesamowitej, magicznej krainy roślin owadożernych! Festiwal Roślin Owadożernych Atak Gigantów bilety już w sprzedaży.",
+                            EventType = 0,
+                            Latitude = 51.7635352m,
+                            Longitude = 19.457063m,
+                            NameEn = "Festival of Insectivorous Plants 'Attack of the Giants'",
+                            NamePl = "Festiwal Roślin Owadożernych 'Atak Gigantów'",
+                            Organisator = "Arena Expo",
+                            PhotoPath = "/images/owady.png",
                             TicketPrice = 15m
                         });
                 });
@@ -354,7 +566,7 @@ namespace CMS.Infrastructure.Migrations
                     b.Property<int>("EventId")
                         .HasColumnType("int");
 
-                    b.Property<int>("PersonId")
+                    b.Property<int?>("PersonId")
                         .HasColumnType("int");
 
                     b.Property<decimal?>("PricePLN")
@@ -475,6 +687,17 @@ namespace CMS.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("CMS.Core.Entites.Comment", b =>
+                {
+                    b.HasOne("CMS.Core.Entites.Event", "Event")
+                        .WithMany("Comments")
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Event");
+                });
+
             modelBuilder.Entity("CMS.Core.Entites.Purchase", b =>
                 {
                     b.HasOne("CMS.Core.Entites.ApplicationUser", "User")
@@ -497,8 +720,7 @@ namespace CMS.Infrastructure.Migrations
                     b.HasOne("CMS.Core.Entites.Person", "Person")
                         .WithMany("Tickets")
                         .HasForeignKey("PersonId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("CMS.Core.Entites.Purchase", "Purchase")
                         .WithMany("Tickets")
@@ -571,6 +793,8 @@ namespace CMS.Infrastructure.Migrations
 
             modelBuilder.Entity("CMS.Core.Entites.Event", b =>
                 {
+                    b.Navigation("Comments");
+
                     b.Navigation("Tickets");
                 });
 

@@ -10,7 +10,11 @@ namespace CMS.Web.Requests
 
         [Required]
         [MinLength(5)]
-        public string Name { get; set; }
+        public string NamePl { get; set; }
+
+        [Required]
+        [MinLength(5)]
+        public string NameEn{ get; set; }
 
         [Required]
         public decimal? Latitude { get; set; }

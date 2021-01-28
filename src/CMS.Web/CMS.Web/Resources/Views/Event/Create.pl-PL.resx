@@ -171,4 +171,13 @@
     <value>Dodawanie wydarzeń</value>
     <comment>CreateEvent</comment>
   </data>
+  <data name="EventNameEn" xml:space="preserve">
+    <value>Nazwa eventu po Angielsku</value>
+  </data>
+  <data name="EventNamePl" xml:space="preserve">
+    <value>Nazwa eventu</value>
+  </data>
+  <data name="Lang" xml:space="preserve">
+    <value>PL</value>
+  </data>
 </root>

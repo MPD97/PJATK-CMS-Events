@@ -175,4 +175,13 @@
     <value>Create Event</value>
     <comment>CreateEvent</comment>
   </data>
+  <data name="EventNameEn" xml:space="preserve">
+    <value>English Event Name</value>
+  </data>
+  <data name="EventNamePl" xml:space="preserve">
+    <value>Polish Event Name</value>
+  </data>
+  <data name="Lang" xml:space="preserve">
+    <value>EN</value>
+  </data>
 </root>

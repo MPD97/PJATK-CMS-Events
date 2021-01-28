@@ -25,8 +25,15 @@
     //TODO button styles
         @if (Model != null)
         {
-             List<CalendarEvent> calendarEvents = new List<CalendarEvent>();
-             Model.Events.ToList().ForEach(ev => calendarEvents.Add(new CalendarEvent(ev.Name.ToString(), ev.Date.ToShortDateString())));
+            List<CalendarEvent> calendarEvents = new List<CalendarEvent>();
+            if (Localizer["Lang"].Value == "PL")
+            {
+                Model.Events.ToList().ForEach(ev => calendarEvents.Add(new CalendarEvent(ev.NamePl.ToString(), ev.Date.ToShortDateString())));
+            }
+            else if (Localizer["Lang"].Value == "EN")
+            {
+                Model.Events.ToList().ForEach(ev => calendarEvents.Add(new CalendarEvent(ev.NameEn.ToString(), ev.Date.ToShortDateString())));
+            }
             var stringList = calendarEvents.ToString();
             Console.WriteLine(stringList);
         }
