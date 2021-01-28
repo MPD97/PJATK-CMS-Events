@@ -17,6 +17,8 @@
     <meta charset='utf-8' />
     <meta name="viewport" content="width=device-width" />
 
+
+
 </head>
 
 <body>
@@ -94,20 +96,26 @@
                     <!-- Na guzik Checkout robić logowanie uzytkownika, a potem push tych biletow do bazy danych zeby zalogowany user mógł obejrzeć historię zamówionych wydarzeń-->
                     <h4 style="color:#007bff"> @Localizer["TotalPrice"] @totalSum PLN</h4>
                     <button class="btn btn-primary" type="submit"> @Localizer["Checkout"]</button>
-                    <a class="btn btn-primary" href="/home/index" role="button"> @Localizer["Abort"] </a>
+                    <a class="btn btn-primary" href="/home/index" role="button" onclick="deleteAllCartCokies()"> @Localizer["Abort"] </a>
                 </div>
             </form>
         </div>
 
+        <!--   <script>
+           $('#myForm').submit(function () {
+
+               // TODO: wyczysc kosyzk z cookied przed wyslaniem żadania o zakup biletu!
+
+               console.log("czyszczenie cookies!");
+
+               return true; // return false to cancel form action
+           });
+       </script>
+        -->
         <script>
-            $('#myForm').submit(function () {
-
-                // TODO: wyczysc kosyzk z cookied przed wyslaniem żadania o zakup biletu!
-
-                console.log("czyszczenie cookies!");
-
-                return true; // return false to cancel form action
-            });
+            function deleteAllCartCokies() {
+                document.cookie.split(";").forEach(function (c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
+            }
         </script>
     </div>
 </body>
