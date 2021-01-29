@@ -44,15 +44,15 @@ namespace CMS.Web.Controllers
                 return Redirect("/Cart/Cart");
             }
 
+            var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var purchase = new Purchase() { UserId = int.Parse(userId) };
+            _context.Add(purchase);
+
+
             foreach (var eve in model.Cart)
             {
                 var eventId = eve.Key;
                 var count = eve.Value;
-
-                var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-
-                var purchase = new Purchase() { UserId = int.Parse(userId) };
-                _context.Add(purchase);
 
                 var eveDb = await _context.Set<Event>().FirstOrDefaultAsync(x => x.ID == eventId);
                 if (eveDb == null)
@@ -68,9 +68,10 @@ namespace CMS.Web.Controllers
                     ticket.PricePLN = eveDb.TicketPrice;
                     _context.Add(ticket);
                 }
-                _context.SaveChanges();
             }
-            return Redirect("/MyEvents");
+            _context.SaveChanges();
+
+            return Redirect("/History/MyEvents");
         }
 
         [HttpGet("/Cart/cart")]

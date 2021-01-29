@@ -33,7 +33,7 @@ namespace CMS.Web.Controllers
             _context = context;
         }
 
-        [HttpGet("/MyEvents")]
+        [HttpGet("/History/MyEvents")]
         public async Task<IActionResult> MyEvents()
         {
             var purchases = await _service.GetPurchases();
