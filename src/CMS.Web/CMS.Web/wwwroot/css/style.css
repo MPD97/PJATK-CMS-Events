@@ -1833,3 +1833,11 @@ section {
     padding-bottom: 3px;
 }
 
+.validation-summary {
+    display: none;
+}
+
+.validation-summary.validation-summary-errors {
+        display: block;
+}
+
