@@ -52,7 +52,7 @@ namespace CMS.Web.Controllers
             var allEvents = await _eventService.GetEvents();
             Console.WriteLine(allEvents);
             List<CalendarEvent> calendarEvents = new List<CalendarEvent>();
-            allEvents.ToList().ForEach(ev => calendarEvents.Add(new CalendarEvent(ev.Name.ToString(), ev.Date.ToString("yyyy-MM-dd"), ev.ID)));
+            allEvents.ToList().ForEach(ev => calendarEvents.Add(new CalendarEvent(ev.NamePl.ToString(), ev.Date.ToString("yyyy-MM-dd"), ev.ID)));
             Console.WriteLine("list");
             return new JsonResult(calendarEvents.ToList());
         }
