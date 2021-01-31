@@ -7,17 +7,19 @@
 }
 
 <link href="~/css/home.css" rel="stylesheet">
+
+<script>
+  AOS.init();
+</script>
+
 <br /><br /><br />
 
-@* <h1> *@
-@*     @ViewData["Message"] *@
-@* </h1> *@
 <div>
     @{ var highlightedEventsCount = 4;}
     @{ var highlightedEvents = Model.Events.OrderBy(e => e.Date)
            .Take(highlightedEventsCount).ToList();}
 
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
         <ol class="carousel-indicators">
             @for (int i = 0; i < highlightedEventsCount; i++)
             {
@@ -25,16 +27,23 @@
             }
         </ol>
 
-        <div class="carousel-inner" role="listbox">
+        <div class="carousel-inner" data-aos="fade-up" role="listbox">
             @for (int i = 0; i < highlightedEvents.Count(); i++)
             {
                 var item = highlightedEvents[i];
                 @:<div class="carousel-item @(i == 0 ? "active" : "")" style="background-image: url('@item.PhotoPath')">
                 <div class="carousel-caption d-none d-md-block">
                     <h4>
-                        <a href="\event\@item.ID" style="color: inherit"> @item.Name </a>
+                        @if (Localizer["Lang"].Value == "PL")
+                        {
+                            <a href="\event\@item.ID" style="color: inherit"> @item.NamePl </a>
+                        }
+                        else if (Localizer["Lang"].Value == "EN")
+                        {
+                            <a href="\event\@item.ID" style="color: inherit"> @item.NameEn </a>
+                        }
                     </h4>
-                    <p>@item.Date.ToShortDateString()</p>
+                    <p>@item.Date.ToShortDateString(), @item.City</p>
                 </div>
                 @:</div>
             }
@@ -57,19 +66,30 @@
                 @foreach (var item in Model.Events)
                 {
                     <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <a href="\event\@item.ID">
+                        <a href="\event\@item.ID" style="color: inherit">
+                            <div class="card mb-4 box-shadow" data-aos="zoom-in-up">
                                 <img class="card-img-top" src="@item.PhotoPath" alt="Card image cap">
-                            </a>
-                            <div class="card-body">
-                                <p>@item.Date.ToShortDateString(), @item.City </p>
-                                <p class="card-text"><strong>@item.Name</strong></p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    @Html.ActionLink(@Localizer["Details"].Value, "Event", "Event", new {id = item.ID}, new {@class = "btn btn-sm btn-outline-secondary"})
-                                    <small class="text-muted">@Localizer["TicketPrice"].Value @item.TicketPrice zł</small>
+                                <div class="middle">
+                                    <div class="text"> Details </div>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text-small">@item.Date.ToShortDateString(), @item.City </p>
+                                    <p class="card-text">
+                                        @if (Localizer["Lang"].Value == "PL")
+                                        {
+                                            <strong>@item.NamePl</strong>
+                                        }
+                                        else if (Localizer["Lang"].Value == "EN")
+                                        {
+                                            <strong>@item.NameEn</strong>
+                                        }
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">@Localizer["TicketPrice"].Value @item.TicketPrice PLN</small>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 }
             </div>

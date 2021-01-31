@@ -13,6 +13,7 @@ using Microsoft.Extensions.Localization;
 using CMS.Core.Entites;
 using CMS.Web.Requests;
 using CMS.Web.Areas.Identity.Pages.Calendar;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CMS.Web.Controllers
 {
@@ -32,8 +33,7 @@ namespace CMS.Web.Controllers
         public async Task<IActionResult> Index()
         {
             var allEvents = await _eventService.GetEvents();
-            //ViewData["Message"] = _localizer["hello", "\'Jakieś imię\'"];
-            return View(new HomeViewModel() { Events = allEvents });
+            return View(new HomeViewModel() { Events = allEvents});
         }
 
         public IActionResult Privacy()
@@ -59,14 +59,22 @@ namespace CMS.Web.Controllers
         [HttpGet]
         public IActionResult Search()
         {
-            return View();
+            var cities = GetAllCities();
+            return View(new HomeViewModel() { Cities = cities});
         }
         [HttpPost]
         public async Task<IActionResult> Search(FilterEventRequest filter)
         {
             var filteredEvents = await _eventService.GetEventsByFilter(filter.Place, filter.Date, filter.EventType);
+            var cities = GetAllCities();
+            
+            return View(new HomeViewModel() { Events = filteredEvents, Cities = cities });
+        }
 
-            return View(new HomeViewModel() { Events = filteredEvents });
+        private IEnumerable<SelectListItem> GetAllCities()
+        {
+            return _eventService.GetEvents().Result.Select(e => e.City).Distinct().OrderBy(c => c)
+                .Select(c => new SelectListItem(c, c));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

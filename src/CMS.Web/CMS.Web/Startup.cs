@@ -63,6 +63,8 @@ namespace CMS.Web
                 .AddDataAnnotationsLocalization();
 
             services.AddScoped<IEventService, EventService>();
+            services.AddScoped<ICommentService, CommentService>();
+            services.AddScoped<IPurchaseService, PurchaseService>();
 
             services.AddRazorPages();
 

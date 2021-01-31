@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CMS.Web.Services
 {
+
     public class EventService : IEventService
     {
 
@@ -31,7 +32,9 @@ namespace CMS.Web.Services
 
         public async Task<Event> GetEvent(int id)
         {
-            var @event = await _context.Set<Event>().FirstOrDefaultAsync(e => e.ID == id);
+            var @event = await _context.Set<Event>()
+                .Include(x => x.Comments)
+                .FirstOrDefaultAsync(e => e.ID == id);
             return @event;
         }
 

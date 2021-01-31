@@ -117,31 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddOpinion" xml:space="preserve">
-    <value>Dodaj opinię</value>
+  <data name="BuyDate" xml:space="preserve">
+    <value>Data zakupu</value>
+  </data>
+  <data name="EventCity" xml:space="preserve">
+    <value>Miasto</value>
   </data>
   <data name="EventDate" xml:space="preserve">
     <value>Data</value>
   </data>
   <data name="EventName" xml:space="preserve">
-    <value>Nazwa</value>
+    <value>Nazwa wydarzenia</value>
   </data>
-  <data name="EventPlace" xml:space="preserve">
-    <value>Miejsce</value>
+  <data name="EventOrgan" xml:space="preserve">
+    <value>Organizator</value>
   </data>
-  <data name="EventType" xml:space="preserve">
-    <value>Rodzaj wydarzenia</value>
+  <data name="EventPhoto" xml:space="preserve">
+    <value>Zdjęcie wydarzenia</value>
   </data>
-  <data name="MyEvents" xml:space="preserve">
-    <value>Moje wydarzenia</value>
+  <data name="Lang" xml:space="preserve">
+    <value>PL</value>
   </data>
-  <data name="Opinion" xml:space="preserve">
-    <value>Opinia</value>
+  <data name="MyOrders" xml:space="preserve">
+    <value>Moje zamówienia</value>
   </data>
-  <data name="Opinions" xml:space="preserve">
-    <value>Recenzje</value>
+  <data name="MyTickets" xml:space="preserve">
+    <value>Moje bilety</value>
   </data>
-  <data name="TicketCount" xml:space="preserve">
+  <data name="PurchaseId" xml:space="preserve">
+    <value>Numer zamówienia</value>
+  </data>
+  <data name="TicketPrice" xml:space="preserve">
+    <value>Cena biletu</value>
+  </data>
+  <data name="TicketsCount" xml:space="preserve">
     <value>Ilość biletów</value>
+  </data>
+  <data name="TotalSum" xml:space="preserve">
+    <value>Cena całkowita</value>
   </data>
 </root>

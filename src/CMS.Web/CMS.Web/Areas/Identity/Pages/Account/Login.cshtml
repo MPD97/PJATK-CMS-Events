@@ -8,7 +8,8 @@
 }
 <link href="~/css/style.css" rel="stylesheet" />
 
-<br /><br />
+<br />
+<br />
 <div class="d-flex justify-content-center p-5">
     <form action="" method="post" class="register-form">
         <div class="row">
@@ -18,21 +19,29 @@
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
         </div>
-        <div class="row">
+        <div class="row pb-2">
             <div class="col-12">
                 <label for="Input.Password">@Localizer["Password"]</label>
                 <input name="Input.Password" class="form-control" type="password">
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
         </div>
+        <div asp-validation-summary="@ValidationSummary.ModelOnly" class="validation-summary alert alert-danger alert-dismissible pt-2" role="alert">
+            <h6>@Localizer["loginFail"]</h6>
+        </div>
         <hr>
         <div class="row">
             <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6">
-                <button class="btn btn-default regbutton"><a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">@Localizer["Register"]</a></button>
-
+                <button class="btn btn-primary"><a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" id="textbutton">@Localizer["Register"]</a></button>
+                <style>
+                    #textbutton {
+                        color: white;
+                    }
+                </style>
             </div>
             <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6">
-                <button class="btn btn-default logbutton">@Localizer["Login"]</button>
+                <button class="btn btn-primary">@Localizer["Login"]</button>
+
             </div>
         </div>
         <div class="d-flex justify-content-center">

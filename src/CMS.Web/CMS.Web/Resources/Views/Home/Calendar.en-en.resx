@@ -132,4 +132,11 @@
   <data name="week" xml:space="preserve">
     <value>week</value>
   </data>
+  <data name="Calendar" xml:space="preserve">
+    <value>Calendar</value>
+    <comment>Calendar</comment>
+  </data>
+  <data name="Lang" xml:space="preserve">
+    <value>EN</value>
+  </data>
 </root>

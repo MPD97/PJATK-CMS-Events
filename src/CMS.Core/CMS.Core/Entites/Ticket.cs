@@ -12,7 +12,7 @@ namespace CMS.Core.Entites
         public int PurchaseId { get; set; }
         public virtual Purchase Purchase { get; set; }
 
-        public int PersonId { get; set; }
+        public int? PersonId { get; set; }
         public virtual Person Person { get; set; }
     }
 }
