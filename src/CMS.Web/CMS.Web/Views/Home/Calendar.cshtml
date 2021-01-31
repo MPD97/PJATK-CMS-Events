@@ -1,10 +1,8 @@
-﻿@page "/calendar/calendar"
-
-@using Microsoft.AspNetCore.Mvc.Localization
+﻿@using Microsoft.AspNetCore.Mvc.Localization
 @using CMS.Web.Models
-@using CMS.Web.Areas.Identity.Pages.Calendar
-@model HomeViewModel
 @inject IViewLocalizer Localizer
+@using CMS.Web.Controllers
+@using CMS.Web.Requests
 <!DOCTYPE html>
 
 <html lang='en'>
@@ -19,17 +17,14 @@
     <script src='fullcalendar/core/locales/pl.js'></script>
     <script>
     //TODO button styles
-        @if (Model != null)
-        {
-             List<CalendarEvent> calendarEvents = new List<CalendarEvent>();
-             Model.Events.ToList().ForEach(ev => calendarEvents.Add(new CalendarEvent(ev.Name.ToString(), ev.Date.ToShortDateString())));
-            var stringList = calendarEvents.ToString();
-            Console.WriteLine(stringList);
-        }
-        //TODO fix language version
+            //TODO fix language version
             document.addEventListener('DOMContentLoaded', function () {
                 var calendarEl = document.getElementById('calendar');
                 var calendar = new FullCalendar.Calendar(calendarEl, {
+                    events: '@Url.Action("allCalendarEvents")',
+                    eventClick: function (info) {
+                        window.location.pathname = '/event/' + info.event.id;
+                    },
                     locale: '@Localizer["language"]',
                     initialVeiw: 'dayGridMonth',
                     headerToolbar: {
@@ -43,20 +38,9 @@
                         week: '@Localizer["week"]',
                         day: '@Localizer["day"]'
                     },
-                    //TODO map properly our events
-                    events: [
-                            {
-                                title: 'Event1',
-                                start: '2021-01-04'
-                            },
-                            {
-                                title: 'Event2',
-                                start: '2021-01-05'
-                            }
-                    ]
                 });
-                calendar.render();
-            });
+            calendar.render();
+        });
 
     </script>
 

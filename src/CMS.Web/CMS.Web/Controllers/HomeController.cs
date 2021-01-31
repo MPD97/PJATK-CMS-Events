@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Localization;
 using CMS.Core.Entites;
 using CMS.Web.Requests;
+using CMS.Web.Areas.Identity.Pages.Calendar;
 
 namespace CMS.Web.Controllers
 {
@@ -39,7 +40,22 @@ namespace CMS.Web.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public async Task<IActionResult> Calendar()
+        {
+            return View();
 
+        }
+        [Route("Home/allCalendarEvents")]
+        public async Task<IActionResult> CalendarEvents()
+        {
+            var allEvents = await _eventService.GetEvents();
+            Console.WriteLine(allEvents);
+            List<CalendarEvent> calendarEvents = new List<CalendarEvent>();
+            allEvents.ToList().ForEach(ev => calendarEvents.Add(new CalendarEvent(ev.Name.ToString(), ev.Date.ToString("yyyy-MM-dd"), ev.ID)));
+            Console.WriteLine("list");
+            return new JsonResult(calendarEvents.ToList());
+        }
         [HttpGet]
         public IActionResult Search()
         {

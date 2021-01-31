@@ -7,12 +7,14 @@ namespace CMS.Web.Areas.Identity.Pages.Calendar
 {
     public class CalendarEvent
     {
-        string name;
-        string start;
-        public CalendarEvent(string name, string date)
+        public string title { get; set; }
+        public string start { get; set; }
+        public int id { get; set; }
+        public CalendarEvent(string title, string date, int id)
         {
-            this.name = name;
+            this.title = title;
             this.start = date;
+            this.id= id;
         }
     }
 }
