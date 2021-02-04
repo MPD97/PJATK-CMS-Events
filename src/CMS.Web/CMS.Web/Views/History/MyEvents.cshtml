@@ -20,7 +20,7 @@
     </div>
     <div class="col-12 border p-3 table-responsive" style="text-align:center">
 
-        <table id="users_events" class="table table-striped table-bordered" style="width:100%">
+        <table id="users_events" class="table table-striped table-bordered justify-content-between" style="width:100%">
             <thead>
                 <tr>
                     <th> @Localizer["PurchaseId"] </th>
@@ -38,10 +38,12 @@
                 {
 
                     totalSum = 0;
+                    DateTime localDate = DateTime.Today;
                     var id_name = "collapse" + purchase.PurchaseId;
+                    var order_numeber = 1000 + purchase.PurchaseId;
                     var href = "#" + id_name;
                     <tr class="accordion-toggle collapsed" id="accordion1" data-toggle="collapse" data-parent="#accordion1" href="@href">
-                        <td>@purchase.PurchaseId</td>
+                        <td>@order_numeber</td>
                         <td>@purchase.Tickets.Count</td>
                         @foreach (var tickets in purchase.Tickets)
                         {
@@ -50,7 +52,7 @@
                         }
 
                         <td>@totalSum</td>
-                        <td>...</td>
+                        <td>@localDate.ToString("dd/MM/yyyy")</td>
                         <td><button class="btn-link" style="background:none;border:none">@Localizer["moreInfo"]</button></td>
 
                     </tr>

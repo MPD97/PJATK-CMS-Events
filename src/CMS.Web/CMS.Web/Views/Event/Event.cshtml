@@ -153,14 +153,16 @@
                 padding: 20px;
                 height: 130px;
                 width: 100%;
-                border: 1px solid #F2F2F2;
+                border: 1px solid #dddddd;
+                border-radius: .25rem;
             }
 
             .pb-cmnt-label {
                 resize: none;
                 padding: 20px;
                 width: 100%;
-                border: 1px solid #F2F2F2;
+                border: 1px solid #dddddd;
+                border-radius: .25rem;
             }
         </style>
 
@@ -170,7 +172,9 @@
                     <div class="panel panel-info">
                         <div class="panel-body">
                             <form class="form-inline" method="post">
-                                <input name="Pseudonym" type="text" class="pb-cmnt-label" autocomplete="off" placeholder="@Localizer["userName"]" />
+                                <div class="pb-2">
+                                    <input name="Pseudonym" type="text" class="pb-cmnt-label" autocomplete="off" placeholder="@Localizer["userName"]" />
+                                </div>
                                 <textarea name="Message" type="text" placeholder="@Localizer["addComment"]" class="pb-cmnt-textarea"></textarea>
                                 <input name="EventId" type="hidden" class="form-control quantity" value="@Model.ID" />
                                 <div class="pt-2">
