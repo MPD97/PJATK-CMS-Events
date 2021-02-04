@@ -169,4 +169,7 @@
   <data name="comment" xml:space="preserve">
     <value>Add comment</value>
   </data>
+  <data name="comments" xml:space="preserve">
+    <value>Comments</value>
+  </data>
 </root>

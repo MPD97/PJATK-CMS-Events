@@ -120,6 +120,9 @@
   <data name="BuyDate" xml:space="preserve">
     <value>Data zakupu</value>
   </data>
+  <data name="comments" xml:space="preserve">
+    <value>Komentarze</value>
+  </data>
   <data name="EventCity" xml:space="preserve">
     <value>Miasto</value>
   </data>
