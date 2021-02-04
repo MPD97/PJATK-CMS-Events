@@ -16,25 +16,37 @@
     <meta charset='utf-8' />
     <meta name="viewport" content="width=device-width" />
     <link href='~/lib/fullcalendar/lib/main.css' rel='stylesheet' />
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <script src='~/lib/fullcalendar/lib/main.js'></script>
     <script src='fullcalendar/core/locales/en.js'></script>
     <script src='fullcalendar/core/locales/pl.js'></script>
     <script>
-    //TODO button styles
-            //TODO fix language version
+        var fcSources = {
+            all: {
+                id: 'all',
+                url: '@Url.Action("allCalendarEvents")'
+                },
+            mine: {
+                id: 'mine',
+                url: '@Url.Action("myEvents")'
+                }
+        };
             document.addEventListener('DOMContentLoaded', function () {
                 var calendarEl = document.getElementById('calendar');
                 var calendar = new FullCalendar.Calendar(calendarEl, {
-                    events: '@Url.Action("allCalendarEvents")',
+                    editable: true,
+                    selectable: true,
+                    eventSources: [fcSources.all],
                     eventClick: function (info) {
                         window.location.pathname = '/event/' + info.event.id;
                     },
                     locale: '@Localizer["language"]',
                     initialVeiw: 'dayGridMonth',
                     headerToolbar: {
-                        left: 'prev, next today',
+                        left: 'prev,next,today',
                         center: 'title',
-                        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                        right: '',
                     },
                     buttonText: {
                         today: '@Localizer["today"]',
@@ -44,13 +56,59 @@
                     },
                 });
             calendar.render();
-        });
+            });
+
+                document.addEventListener('DOMContentLoaded', function () {
+                var calendarEl = document.getElementById('calendarMyEvents');
+                var calendar = new FullCalendar.Calendar(calendarEl, {
+                    editable: true,
+                    selectable: true,
+                    eventSources: [fcSources.mine],
+                    eventClick: function (info) {
+                        window.location.pathname = '/event/' + info.event.id;
+                    },
+                    locale: '@Localizer["language"]',
+                    initialVeiw: 'dayGridMonth',
+                    headerToolbar: {
+                        left: 'prev,next,today',
+                        center: 'title',
+                        right: ''
+                    },
+                    buttonText: {
+                        today: '@Localizer["today"]'
+                    },
+                });
+            calendar.render();
+            });
+
 
     </script>
-
 </head>
 <body>
+    <div class="toggle mt-5">
+        <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="toggleCalendar" onchange="changeCal(this)">
+            <label class="custom-control-label" for="toggleCalendar">
+                @Localizer["onlyMyEvents"]
+            </label>
+        </div>
+    </div>
+    <div class="mt-3" id="calendar"></div>
+    <div class="mt-3" id="calendarMyEvents"></div>
+    <script>
+        function changeCal(checkboxElem) {
+            if (checkboxElem.checked) {
+                document.getElementById("calendar").style.display = "none";
+                document.getElementById("calendarMyEvents").style.display = "block";
 
-    <div class="mt-5" id='calendar'></div>
+            } else {
+                document.getElementById("calendar").style.display = "block";
+                document.getElementById("calendarMyEvents").style.display = "none";
+            }
+        }
+    </script>
+
+
 </body>
 </html>
+
