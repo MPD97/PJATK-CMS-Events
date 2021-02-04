@@ -166,4 +166,7 @@
   <data name="userName" xml:space="preserve">
     <value>Username</value>
   </data>
+  <data name="comment" xml:space="preserve">
+    <value>Add comment</value>
+  </data>
 </root>
