@@ -27,6 +27,7 @@
                     <th> @Localizer["TicketsCount"] </th>
                     <th> @Localizer["TotalSum"]</th>
                     <th> @Localizer["BuyDate"] </th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -35,11 +36,12 @@
                 }
                 @foreach (var purchase in Model)
                 {
+
                     totalSum = 0;
                     var id_name = "collapse" + purchase.PurchaseId;
                     var href = "#" + id_name;
                     <tr class="accordion-toggle collapsed" id="accordion1" data-toggle="collapse" data-parent="#accordion1" href="@href">
-                        <td class="expand-button">@purchase.PurchaseId</td>
+                        <td>@purchase.PurchaseId</td>
                         <td>@purchase.Tickets.Count</td>
                         @foreach (var tickets in purchase.Tickets)
                         {
@@ -47,8 +49,9 @@
                             totalSum = totalSum + (decimal)price;
                         }
 
-                        <th>@totalSum</th>
-                        <th>...</th>
+                        <td>@totalSum</td>
+                        <td>...</td>
+                        <td><button class="btn-link" style="background:none;border:none">@Localizer["moreInfo"]</button></td>
 
                     </tr>
                     <tr class="hide-table-padding">
