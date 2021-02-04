@@ -144,15 +144,15 @@
 
 
 
-        <div class="container pt-2">
-            <div class="row justify-content-center">
+        <div class="container pt-2" data-aos="fade-up">
+            <div class="row justify-content-center" data-aos="fade-up">
                 <div class="col-8">
                     <h4>@Localizer["comments"]</h4>
 
                     @foreach (var comment in Model.Comments.OrderByDescending(x => x.Date))
                     {
 
-                        <div class="card card-white post pb-2 pt-2">
+                        <div class="card card-white post pb-2 pt-2" data-aos="fade-up">
                             <div class="post-heading">
                                 <div class="float-left meta">
                                     <div class="title h5">
@@ -196,9 +196,9 @@
             }
         </style>
 
-        <div class="container pb-cmnt-container pt-5">
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3">
+        <div class="container pb-cmnt-container pt-5" data-aos="fade-up" >
+            <div class="row" data-aos="fade-up">
+                <div class="col-md-6 col-md-offset-3"data-aos="fade-up" >
                     <div class="panel panel-info">
                         <div class="panel-body">
                             <h4>@Localizer["comment"]</h4>
