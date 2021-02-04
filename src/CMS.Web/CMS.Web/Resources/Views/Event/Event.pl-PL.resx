@@ -154,4 +154,16 @@
   <data name="Lang" xml:space="preserve">
     <value>PL</value>
   </data>
+  <data name="addComment" xml:space="preserve">
+    <value>Wpisz treść wiadomości !</value>
+  </data>
+  <data name="posted" xml:space="preserve">
+    <value>dodał komentarz.</value>
+  </data>
+  <data name="share" xml:space="preserve">
+    <value>Dodaj</value>
+  </data>
+  <data name="userName" xml:space="preserve">
+    <value>Pseudonim</value>
+  </data>
 </root>

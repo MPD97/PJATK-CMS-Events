@@ -18,10 +18,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="~/css/event.css" rel="stylesheet">
+    <link href="~/css/post.css" rel="stylesheet" />
     <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+
 
     <script>
         AOS.init();
@@ -55,34 +57,34 @@
                 </div>
 
                 <div class="portfolio-info" data-aos="fade-up">
-                  
-                        <h6>
-                            <strong>@Localizer["Date"]:</strong> @Model.Date.ToShortDateString()
-                        </h6>
-                        <h6>
-                            <strong>@Localizer["Place"]:</strong> @Model.City
-                        </h6>
-                        <h6>
-                            <strong>@Localizer["EventTypeLabel"]</strong> <a rel="tag" href="#">@Model.EventType</a>
-                        </h6>
-                        <h3></h3>
 
-                        <strong>@Localizer["EventPriceLabel"]</strong><span class="pro -price"> @Model.TicketPrice PLN</span>
+                    <h6>
+                        <strong>@Localizer["Date"]:</strong> @Model.Date.ToShortDateString()
+                    </h6>
+                    <h6>
+                        <strong>@Localizer["Place"]:</strong> @Model.City
+                    </h6>
+                    <h6>
+                        <strong>@Localizer["EventTypeLabel"]</strong> <a rel="tag" href="#">@Model.EventType</a>
+                    </h6>
+                    <h3></h3>
 
-                        <form class="form-inline">
-                            <div class="form-group">
-                                <label for="quantity">@Localizer["Quantity"]: </label>
-                                <input type="number" id="quantity" min="1" placeholder="1" class="form-control quantity" value="1">
-                            </div>
-                        </form>
-                        <p>
-                            <button id="AddToCart" class="btn btn-round btn-primary" type="button" data-id="@Model.ID" onclick="addProductToCookies()">
-                                @Localizer["AddToCart"]
-                            </button>
+                    <strong>@Localizer["EventPriceLabel"]</strong><span class="pro -price"> @Model.TicketPrice PLN</span>
+
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label for="quantity">@Localizer["Quantity"]: </label>
+                            <input type="number" id="quantity" min="1" placeholder="1" class="form-control quantity" value="1">
+                        </div>
+                    </form>
+                    <p>
+                        <button id="AddToCart" class="btn btn-round btn-primary" type="button" data-id="@Model.ID" onclick="addProductToCookies()">
+                            @Localizer["AddToCart"]
+                        </button>
 
 
-                        </p>
-                   
+                    </p>
+
                 </div>
 
             </div>
@@ -139,33 +141,78 @@
         </div>
 
         @*Dodawanie Komentarza TODO*@
-        <form class="form-inline" method="post">
-            <div class="form-group">
-                <label for="quantity">Pseudonim </label>
-                <input name="Pseudonym" type="text" class="form-control quantity" placeholder="Podaj swój pseudonim" />
 
-                <label for="quantity">Widaomośc </label>
-                <input name="Message" type="text" class="form-control quantity" placeholder="Widaomośc" />
+        <style>
+            .pb-cmnt-container {
+                font-family: Lato;
+                margin-top: 100px;
+            }
 
-                <input name="EventId" type="hidden" class="form-control quantity" value="@Model.ID" />
+            .pb-cmnt-textarea {
+                resize: none;
+                padding: 20px;
+                height: 130px;
+                width: 100%;
+                border: 1px solid #F2F2F2;
+            }
 
-                <button type="submit">Dodaj komentarz</button>
+            .pb-cmnt-label {
+                resize: none;
+                padding: 20px;
+                width: 100%;
+                border: 1px solid #F2F2F2;
+            }
+        </style>
+
+        <div class="container pb-cmnt-container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="panel panel-info">
+                        <div class="panel-body">
+                            <form class="form-inline" method="post">
+                                <input name="Pseudonym" type="text" class="pb-cmnt-label" autocomplete="off" placeholder="@Localizer["userName"]" />
+                                <textarea name="Message" type="text" placeholder="@Localizer["addComment"]" class="pb-cmnt-textarea"></textarea>
+                                <input name="EventId" type="hidden" class="form-control quantity" value="@Model.ID" />
+                                <div class="pt-2">
+                                    <button class="btn btn-primary pull-right" type="submit">@Localizer["share"]</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </form>
+        </div>
+
         @*Wyswietlanie komentarzy TODO*@
 
-        @foreach (var comment in Model.Comments.OrderByDescending(x => x.Date))
-        {
-            <div>
+        <div class="container pt-5">
+            <div class="row">
+                <div class="col-12">
 
-                <p>@comment.Pseudonym</p>
-                <p>@comment.Date</p>
-                <p>@comment.Message</p>
+                    @foreach (var comment in Model.Comments.OrderByDescending(x => x.Date))
+                    {
 
+                        <div class="card card-white post pb-2 pt-2">
+                            <div class="post-heading">
+                                <div class="float-left meta">
+                                    <div class="title h5">
+                                        <b>@comment.Pseudonym</b>
+                                        @Localizer["posted"]
+                                    </div>
+                                    <h6 class="text-muted time">@comment.Date</h6>
+                                </div>
+                            </div>
+                            <div class="post-description">
+                                <p>@comment.Message</p>
+                            </div>
+                        </div>
+                        <div class="pb-4"></div>
+                    }
+                </div>
             </div>
-        }
+        </div>
 
-    </section>
+     </section>
 
     <script>
         @{
