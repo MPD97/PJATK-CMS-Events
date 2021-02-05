@@ -36,7 +36,6 @@
                 var calendarEl = document.getElementById('calendar');
                 var calendar = new FullCalendar.Calendar(calendarEl, {
                     editable: true,
-                    selectable: true,
                     eventSources: [fcSources.all],
                     eventClick: function (info) {
                         window.location.pathname = '/event/' + info.event.id;
@@ -49,10 +48,7 @@
                         right: '',
                     },
                     buttonText: {
-                        today: '@Localizer["today"]',
-                        month:  '@Localizer["month"]',
-                        week: '@Localizer["week"]',
-                        day: '@Localizer["day"]'
+                        today: '@Localizer["today"]'
                     },
                 });
             calendar.render();
