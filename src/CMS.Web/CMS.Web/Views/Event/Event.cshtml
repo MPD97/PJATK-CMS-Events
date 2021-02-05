@@ -236,10 +236,22 @@
             var name = "@nameR";
 
 
+                     //  if (location.reload()) {
+          //      var old_value = total_value;
+          //  }
+
+
+            var old_value = 0;
             function addProductToCookies() {
-                quantity = document.getElementById("quantity").value
-                document.cookie = '@Model.ID=' + quantity + '; path=/';  // expires at the end of Session
-                swal("@Localizer["GoodJob"]", + quantity + " @Localizer["Part1"] " +name+ " @Localizer["Part2"]", "success") // added sweet alert pop-up window to confirm loading the event to the cart
+                quantity = document.getElementById("quantity").value;
+                console.log('quantity: ', typeof quantity);
+                var total_value = old_value + Number(quantity);
+                console.log('total:', typeof total_value);
+                document.cookie = '@Model.ID=' + total_value + '; path=/';  // expires at the end of Session
+                swal("@Localizer["GoodJob"]", + quantity + " @Localizer["Part1"] " + name + " @Localizer["Part2"]", "success");
+                old_value = total_value;
+                console.log('old_value: ', typeof old_value);
+            }
     }
     </script>
 
