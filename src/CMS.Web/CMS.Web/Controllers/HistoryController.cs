@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CMS.Core.Entites;
 using CMS.Infrastructure.MsSQL;
+using CMS.Web.Areas.Identity.Pages.Calendar;
 using CMS.Web.Models;
 using CMS.Web.Requests;
 using CMS.Web.Services;
@@ -82,6 +83,24 @@ namespace CMS.Web.Controllers
             }
 
             return View(result);
+        }
+        [Route("/Home/myEvents")]
+        public async Task<IActionResult> MyCalendarEvents()
+        {
+            List<Event> myEvents = new List<Event>();
+            var purchases = await _service.GetPurchases();
+            List<PurchaseModel> result = new List<PurchaseModel>();
+            foreach (var purchase in purchases)
+            {
+                PurchaseModel purchaseModel = new PurchaseModel()
+                {
+                    Tickets = new List<TicketModel>(),
+                };
+                myEvents.Add(purchase.Tickets.First().Event);
+            }
+            List<CalendarEvent> calendarEvents = new List<CalendarEvent>();
+            myEvents.ToList().ForEach(ev => calendarEvents.Add(new CalendarEvent(ev.NamePl.ToString(), ev.Date.ToString("yyyy-MM-dd"), ev.ID)));
+            return new JsonResult(calendarEvents.ToList());
         }
     }
 }

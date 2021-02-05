@@ -123,14 +123,8 @@
   <data name="language" xml:space="preserve">
     <value>pl</value>
   </data>
-  <data name="month" xml:space="preserve">
-    <value>miesiąc</value>
-  </data>
   <data name="today" xml:space="preserve">
     <value>dzisiaj</value>
-  </data>
-  <data name="week" xml:space="preserve">
-    <value>tydzień</value>
   </data>
   <data name="Calendar" xml:space="preserve">
     <value>Kalendarz</value>
@@ -138,5 +132,8 @@
   </data>
   <data name="Lang" xml:space="preserve">
     <value>PL</value>
+  </data>
+  <data name="onlyMyEvents" xml:space="preserve">
+    <value>Pokaż tylko moje wydarzenia</value>
   </data>
 </root>
