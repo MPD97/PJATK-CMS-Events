@@ -84,7 +84,7 @@ namespace CMS.Web
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-            context.Database.EnsureDeleted();
+            //context.Database.EnsureDeleted();
             context.Database.Migrate();
 
             app.UseStaticFiles();
