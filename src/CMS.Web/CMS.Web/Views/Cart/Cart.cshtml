@@ -103,7 +103,11 @@
 
         <script>
             function deleteAllCartCokies() {
-                document.cookie.split(";").forEach(function (c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
+                document.cookie.split(";").forEach(function (c) { 
+                    if (!c.includes("Culture")) {
+                        document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
+                    }
+                });
             }
         </script>
 
