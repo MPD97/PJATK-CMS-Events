@@ -28,6 +28,37 @@
     <script>
         AOS.init();
     </script>
+
+    <script type="text/javascript">
+
+        cooks = []  // list keeping all cookies corresponding to items put in the Cart
+        ids = [] // ids of items in a cart
+        quants = [] // quantities of items in a cart --> if quant = 0, then neither id nor quantity of this item is kept in the list
+        // items ids and their quantities have same indices in both arrays
+        function getCookiesOnLoad() {
+            var allCookies = document.cookie.split(";");
+            for (var i = 0; i < allCookies.length; i++) {
+                let re = /\d+=\d+/;
+                if (allCookies[i].match(re)) {
+                    cooks.push(allCookies[i]);
+                }
+            }
+            for (var i = 0; i < cooks.length; i++) {
+                //console.log(cooks[i]);
+                var ids_quantities = cooks[i].split("=");
+                ids.push(ids_quantities[0]);
+                quants.push(ids_quantities[1]);
+            }
+            for (var i = 0; i < ids.length; i++) {
+                console.log("id " + ids[i]);
+                console.log("quant " + quants[i]);
+            }
+        }
+        window.onload = getCookiesOnLoad;
+        //alert("Cookies loaded");
+
+    </script>
+
 </head>
 <body>
 
@@ -236,23 +267,28 @@
             var name = "@nameR";
 
 
-                     //  if (location.reload()) {
-          //      var old_value = total_value;
-          //  }
-
-
-            var old_value = 0;
+        var old_value = 0;
             function addProductToCookies() {
+                for (var id = 0; id < ids.length; id++) {
+                    if (@Model.ID === Number.parseInt(ids[id])) {
+                        var index = id;
+                        old_value = Number(parseInt(quants[index]));
+                        console.log("for_if_old", old_value)
+                    }
+                    else {
+                        console.log("for_else_old", old_value)
+                    }
+                }
                 quantity = document.getElementById("quantity").value;
-                console.log('quantity: ', typeof quantity);
-                var total_value = old_value + Number(quantity);
-                console.log('total:', typeof total_value);
+                console.log("id: ", @Model.ID,' quantity: ', quantity);
+                var total_value = old_value + Number.parseInt(quantity);
+                console.log("id: ",@Model.ID,' total:', total_value);
                 document.cookie = '@Model.ID=' + total_value + '; path=/';  // expires at the end of Session
                 swal("@Localizer["GoodJob"]", + quantity + " @Localizer["Part1"] " + name + " @Localizer["Part2"]", "success");
                 old_value = total_value;
-                console.log('old_value: ', typeof old_value);
+                console.log("id: ",@Model.ID,' old_value: ', old_value);
             }
-    }
+
     </script>
 
 
